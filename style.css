@@ -1,0 +1,14 @@
+.row {
+  display: flex;
+  justify-content: space-around;
+  /*TODO: How to add this based on (15+2*2)*52*/
+  width: 1040px; /*20px width for each of 52 17px boxes*/
+  height: 20px;
+  align-items: center;
+}
+
+.box {
+  border: 1px solid cornflowerblue;
+  width: 15px;
+  height: 15px;
+}
