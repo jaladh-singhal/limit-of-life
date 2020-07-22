@@ -7,6 +7,10 @@
   align-items: center;
 }
 
+.row--leap-week {
+  width: 1060px; /*20px x 53 weeks*/
+}
+
 .box {
   border: 1px solid cornflowerblue;
   width: 15px;
