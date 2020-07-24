@@ -6,9 +6,11 @@ const DAYS_IN_WEEK = 7;
 
 function genMatrix(dob) {
   matrixContainer.innerHTML = "";
+  const weekStartDate = new Date(dob);
   let row,
     daysInAgeYear,
     remDaysOverAgeYears = 0;
+
   for (let ageYear = 0; ageYear <= LIFE_EXPECTANCY; ageYear++) {
     row = document.createElement("div");
     row.classList.add("row");
@@ -18,19 +20,24 @@ function genMatrix(dob) {
     remDaysOverAgeYears += daysInAgeYear % DAYS_IN_WEEK;
 
     // Add em in a var to determine if it's 7 -> leap week
-    if (remDaysOverAgeYears >= 7) {
-      remDaysOverAgeYears -= 7;
+    if (remDaysOverAgeYears >= DAYS_IN_WEEK) {
+      remDaysOverAgeYears -= DAYS_IN_WEEK;
       weeksInAgeYear = WEEKS_IN_YEAR + 1;
       row.classList.add("row--leap-week");
     } else {
       weeksInAgeYear = WEEKS_IN_YEAR;
     }
 
-    let box;
+    let weekBox;
     for (let week = 1; week <= weeksInAgeYear; week++) {
-      box = document.createElement("div");
-      box.classList.add("box");
-      row.appendChild(box);
+      weekBox = document.createElement("div");
+      //Add box starting date (+week no: total & in ageyear) to debug
+      //Keep adding 7 to each box since 0th bday to actually get correct numbers
+      weekBox.classList.add("box");
+      weekBox.setAttribute("title", weekStartDate.toDateString());
+      //TODO: if weekStartDate < today fill the box by setAttribute
+      weekStartDate.setDate(weekStartDate.getDate() + DAYS_IN_WEEK);
+      row.appendChild(weekBox);
     }
 
     matrixContainer.appendChild(row);
