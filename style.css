@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-around;
   /*TODO: How to add this based on (15+2*2)*52*/
-  width: 1040px; /*20px width for each of 52 17px boxes*/
+  width: 1040px; /* use calc - 20px width for each of 52 17px boxes*/
   height: 20px;
   align-items: center;
 }
@@ -15,4 +15,8 @@
   border: 1px solid cornflowerblue;
   width: 15px;
   height: 15px;
+}
+
+.box--filled {
+  background-color: hsla(219, 90%, 81%, 0.904);
 }

@@ -1,3 +1,5 @@
+"use strict";
+
 const matrixContainer = document.querySelector("#matrix");
 
 const LIFE_EXPECTANCY = 100;
@@ -6,9 +8,10 @@ const DAYS_IN_WEEK = 7;
 
 function genMatrix(dob) {
   matrixContainer.innerHTML = "";
-  const weekStartDate = new Date(dob);
+  let weekStartDate = new Date(dob);
   let row,
     daysInAgeYear,
+    weeksInAgeYear,
     remDaysOverAgeYears = 0;
 
   for (let ageYear = 0; ageYear <= LIFE_EXPECTANCY; ageYear++) {
@@ -19,7 +22,7 @@ function genMatrix(dob) {
     daysInAgeYear = getDaysInAgeYear(ageYear, dob);
     remDaysOverAgeYears += daysInAgeYear % DAYS_IN_WEEK;
 
-    // Add em in a var to determine if it's 7 -> leap week
+    // Determine if it's a leap week or not
     if (remDaysOverAgeYears >= DAYS_IN_WEEK) {
       remDaysOverAgeYears -= DAYS_IN_WEEK;
       weeksInAgeYear = WEEKS_IN_YEAR + 1;
@@ -28,23 +31,29 @@ function genMatrix(dob) {
       weeksInAgeYear = WEEKS_IN_YEAR;
     }
 
-    let weekBox;
+    let weekBox, nextWeekStartDate;
     for (let week = 1; week <= weeksInAgeYear; week++) {
       weekBox = document.createElement("div");
-      //Add box starting date (+week no: total & in ageyear) to debug
-      //Keep adding 7 to each box since 0th bday to actually get correct numbers
       weekBox.classList.add("box");
+
+      //Add box starting date (+week no: total & in age year) to debug
       weekBox.setAttribute("title", weekStartDate.toDateString());
-      //TODO: if weekStartDate < today fill the box by setAttribute
-      weekStartDate.setDate(weekStartDate.getDate() + DAYS_IN_WEEK);
+
+      // Find the next week starting date
+      nextWeekStartDate = new Date(weekStartDate);
+      nextWeekStartDate.setDate(nextWeekStartDate.getDate() + DAYS_IN_WEEK);
+
+      // Fill the boxes based on current date
+      if (weekStartDate < Date.now() && nextWeekStartDate <= Date.now()) {
+        weekBox.classList.add("box--filled");
+      }
+      weekStartDate = nextWeekStartDate;
+
       row.appendChild(weekBox);
     }
 
     matrixContainer.appendChild(row);
   }
-
-  alert("you entered: " + dob);
-  //TODO: Fill boxes based on passed dob string
 }
 
 function getDaysInAgeYear(ageYear, dobStr) {
