@@ -1,20 +1,19 @@
 "use strict";
 
-const matrixContainer = document.querySelector("#matrix");
-
-const LIFE_EXPECTANCY = 100;
 const WEEKS_IN_YEAR = 52;
 const DAYS_IN_WEEK = 7;
 
-function genMatrix(dob) {
-  matrixContainer.innerHTML = "";
+function genMatrix(dob, lifeExpectancy) {
+  const matrixContainer = document.querySelector("#matrix");
+  matrixContainer.innerHTML = ""; // Clear all child nodes
+
   let weekStartDate = new Date(dob);
   let row,
     daysInAgeYear,
     weeksInAgeYear,
     remDaysOverAgeYears = 0;
 
-  for (let ageYear = 0; ageYear <= LIFE_EXPECTANCY; ageYear++) {
+  for (let ageYear = 0; ageYear <= lifeExpectancy; ageYear++) {
     row = document.createElement("div");
     row.classList.add("row");
 
@@ -75,12 +74,18 @@ function getDaysInAgeYear(ageYear, dobStr) {
   return Math.floor((nextBday - curBday) / MS_PER_DAY);
 }
 
-// TODO: Populate matrix div with a grid
+// Populate matrix div with a grid
 function showMatrix() {
   const dob = document.querySelector("#dob");
-  genMatrix(dob.value);
+  const lifeExpectancy = document.querySelector("#life-expectancy");
+  genMatrix(dob.value, lifeExpectancy.valueAsNumber);
 }
 
-// TODO: Listen on DOB entered (button for now)
+// Listen on DOB & expectancy entered (using button for now)
 const showBtn = document.querySelector("#btn");
 showBtn.addEventListener("click", showMatrix);
+
+// Prevent form from submitting on enter or button click
+document.querySelector("#user-details").addEventListener("submit", (event) => {
+  event.preventDefault();
+});

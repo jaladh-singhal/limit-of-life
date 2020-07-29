@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>
-      Life Matrix
-    </title>
+    <meta charset="UTF-8" />
+    <title>Life Matrix</title>
   </head>
   <link rel="stylesheet" href="style.css" />
   <body>
-    <label>Enter your DOB:</label>
-    <input type="date" name="DOB" id="dob" />
-    <button id="btn">Show</button>
+    <form id='user-details'>
+      <label>Let's start from beginning! Your DOB? </label>
+      <input type="date" name="DOB" id="dob" />
+      <br />
+      <label>How many years do you think you'll live? </label>
+      <input type="number" id="life-expectancy" value="80" min="10" max="100" />
+      <br />
+      <button id="btn">Show</button>
+    </form>
+    <div id="life-stats"></div>
     <div id="matrix"></div>
+    <script src="life-matrix.js"></script>
   </body>
-
-  <script src="life-matrix.js"></script>
 </html>
