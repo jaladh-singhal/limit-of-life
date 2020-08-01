@@ -3,9 +3,10 @@
 const WEEKS_IN_YEAR = 52;
 const DAYS_IN_WEEK = 7;
 
-function genMatrix(dob, lifeExpectancy) {
-  const matrixContainer = document.querySelector("#matrix");
-  matrixContainer.innerHTML = ""; // Clear all child nodes
+// Populate the grid
+function genLifeGrid(dob, lifeExpectancy) {
+  const lifeGrid = document.querySelector("#life-grid");
+  lifeGrid.innerHTML = ""; // Clear all child nodes
 
   let weekStartDate = new Date(dob);
   let row,
@@ -51,7 +52,7 @@ function genMatrix(dob, lifeExpectancy) {
       row.appendChild(weekBox);
     }
 
-    matrixContainer.appendChild(row);
+    lifeGrid.appendChild(row);
   }
 }
 
@@ -74,16 +75,19 @@ function getDaysInAgeYear(ageYear, dobStr) {
   return Math.floor((nextBday - curBday) / MS_PER_DAY);
 }
 
-// Populate matrix div with a grid
-function showMatrix() {
+function genLifeStats() {}
+
+function showOutput() {
   const dob = document.querySelector("#dob");
   const lifeExpectancy = document.querySelector("#life-expectancy");
-  genMatrix(dob.value, lifeExpectancy.valueAsNumber);
+
+  genLifeStats();
+  genLifeGrid(dob.value, lifeExpectancy.valueAsNumber);
 }
 
-// Listen on DOB & expectancy entered (using button for now)
+// Listen on user details form's button
 const showBtn = document.querySelector("#btn");
-showBtn.addEventListener("click", showMatrix);
+showBtn.addEventListener("click", showOutput);
 
 // Prevent form from submitting on enter or button click
 document.querySelector("#user-details").addEventListener("submit", (event) => {
