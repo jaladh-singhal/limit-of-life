@@ -4,23 +4,19 @@
 
 :root {
   --box-size: 12px;
+  --box-margin: 1px;
   --weeks-in-year: 52;
+}
+
+#life-grid {
+  width: calc(
+    (var(--box-size) + (var(--box-margin) * 2)) * (var(--weeks-in-year) + 1)
+  );
 }
 
 .row {
   display: flex;
-
-  /* Leave 2px gutter on both left and right sides of each box in row */
-  width: calc((var(--box-size) + 2px) * var(--weeks-in-year));
-  justify-content: space-around;
-
-  /* Leave 2px gutter on both top and bottom of each box in row */
-  height: calc(var(--box-size) + 2px);
-  align-items: center;
-}
-
-.row--leap-week {
-  width: calc((var(--box-size) + 2px) * (var(--weeks-in-year) + 1));
+  justify-content: flex-start;
 }
 
 .box {
@@ -28,6 +24,7 @@
   border: 1px solid rgba(100, 148, 237, 0.6);
   width: var(--box-size);
   height: var(--box-size);
+  margin: var(--box-margin);
 }
 
 .box--filled {
