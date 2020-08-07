@@ -5,7 +5,7 @@
 :root {
 }
 
-#life-grid {
+.life-grid {
   background-color: hsl(0, 0%, 95%);
   padding: 20px;
 
@@ -18,14 +18,14 @@
   gap: var(--gutter);
 }
 
-.box {
+.life-grid__box {
   border: 1px solid rgba(100, 148, 237, 0.6);
 }
 
-.box--filled {
+.life-grid__box--filled {
   background-color: hsla(219, 90%, 81%, 0.9);
 }
 
-.box--row-start {
+.life-grid__box--row-start {
   grid-column: 1 / 2;
 }

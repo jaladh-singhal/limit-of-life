@@ -5,7 +5,7 @@ const DAYS_IN_WEEK = 7;
 
 // Populate the grid
 function genLifeGrid(dob, lifeExpectancy) {
-  const lifeGrid = document.querySelector("#life-grid");
+  const lifeGrid = document.querySelector(".js-life-grid");
   lifeGrid.innerHTML = ""; // Clear all child nodes
 
   // Set number of row and columns of the grid
@@ -33,10 +33,10 @@ function genLifeGrid(dob, lifeExpectancy) {
     let weekBox, nextWeekStartDate;
     for (let week = 1; week <= weeksInAgeYear; week++) {
       weekBox = document.createElement("div");
-      weekBox.classList.add("box");
+      weekBox.classList.add("life-grid__box");
 
       if (week === 1) {
-        weekBox.classList.add("box--row-start");
+        weekBox.classList.add("life-grid__box--row-start");
       }
 
       //Add box starting date (+week no: total & in age year) to debug
@@ -48,7 +48,7 @@ function genLifeGrid(dob, lifeExpectancy) {
 
       // Fill the boxes based on current date
       if (weekStartDate < Date.now() && nextWeekStartDate <= Date.now()) {
-        weekBox.classList.add("box--filled");
+        weekBox.classList.add("life-grid__box--filled");
       }
       weekStartDate = nextWeekStartDate;
 
@@ -79,18 +79,18 @@ function getDaysInAgeYear(ageYear, dobStr) {
 function genLifeStats() {}
 
 function showOutput() {
-  const dob = document.querySelector("#dob");
-  const lifeExpectancy = document.querySelector("#life-expectancy");
+  const dob = document.querySelector(".js-dob");
+  const lifeExpectancy = document.querySelector(".js-life-expectancy");
 
   genLifeStats();
   genLifeGrid(dob.value, lifeExpectancy.valueAsNumber);
 }
 
 // Listen on user details form's button
-const showBtn = document.querySelector("#btn");
+const showBtn = document.querySelector(".js-btn");
 showBtn.addEventListener("click", showOutput);
 
 // Prevent form from submitting on enter or button click
-document.querySelector("#user-details").addEventListener("submit", (event) => {
+document.querySelector(".js-input-form").addEventListener("submit", (event) => {
   event.preventDefault();
 });

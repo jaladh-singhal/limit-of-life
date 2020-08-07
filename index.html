@@ -6,17 +6,24 @@
   </head>
   <link rel="stylesheet" href="style.css" />
   <body>
-    <form id="user-details">
+    <form class="input-form js-input-form">
       <label>Let's start from beginning! Your DOB? </label>
-      <input type="date" name="DOB" id="dob" />
+      <input type="date" name="DOB" class="js-dob" />
       <br />
       <label>How many years do you think you'll live? </label>
-      <input type="number" id="life-expectancy" value="80" min="10" max="100" />
+      <input
+        type="number"
+        name="lifeExpectancy"
+        class="js-life-expectancy"
+        value="80"
+        min="10"
+        max="100"
+      />
       <br />
-      <button id="btn">Show</button>
+      <button class="js-btn">Show</button>
     </form>
-    <div id="life-stats"></div>
-    <div id="life-grid"></div>
+    <div class="life-stats js-life-stats"></div>
+    <div class="life-grid js-life-grid"></div>
     <script src="limit-of-life.js"></script>
   </body>
 </html>
