@@ -3,30 +3,29 @@
 }
 
 :root {
-  --box-size: 12px;
-  --box-margin: 1px;
-  --weeks-in-year: 52;
 }
 
 #life-grid {
-  width: calc(
-    (var(--box-size) + (var(--box-margin) * 2)) * (var(--weeks-in-year) + 1)
-  );
-}
+  background-color: hsl(0, 0%, 95%);
+  padding: 20px;
 
-.row {
-  display: flex;
-  justify-content: flex-start;
+  --box-size: 12px;
+  --gutter: 2px;
+
+  display: inline-grid;
+  grid-template-columns: repeat(var(--num-col), var(--box-size));
+  grid-template-rows: repeat(var(--num-row), var(--box-size));
+  gap: var(--gutter);
 }
 
 .box {
-  /* flex: 1; */
   border: 1px solid rgba(100, 148, 237, 0.6);
-  width: var(--box-size);
-  height: var(--box-size);
-  margin: var(--box-margin);
 }
 
 .box--filled {
   background-color: hsla(219, 90%, 81%, 0.9);
+}
+
+.box--row-start {
+  grid-column: 1 / 2;
 }

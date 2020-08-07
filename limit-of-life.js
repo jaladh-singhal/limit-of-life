@@ -8,16 +8,16 @@ function genLifeGrid(dob, lifeExpectancy) {
   const lifeGrid = document.querySelector("#life-grid");
   lifeGrid.innerHTML = ""; // Clear all child nodes
 
+  // Set number of row and columns of the grid
+  lifeGrid.style.setProperty("--num-col", WEEKS_IN_YEAR + 1);
+  lifeGrid.style.setProperty("--num-row", lifeExpectancy);
+
   let weekStartDate = new Date(dob);
-  let row,
-    daysInAgeYear,
+  let daysInAgeYear,
     weeksInAgeYear,
     remDaysOverAgeYears = 0;
 
-  for (let ageYear = 0; ageYear <= lifeExpectancy; ageYear++) {
-    row = document.createElement("div");
-    row.classList.add("row");
-
+  for (let ageYear = 0; ageYear < lifeExpectancy; ageYear++) {
     // Find week remainder days in age year
     daysInAgeYear = getDaysInAgeYear(ageYear, dob);
     remDaysOverAgeYears += daysInAgeYear % DAYS_IN_WEEK;
@@ -26,7 +26,6 @@ function genLifeGrid(dob, lifeExpectancy) {
     if (remDaysOverAgeYears >= DAYS_IN_WEEK) {
       remDaysOverAgeYears -= DAYS_IN_WEEK;
       weeksInAgeYear = WEEKS_IN_YEAR + 1;
-      row.classList.add("row--leap-week");
     } else {
       weeksInAgeYear = WEEKS_IN_YEAR;
     }
@@ -35,6 +34,10 @@ function genLifeGrid(dob, lifeExpectancy) {
     for (let week = 1; week <= weeksInAgeYear; week++) {
       weekBox = document.createElement("div");
       weekBox.classList.add("box");
+
+      if (week === 1) {
+        weekBox.classList.add("box--row-start");
+      }
 
       //Add box starting date (+week no: total & in age year) to debug
       weekBox.setAttribute("title", weekStartDate.toDateString());
@@ -49,10 +52,8 @@ function genLifeGrid(dob, lifeExpectancy) {
       }
       weekStartDate = nextWeekStartDate;
 
-      row.appendChild(weekBox);
+      lifeGrid.appendChild(weekBox);
     }
-
-    lifeGrid.appendChild(row);
   }
 }
 
