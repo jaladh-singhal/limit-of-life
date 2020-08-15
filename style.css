@@ -5,9 +5,32 @@
 :root {
 }
 
-.life-grid {
-  background-color: hsl(0, 0%, 95%);
+body {
+  background-color: hsl(191, 54%, 92%);
+}
+
+.page-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.week-stats {
+  background-color: hsl(0, 0%, 100%);
   padding: 20px;
+  margin-left: 30px;
+  margin-right: 30px;
+
+  width: 300px;
+  height: 200px;
+  /* transition: content 1s linear 5s; */
+}
+
+.life-grid {
+  background-color: hsl(0, 0%, 100%);
+  padding: 20px;
+  margin-left: 30px;
+  margin-right: 30px;
 
   --box-size: 12px;
   --gutter: 2px;
@@ -19,7 +42,7 @@
 }
 
 .life-grid__box {
-  border: 1px solid rgba(100, 148, 237, 0.6);
+  border: 1px solid hsla(219, 79%, 66%, 0.6);
 }
 
 .life-grid__box--filled {
@@ -28,4 +51,8 @@
 
 .life-grid__box--row-start {
   grid-column: 1 / 2;
+}
+
+.life-grid__box--hovered {
+  border: 2px solid hsl(219, 79%, 66%);
 }
