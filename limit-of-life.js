@@ -19,7 +19,8 @@ function genLifeGrid(dob, lifeExpectancy) {
   let daysInAgeYear,
     weeksInAgeYear,
     remDaysOverAgeYears = 0,
-    totalWeeksOverYears = 0;
+    totalWeeksOverYears = 0,
+    futureWeeks = [];
 
   for (let ageYear = 0; ageYear < lifeExpectancy; ageYear++) {
     // Find week remainder days in age year
@@ -34,7 +35,7 @@ function genLifeGrid(dob, lifeExpectancy) {
       weeksInAgeYear = WEEKS_IN_YEAR;
     }
 
-    let weekBox, nextWeekStartDate, weekEndDate, weekNumber;
+    let weekBox, weekEndDate, weekNumber;
     for (let week = 1; week <= weeksInAgeYear; week++) {
       weekBox = document.createElement("div");
       weekBox.classList.add("life-grid__box");
@@ -42,10 +43,6 @@ function genLifeGrid(dob, lifeExpectancy) {
       if (week === 1) {
         weekBox.classList.add("life-grid__box--row-start");
       }
-
-      // Find the next week starting date
-      nextWeekStartDate = new Date(weekStartDate);
-      nextWeekStartDate.setDate(nextWeekStartDate.getDate() + DAYS_IN_WEEK);
 
       //Add weeks stats as data attribute to the box
       weekBox.dataset.weekStartDate = weekStartDate.toDateString();
@@ -58,10 +55,15 @@ function genLifeGrid(dob, lifeExpectancy) {
       weekBox.dataset.weekNumber = weekNumber;
 
       // Fill the boxes based on current date
-      if (weekStartDate < Date.now() && nextWeekStartDate <= Date.now()) {
+      if (weekEndDate < Date.now()) {
         weekBox.classList.add("life-grid__box--filled");
+      } else {
+        futureWeeks.push({
+          weekStartDate: weekStartDate,
+          weekNumber: weekNumber,
+        });
       }
-      weekStartDate = nextWeekStartDate;
+      weekStartDate.setDate(weekStartDate.getDate() + DAYS_IN_WEEK);
 
       // Add event listeners for hovering over the box
       weekBox.addEventListener("mouseover", (e) => {
@@ -80,6 +82,8 @@ function genLifeGrid(dob, lifeExpectancy) {
   }
 
   lifeGrid.dataset.totalWeeks = totalWeeksOverYears;
+
+  return futureWeeks;
 }
 
 function getDaysInAgeYear(ageYear, dobStr) {
@@ -102,14 +106,22 @@ function getDaysInAgeYear(ageYear, dobStr) {
 }
 
 function getWeekStats(weekBoxData) {
+  const totalWeeks = document.querySelector(".js-life-grid").dataset.totalWeeks;
+
   return `<p> Week no. (How much weeks you have used!): ${
     weekBoxData.weekNumber
   }</p>
   <p>Week Date: ${weekBoxData.weekStartDate} - ${weekBoxData.weekEndDate}</p>
-  <p>Percent of Life spent: ${(
-    (Number(weekBoxData.weekNumber) * 100) /
-    Number(document.querySelector(".js-life-grid").dataset.totalWeeks)
-  ).toFixed(2)}%`;
+  <p>Percent of Life spent: ${calculate_percent(
+    weekBoxData.weekNumber,
+    totalWeeks
+  )}%`;
+}
+
+function gen_ics_text(futureWeeks) {}
+
+function calculate_percent(number, total) {
+  return ((Number(number) * 100) / Number(total)).toFixed(2);
 }
 
 function showOutput() {
