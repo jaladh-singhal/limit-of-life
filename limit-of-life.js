@@ -19,8 +19,7 @@ function genLifeGrid(dob, lifeExpectancy) {
   let daysInAgeYear,
     weeksInAgeYear,
     remDaysOverAgeYears = 0,
-    totalWeeksOverYears = 0,
-    futureWeeks = [];
+    totalWeeksOverYears = 0;
 
   for (let ageYear = 0; ageYear < lifeExpectancy; ageYear++) {
     // Find week remainder days in age year
@@ -58,10 +57,7 @@ function genLifeGrid(dob, lifeExpectancy) {
       if (weekEndDate < Date.now()) {
         weekBox.classList.add("life-grid__box--filled");
       } else {
-        futureWeeks.push({
-          weekStartDate: weekStartDate,
-          weekNumber: weekNumber,
-        });
+        weekBox.classList.add("js-life-grid__box--unfilled");
       }
       weekStartDate.setDate(weekStartDate.getDate() + DAYS_IN_WEEK);
 
@@ -81,9 +77,17 @@ function genLifeGrid(dob, lifeExpectancy) {
     totalWeeksOverYears += weeksInAgeYear;
   }
 
-  lifeGrid.dataset.totalWeeks = totalWeeksOverYears;
+  // Add life percentage to all week boxes
+  const weekBoxes = document.querySelectorAll(".life-grid__box");
+  for (let weekBox of weekBoxes) {
+    weekBox.dataset.lifePercent = calculate_percent(
+      weekBox.dataset.weekNumber,
+      totalWeeksOverYears
+    );
+  }
 
-  return futureWeeks;
+  // Save total weeks count as lifeGrid data attribute
+  lifeGrid.dataset.totalWeeks = totalWeeksOverYears;
 }
 
 function getDaysInAgeYear(ageYear, dobStr) {
@@ -106,19 +110,86 @@ function getDaysInAgeYear(ageYear, dobStr) {
 }
 
 function getWeekStats(weekBoxData) {
-  const totalWeeks = document.querySelector(".js-life-grid").dataset.totalWeeks;
-
-  return `<p> Week no. (How much weeks you have used!): ${
-    weekBoxData.weekNumber
-  }</p>
+  return `<p> Week no. (How much weeks you have used!): ${weekBoxData.weekNumber}</p>
   <p>Week Date: ${weekBoxData.weekStartDate} - ${weekBoxData.weekEndDate}</p>
-  <p>Percent of Life spent: ${calculate_percent(
-    weekBoxData.weekNumber,
-    totalWeeks
-  )}%`;
+  <p>Percent of Life spent: ${weekBoxData.lifePercent}%`;
 }
 
-function gen_ics_text(futureWeeks) {}
+function generateICSText() {
+  // <----- iterate over weekboxes starting from the unfilled one, then fetch data from it and create entries
+  let calendarText = `BEGIN:VCALENDAR
+PRODID:-//Google Inc//Google Calendar 70.9054//EN
+VERSION:2.0`;
+
+  const dateNow = new Date();
+  const eventDateStamp = dateNow
+    .toISOString()
+    .replaceAll(/-|:/g, "")
+    .replace(/(.*)\..*(Z)$/g, "$1$2");
+
+  const upcomingWeekBoxes = document.querySelectorAll(
+    ".js-life-grid__box--unfilled"
+  );
+
+  const appURL = "https://github.com";
+
+  let weekStartDate,
+    eventStartDate,
+    eventEndDate,
+    eventUID,
+    eventSummary,
+    eventDescription,
+    eventEntry;
+
+  for (let weekBox of upcomingWeekBoxes) {
+    weekStartDate = new Date(weekBox.dataset.weekStartDate);
+    eventStartDate = getOnlyDateInISO(weekStartDate);
+
+    weekStartDate.setDate(weekStartDate.getDate() + 1);
+    eventEndDate = getOnlyDateInISO(weekStartDate);
+
+    // not for now, since can generate
+    // eventUID =
+
+    eventSummary = `Week-${weekBox.dataset.weekNumber} of your Life!`;
+    eventDescription = `By the end of this week, you'll use \
+${weekBox.dataset.lifePercent}% of your Life. Make sure you are not trapped \
+in the illusion of forever and are aware about the <a href="${appURL}">\
+Limit of Your Life</a>.`;
+
+    eventEntry = `
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:${eventStartDate}
+DTEND;VALUE=DATE:${eventEndDate}
+DTSTAMP:${eventDateStamp}
+DESCRIPTION:${eventDescription}
+LOCATION:
+STATUS:CONFIRMED
+SUMMARY:${eventSummary}
+END:VEVENT`;
+
+    calendarText += eventEntry;
+  }
+  calendarText += "\nEND:VCALENDAR";
+  return calendarText;
+}
+
+function createDownloadBtn(file_text, file_name) {
+  const a = document.querySelector(".js-download-btn");
+  const file = new Blob([file_text], { type: "text/calendar" });
+  a.href = URL.createObjectURL(file);
+  a.download = file_name;
+}
+
+function getOnlyDateInISO(date) {
+  // Discard local time info and create a UTC date for exact same date
+  // (that's why give time 00:00:00)
+  const utcDate = new Date(
+    Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0)
+  );
+  // Now converting this to ISO will keep the date same
+  return utcDate.toISOString().replaceAll(/-|T.*Z/g, "");
+}
 
 function calculate_percent(number, total) {
   return ((Number(number) * 100) / Number(total)).toFixed(2);
@@ -129,6 +200,7 @@ function showOutput() {
   const lifeExpectancy = document.querySelector(".js-life-expectancy");
 
   genLifeGrid(dob.value, lifeExpectancy.valueAsNumber);
+  setTimeout(createDownloadBtn, 0, generateICSText(), "limit-of-life.ics");
 }
 
 // Listen on user details form's button
