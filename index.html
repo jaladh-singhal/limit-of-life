@@ -1,33 +1,64 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Limit of the Life</title>
-  </head>
-  <link rel="stylesheet" href="style.css" />
-  <body>
-    <form class="input-form js-input-form">
-      <label>Let's start from beginning! Your DOB? </label>
-      <input type="date" name="DOB" class="js-dob" />
-      <br />
-      <label>How many years do you think you'll live? </label>
-      <input
-        type="number"
-        name="lifeExpectancy"
-        class="js-life-expectancy"
-        value="80"
-        min="10"
-        max="100"
-      />
-      <br />
-      <button class="js-btn">Show</button>
-    </form>
-    <div class="page-section">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Limit of the Life</title>
+</head>
+<link rel="stylesheet" href="style.css" />
+
+<body>
+  <form class="input-form js-input-form">
+    <label>Let's start from beginning! Your DOB? </label>
+    <input type="date" name="DOB" class="js-dob" />
+    <br />
+    <label>How many years do you think you'll live? </label>
+    <input type="number" name="lifeExpectancy" class="js-life-expectancy"
+      value="80" min="10" max="100" />
+    <br />
+    <button class="js-btn">Show</button>
+  </form>
+  <div class="page-section">
+    <div>
       <div class="life-grid js-life-grid"></div>
-      <div class="week-stats js-week-stats">
+    </div>
+    <div class="stats-section">
+      <div class="stats js-life-stats">
+      </div>
+      <div class="stats js-week-stats">
         <p>Hover over week boxes to get more info!</p>
       </div>
+      <div class="stats">
+        <h2>
+          Add it to your Calendar
+        </h2>
+        <p>
+          Eye opening, huh? Deadlines only work as long as they constantly
+          threaten you. So why not remind yourself the limit of your life
+          each week!
+        </p>
+        <a class="js-download-btn">
+          <button>Download Calendar File</button>
+        </a>
+        <div>
+          <h3>How to add it?</h3>
+          <p>Following instructions are for Google Calendar. For other calendars
+            search <em>"how to import an ICS file in &lt;your calendar
+              app&gt;"</em> on Google. ICS files are the standard every calendar
+            app supports it!
+          </p>
+          <ol>
+            <li>Create new calendar</li>
+            <li>Notif setting</li>
+            <li>Import & wait!</li>
+            <li>Verify</li>
+          </ol>
+          <p>Why this effort?</p>
+        </div>
+      </div>
     </div>
-    <script src="limit-of-life.js"></script>
-  </body>
+  </div>
+  <script src="limit-of-life.js"></script>
+</body>
+
 </html>

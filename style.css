@@ -2,8 +2,8 @@
   box-sizing: border-box;
 }
 
-:root {
-}
+/* :root {
+} */
 
 body {
   background-color: hsl(191, 54%, 92%);
@@ -15,14 +15,22 @@ body {
   align-items: flex-start;
 }
 
-.week-stats {
+.stats-section {
+  display: flex;
+  flex-direction: column;
+  /* height: 450px;
+  justify-content: space-between; */
+}
+
+.stats {
   background-color: hsl(0, 0%, 100%);
   padding: 20px;
-  margin-left: 30px;
-  margin-right: 30px;
+  margin: 30px;
+  /* margin-left: 30px;
+  margin-right: 30px; */
 
   width: 300px;
-  height: 200px;
+  min-height: 200px;
   /* transition: content 1s linear 5s; */
 }
 
