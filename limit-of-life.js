@@ -211,3 +211,15 @@ showBtn.addEventListener("click", showOutput);
 document.querySelector(".js-input-form").addEventListener("submit", (event) => {
   event.preventDefault();
 });
+
+const howToAccordion = document.querySelector(".accordion");
+const panel = document.querySelector(".panel");
+
+howToAccordion.addEventListener("click", (e) => {
+  e.target.classList.toggle("active");
+  if (panel.style.maxHeight) {
+    panel.style.maxHeight = null;
+  } else {
+    panel.style.maxHeight = panel.scrollHeight + "px";
+  }
+});
