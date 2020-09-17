@@ -27,6 +27,18 @@ function genLifeGrid(dob, lifeExpectancy) {
     lifeGrid.appendChild(weekMarker);
   }
 
+  // Show age markers
+  let ageMarker;
+  for (let ageYear = 0; ageYear < lifeExpectancy; ageYear += 5) {
+    ageMarker = document.createElement("div");
+    ageMarker.classList.add("life-grid__marker");
+
+    ageMarker.style.gridRow = `${ageYear + 2} / ${ageYear + 3}`;
+    ageMarker.textContent = ageYear;
+
+    lifeGrid.appendChild(ageMarker);
+  }
+
   let weekStartDate = new Date(dob);
   let daysInAgeYear,
     weeksInAgeYear,
