@@ -8,12 +8,24 @@ function genLifeGrid(dob, lifeExpectancy) {
   const weekStats = document.querySelector(".js-week-stats");
   const weekStatsDefaultHTML = weekStats.innerHTML;
 
-  const lifeGrid = document.querySelector(".js-life-grid");
+  const lifeGrid = document.querySelector(".js-life-grid__inner");
   lifeGrid.innerHTML = ""; // Clear all child nodes
 
   // Set number of row and columns of the grid
-  lifeGrid.style.setProperty("--num-col", WEEKS_IN_YEAR + 1);
-  lifeGrid.style.setProperty("--num-row", lifeExpectancy);
+  lifeGrid.style.setProperty("--num-col", WEEKS_IN_YEAR + 1 + 1);
+  lifeGrid.style.setProperty("--num-row", lifeExpectancy + 1);
+
+  // Show week markers
+  let weekMarker;
+  for (let weekNum = 1; weekNum <= WEEKS_IN_YEAR; weekNum += 3) {
+    weekMarker = document.createElement("div");
+    weekMarker.classList.add("life-grid__marker");
+
+    weekMarker.style.gridColumn = `${weekNum + 1} / ${weekNum + 2}`;
+    weekMarker.textContent = weekNum;
+
+    lifeGrid.appendChild(weekMarker);
+  }
 
   let weekStartDate = new Date(dob);
   let daysInAgeYear,
