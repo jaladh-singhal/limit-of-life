@@ -35,17 +35,43 @@ body {
 }
 
 .life-grid {
+  --box-size: 12px;
+  --gutter: 2px;
+
   background-color: hsl(0, 0%, 100%);
   padding: 20px;
   margin-left: 30px;
   margin-right: 30px;
+
+  display: grid;
+  /* Make both label's tracks twice the width of box size 
+  And prevent overflow of life-grid__inner by giving intrinsic dimension*/
+  grid-template-columns: calc(2 * var(--box-size)) min-content;
+  grid-template-rows: calc(2 * var(--box-size)) min-content;
+  grid-template-areas:
+    ". week-label"
+    "age-label main-grid";
+}
+
+.life-grid__week-label {
+  grid-area: week-label;
+
+  text-align: center;
+}
+
+.life-grid__age-label {
+  grid-area: age-label;
+
+  text-align: center;
+  /* Vertically orient the label */
+  writing-mode: vertical-rl;
+  transform: rotate(-180deg);
 }
 
 .life-grid__inner {
-  --box-size: 12px;
-  --gutter: 2px;
+  grid-area: main-grid;
 
-  display: inline-grid;
+  display: grid;
   grid-template-columns: repeat(var(--num-col), var(--box-size));
   grid-template-rows: repeat(var(--num-row), var(--box-size));
   gap: var(--gutter);
