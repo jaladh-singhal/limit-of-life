@@ -44,10 +44,10 @@ body {
   margin-right: 30px;
 
   display: grid;
-  /* Make both label's tracks twice the width of box size 
+  /* Make both label's tracks about twice the width of box size 
   And prevent overflow of life-grid__inner by giving intrinsic dimension*/
-  grid-template-columns: calc(2 * var(--box-size)) min-content;
-  grid-template-rows: calc(2 * var(--box-size)) min-content;
+  grid-template-columns: calc(2.5 * var(--box-size)) min-content;
+  grid-template-rows: calc(2.5 * var(--box-size)) min-content;
   grid-template-areas:
     ". week-label"
     "age-label main-grid";
