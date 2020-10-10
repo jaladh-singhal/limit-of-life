@@ -11,9 +11,16 @@ function genLifeGrid(dob, lifeExpectancy) {
   const lifeGrid = document.querySelector(".js-life-grid__inner");
   lifeGrid.innerHTML = ""; // Clear all child nodes
 
-  // Set number of row and columns of the grid
-  lifeGrid.style.setProperty("--num-col", WEEKS_IN_YEAR + 1 + 1);
-  lifeGrid.style.setProperty("--num-row", lifeExpectancy + 1);
+  const numCol = WEEKS_IN_YEAR + 1 + 1;
+  const numRow = lifeExpectancy + 1;
+
+  // Set CSS properties dependent on number of rows and columns in grid
+  lifeGrid.style.setProperty("--num-col", numCol);
+  lifeGrid.style.setProperty("--num-row", numRow);
+  lifeGrid.style.setProperty(
+    "--box-size",
+    calculateBoxSize(numCol, numRow) + "px"
+  );
 
   // Show week markers
   let weekMarker;
@@ -225,6 +232,22 @@ function showOutput() {
 
   genLifeGrid(dob.value, lifeExpectancy.valueAsNumber);
   setTimeout(createDownloadBtn, 0, generateICSText(), "limit-of-life.ics");
+}
+
+function calculateBoxSize(numCol, numRow) {
+  // Calculate the size of box such that entire grid can fit in viewport height
+  // while making sure that it never occupies more than 40% of viewport width
+  const idealBoxHeight = Math.floor(
+    (document.documentElement.clientHeight * 0.95) / numRow
+  ); // 0.95 to accommodate margins
+  const idealBoxWidth = Math.floor(
+    (document.documentElement.clientWidth * 0.4) / numCol
+  );
+
+  console.log("h: " + idealBoxHeight + ", w: " + idealBoxWidth);
+  const boxSize =
+    idealBoxHeight <= idealBoxWidth ? idealBoxHeight : idealBoxWidth;
+  return boxSize;
 }
 
 // Listen on user details form's button

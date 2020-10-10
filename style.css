@@ -35,9 +35,6 @@ body {
 }
 
 .life-grid {
-  --box-size: 12px;
-  --gutter: 2px;
-
   background-color: hsl(0, 0%, 100%);
   padding: 20px;
   margin-left: 30px;
@@ -83,7 +80,9 @@ body {
 }
 
 .life-grid__box {
-  border: 1px solid hsla(219, 79%, 66%, 0.6);
+  border: 1px solid hsla(219, 90%, 81%, 0.5);
+  margin-bottom: 1px;
+  margin-right: 1px;
 }
 
 .life-grid__box--filled {
