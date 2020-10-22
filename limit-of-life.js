@@ -238,8 +238,8 @@ function calculateBoxSize(numCol, numRow) {
   // Calculate the size of box such that entire grid can fit in viewport height
   // while making sure that it never occupies more than 40% of viewport width
   const idealBoxHeight = Math.floor(
-    (document.documentElement.clientHeight * 0.95) / numRow
-  ); // 0.95 to accommodate margins
+    (document.documentElement.clientHeight * 0.94) / numRow
+  ); // 0.94 to accommodate week and age labels + grid padding
   const idealBoxWidth = Math.floor(
     (document.documentElement.clientWidth * 0.4) / numCol
   );
