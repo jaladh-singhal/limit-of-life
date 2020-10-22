@@ -41,10 +41,9 @@ body {
   margin-right: 30px;
 
   display: grid;
-  /* Make both label's tracks about twice the width of box size 
-  And prevent overflow of life-grid__inner by giving intrinsic dimension*/
-  grid-template-columns: calc(2.5 * var(--box-size)) min-content;
-  grid-template-rows: calc(2.5 * var(--box-size)) min-content;
+  /* Prevent overflow of life-grid__inner by giving it intrinsic dimension*/
+  grid-template-columns: 35px min-content;
+  grid-template-rows: 30px min-content;
   grid-template-areas:
     ". week-label"
     "age-label main-grid";
@@ -74,11 +73,22 @@ body {
 }
 
 .life-grid__marker {
-  font-size: 0.65em;
-  text-align: center;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 
-  /* margin-bottom: 5px;
-  margin-right: 5px; */
+  font-size: 0.65em;
+}
+
+.life-grid__marker--week {
+  flex-direction: column;
+  line-height: 1; /* To remove space due to default 1.2 line-height of text */
+  margin-bottom: 1px;
+}
+
+.life-grid__marker--age {
+  flex-direction: row;
+  margin-right: 2px;
 }
 
 .life-grid__box {
@@ -101,10 +111,12 @@ body {
 }
 
 .life-grid__box--filled::after {
-  background-color: #a3c1faf8;
+  background-color: hsla(219, 90%, 81%, 0.9);
 }
 
 .life-grid__box--row-start {
+  /* Boxes start to fill after 2nd grid line,
+  since markers are in 1/2 grid area*/
   grid-column: 2 / 3;
 }
 
