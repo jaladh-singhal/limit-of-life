@@ -71,29 +71,44 @@ body {
   display: grid;
   grid-template-columns: repeat(var(--num-col), var(--box-size));
   grid-template-rows: repeat(var(--num-row), var(--box-size));
-  gap: var(--gutter);
 }
 
 .life-grid__marker {
   font-size: 0.65em;
   text-align: center;
+
+  /* margin-bottom: 5px;
+  margin-right: 5px; */
 }
 
 .life-grid__box {
-  border: 1px solid hsla(219, 90%, 81%, 0.5);
-  margin-bottom: 1px;
-  margin-right: 1px;
+  /* It only acts as a container to position the visual box */
+  position: relative;
 }
 
-.life-grid__box--filled {
-  background-color: hsla(219, 90%, 81%, 0.9);
+.life-grid__box::after {
+  /* Pseudo-element is the visual box so all styling properties are applied here.
+  It is positioned in a way that apparently there are margins in right & bottom
+  but they will still be hoverable because they are part of the life-grid__box*/
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: 1px;
+  bottom: 1px;
+  left: 0px;
+
+  border: 1px solid hsla(219, 90%, 81%, 0.5);
+}
+
+.life-grid__box--filled::after {
+  background-color: #a3c1faf8;
 }
 
 .life-grid__box--row-start {
   grid-column: 2 / 3;
 }
 
-.life-grid__box--hovered {
+.life-grid__box--hovered::after {
   border: 2px solid hsl(219, 79%, 66%);
 }
 
