@@ -11,8 +11,8 @@ function genLifeGrid(dob, lifeExpectancy) {
   const lifeGrid = document.querySelector(".js-life-grid__inner");
   lifeGrid.innerHTML = ""; // Clear all child nodes
 
-  const numCol = WEEKS_IN_YEAR + 1 + 1;
-  const numRow = lifeExpectancy + 1;
+  const numCol = WEEKS_IN_YEAR + 1 + 1; // 53 for week boxes + 1 for age marker
+  const numRow = lifeExpectancy + 1; // + 1 for week marker
 
   // Set CSS properties dependent on number of rows and columns in grid
   lifeGrid.style.setProperty("--num-col", numCol);
@@ -26,7 +26,7 @@ function genLifeGrid(dob, lifeExpectancy) {
   let weekMarker;
   for (let weekNum = 1; weekNum <= WEEKS_IN_YEAR; weekNum += 3) {
     weekMarker = document.createElement("div");
-    weekMarker.classList.add("life-grid__marker");
+    weekMarker.classList.add("life-grid__marker", "life-grid__marker--week");
 
     weekMarker.style.gridColumn = `${weekNum + 1} / ${weekNum + 2}`;
     weekMarker.textContent = weekNum;
@@ -38,7 +38,7 @@ function genLifeGrid(dob, lifeExpectancy) {
   let ageMarker;
   for (let ageYear = 0; ageYear < lifeExpectancy; ageYear += 5) {
     ageMarker = document.createElement("div");
-    ageMarker.classList.add("life-grid__marker");
+    ageMarker.classList.add("life-grid__marker", "life-grid__marker--age");
 
     ageMarker.style.gridRow = `${ageYear + 2} / ${ageYear + 3}`;
     ageMarker.textContent = ageYear;
