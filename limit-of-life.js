@@ -270,3 +270,8 @@ howToAccordion.addEventListener("click", (e) => {
     panel.style.maxHeight = panel.scrollHeight + "px";
   }
 });
+
+const progressArcPath = document.querySelector(".life-progress__arc");
+const progressBar = new window.ProgressBar.Path(progressArcPath, {
+  duration: 300,
+});

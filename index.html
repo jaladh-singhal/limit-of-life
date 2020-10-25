@@ -4,8 +4,10 @@
 <head>
   <meta charset="UTF-8" />
   <title>Limit of the Life</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Titillium+Web:wght@600&display=swap">
 </head>
-<link rel="stylesheet" href="style.css" />
 
 <body>
   <form class="input-form js-input-form">
@@ -25,9 +27,33 @@
       <div class="life-grid__inner js-life-grid__inner"></div>
     </div>
     <div class="stats-section">
-      <div class="stats js-life-stats">
+      <div class="stats life-stats js-life-stats">
+        <div class="week-stats__life-progress">
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px"
+            viewBox="0 0 100 100">
+            <path class="life-progress__arc-trail" fill="none" stroke="#F7F7F7"
+              stroke-width="1.5"
+              d="M 86.68240297540495 65.94996275700984 A 40 40 0 1 0 13.317597024595038 65.94996275700986">
+            </path>
+            <path class="life-progress__arc" fill="none" stroke="#bd14ff"
+              stroke-width="3"
+              d="M 86.68240297540495 65.94996275700984 A 40 40 0 1 0 13.317597024595038 65.94996275700986">
+            </path>
+          </svg>
+          <div class="life-progress__value">
+            <div class="life-progress__percent">
+              59<small>.62</small>%
+            </div>
+            <div class="life-progress__label">
+              <strong> Life used </strong>
+              <br>
+              by the end of this week
+            </div>
+          </div>
+        </div>
       </div>
       <div class="stats js-week-stats">
+
         <p>Hover over week boxes to get more info!</p>
       </div>
       <div class="stats">
@@ -65,6 +91,9 @@
       </div>
     </div>
   </div>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/1.1.0/progressbar.min.js">
+    </script>
   <script src="limit-of-life.js"></script>
 </body>
 

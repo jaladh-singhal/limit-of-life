@@ -7,6 +7,7 @@
 
 body {
   background-color: hsl(191, 54%, 92%);
+  font-family: "Open Sans", sans-serif;
 }
 
 .page-section {
@@ -29,9 +30,51 @@ body {
   /* margin-left: 30px;
   margin-right: 30px; */
 
-  width: 300px;
+  width: 400px;
   min-height: 200px;
   /* transition: content 1s linear 5s; */
+}
+
+.life-stats {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.week-stats__life-progress {
+  width: 300px;
+  height: 300px;
+  position: relative;
+}
+
+.life-progress__value {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  /* Position it in horizontal centre, and quite above the vertical centre
+  of the progress arc's circle */
+  position: absolute;
+  top: 0px;
+  bottom: 25px;
+  left: 0px;
+  right: 0px;
+}
+
+.life-progress__percent {
+  font-family: "Titillium Web", sans-serif;
+  font-size: 62px;
+  line-height: 1.1;
+}
+
+.life-progress__percent small {
+  font-size: 0.65em;
+}
+
+.life-progress__label {
+  text-align: center;
 }
 
 .life-grid {
