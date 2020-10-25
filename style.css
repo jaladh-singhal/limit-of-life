@@ -26,10 +26,7 @@ body {
 .stats {
   background-color: hsl(0, 0%, 100%);
   padding: 20px;
-  margin: 30px;
-  /* margin-left: 30px;
-  margin-right: 30px; */
-
+  margin-bottom: 50px;
   width: 400px;
   min-height: 200px;
   /* transition: content 1s linear 5s; */
@@ -80,8 +77,7 @@ body {
 .life-grid {
   background-color: hsl(0, 0%, 100%);
   padding: 20px;
-  margin-left: 30px;
-  margin-right: 30px;
+  margin-right: 50px;
 
   display: grid;
   /* Prevent overflow of life-grid__inner by giving it intrinsic dimension*/
