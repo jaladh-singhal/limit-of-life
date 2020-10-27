@@ -8,12 +8,22 @@
 body {
   background-color: hsl(191, 54%, 92%);
   font-family: "Open Sans", sans-serif;
+  letter-spacing: 0.04rem;
+}
+
+h1,
+h2 {
+  text-align: center;
 }
 
 .page-section {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+
+  /* Test: Fixed main block width to support all screens */
+  /* width: 1280px;
+  border: 1px solid green; */
 }
 
 .stats-section {
@@ -27,22 +37,69 @@ body {
   background-color: hsl(0, 0%, 100%);
   padding: 20px;
   margin-bottom: 50px;
-  width: 400px;
+  width: 450px;
   min-height: 200px;
   /* transition: content 1s linear 5s; */
 }
 
-.life-stats {
-  display: flex;
+.week-stats__inner {
+  /* display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center; */
+
+  display: grid;
+  grid-template-columns: repeat(5, 80px);
+  grid-template-rows: 60px 140px;
+
+  width: min-content;
+  margin: 0 auto;
+}
+
+.week-stats__text {
+  text-align: center;
+  font-size: 15px;
+  margin: 0;
+}
+
+.week-stats__number {
+  font-family: "Titillium Web", sans-serif;
+  font-size: 52px;
+  line-height: 1.1;
+  text-align: center;
+  margin: 0;
+}
+
+.week-stats__date-range {
+  grid-column: 1/6;
+  font-size: 1.2rem;
+  margin: auto;
+}
+
+.week-stats__week-count {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   align-items: center;
+
+  grid-column: 1/3;
+}
+
+.week-count__number {
+  font-size: 40px;
+}
+
+.week-count__number--total {
+  color: hsl(0, 0%, 70%);
 }
 
 .week-stats__life-progress {
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
   position: relative;
+
+  grid-column: 3/6;
+  justify-self: center;
 }
 
 .life-progress__value {
@@ -55,23 +112,19 @@ body {
   of the progress arc's circle */
   position: absolute;
   top: 0px;
-  bottom: 25px;
+  bottom: 10%;
   left: 0px;
   right: 0px;
 }
 
-.life-progress__percent {
-  font-family: "Titillium Web", sans-serif;
-  font-size: 62px;
-  line-height: 1.1;
+.week-stats__number--small {
+  font-size: 0.62em;
 }
 
-.life-progress__percent small {
-  font-size: 0.65em;
-}
-
-.life-progress__label {
-  text-align: center;
+.week-stats__extra-info {
+  font-size: 13px;
+  text-align: right;
+  margin-top: 60px;
 }
 
 .life-grid {
@@ -116,7 +169,7 @@ body {
   justify-content: flex-end;
   align-items: center;
 
-  font-size: 0.65em;
+  font-size: 0.65rem;
 }
 
 .life-grid__marker--week {

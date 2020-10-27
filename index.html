@@ -28,34 +28,57 @@
     </div>
     <div class="stats-section">
       <div class="stats life-stats js-life-stats">
-        <div class="week-stats__life-progress">
-          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px"
-            viewBox="0 0 100 100">
-            <path class="life-progress__arc-trail" fill="none" stroke="#F7F7F7"
-              stroke-width="1.5"
-              d="M 86.68240297540495 65.94996275700984 A 40 40 0 1 0 13.317597024595038 65.94996275700986">
-            </path>
-            <path class="life-progress__arc" fill="none" stroke="#bd14ff"
-              stroke-width="3"
-              d="M 86.68240297540495 65.94996275700984 A 40 40 0 1 0 13.317597024595038 65.94996275700986">
-            </path>
-          </svg>
-          <div class="life-progress__value">
-            <div class="life-progress__percent">
-              59<small>.62</small>%
-            </div>
-            <div class="life-progress__label">
-              <strong> Life used </strong>
-              <br>
-              by the end of this week
+      </div>
+
+      <div class="stats week-stats js-week-stats">
+        <!-- <p>Hover over week boxes to get more info!</p> -->
+        <h2>This Week</h2>
+        <div class="week-stats__inner">
+          <p class="week-stats__date-range js-week-stats__date-range">Tue 15
+            Sep, 2020 — Mon 21 Sep,
+            2020</p>
+          <div class="week-stats__week-count">
+            <p
+              class="week-stats__number week-count__number js-week-stats__week-count">
+              1128</p>
+            <p class="week-stats__text">out of</p>
+            <p
+              class="week-stats__number week-count__number week-count__number--total js-week-stats__total-count">
+              2160</p>
+            <p class="week-stats__text">weeks used</p>
+          </div>
+          <div class="week-stats__life-progress">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px"
+              y="0px" viewBox="0 0 100 100">
+              <path class="life-progress__arc-trail" fill="none"
+                stroke="#F7F7F7" stroke-width="1.5"
+                d="M 93.10182349610082 68.74120623948657 A 47 47 0 1 0 6.8981765038991725 68.74120623948657">
+              </path>
+              <path class="life-progress__arc" fill="none" stroke="#bd14ff"
+                stroke-width="3.5"
+                d="M 93.10182349610082 68.74120623948657 A 47 47 0 1 0 6.8981765038991725 68.74120623948657">
+              </path>
+            </svg>
+            <div class="life-progress__value">
+              <p class="week-stats__number">
+                <span class="js-life-progress__percent--integer">
+                  59</span><small
+                  class="week-stats__number--small js-life-progress__percent--fraction">.62</small>%
+              </p>
+              <p class="week-stats__text">
+                <strong> Life used </strong>
+                <br>
+                by the end of it
+              </p>
             </div>
           </div>
         </div>
+        <p
+          class="week-stats__text week-stats__extra-info js-week-stats__extra-info">
+          Yay! It's your Birthday this week 🎉
+        </p>
       </div>
-      <div class="stats js-week-stats">
 
-        <p>Hover over week boxes to get more info!</p>
-      </div>
       <div class="stats">
         <h2>
           Add it to your Calendar

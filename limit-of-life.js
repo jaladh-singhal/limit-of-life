@@ -3,10 +3,47 @@
 const WEEKS_IN_YEAR = 52;
 const DAYS_IN_WEEK = 7;
 
+class WeekStats {
+  constructor() {
+    // Save all nodes where data needs to be updated
+    this.dateRange = document.querySelector(".js-week-stats__date-range");
+    this.weekCount = document.querySelector(".js-week-stats__week-count");
+    this.totalCount = document.querySelector(".js-week-stats__total-count");
+    this.lifePercentInteger = document.querySelector(
+      ".js-life-progress__percent--integer"
+    );
+    this.lifePercentFraction = document.querySelector(
+      ".js-life-progress__percent--fraction"
+    );
+    this.extraInfo = document.querySelector(".js-week-stats__extra-info");
+
+    // Use ProgressBar.js to create an object from SVG path of arc
+    const progressArcPath = document.querySelector(".life-progress__arc");
+    this.lifeProgressBar = new window.ProgressBar.Path(progressArcPath, {
+      duration: 100, // <---- should match with hover delay?
+    });
+  }
+
+  update(weekBoxData) {
+    this.dateRange.textContent = `${weekBoxData.weekStartDate} — ${weekBoxData.weekEndDate}`;
+    this.weekCount.textContent = weekBoxData.weekNumber;
+
+    const [percentInteger, percentFraction] = weekBoxData.lifePercent.split(
+      "."
+    );
+    this.lifePercentInteger.textContent = percentInteger;
+    this.lifePercentFraction.textContent = "." + percentFraction;
+
+    const progress = -parseFloat(weekBoxData.lifePercent) / 100;
+    this.lifeProgressBar.animate(progress);
+  }
+}
+const weekStats = new WeekStats();
+
 // Populate the grid
 function genLifeGrid(dob, lifeExpectancy) {
-  const weekStats = document.querySelector(".js-week-stats");
-  const weekStatsDefaultHTML = weekStats.innerHTML;
+  // const weekStats = document.querySelector(".js-week-stats");
+  // const weekStatsDefaultHTML = weekStats.innerHTML;
 
   const lifeGrid = document.querySelector(".js-life-grid__inner");
   lifeGrid.innerHTML = ""; // Clear all child nodes
@@ -74,7 +111,7 @@ function genLifeGrid(dob, lifeExpectancy) {
         weekBox.classList.add("life-grid__box--row-start");
       }
 
-      //Add weeks stats as data attribute to the box
+      // Add weeks stats as data attribute to the box
       weekBox.dataset.weekStartDate = weekStartDate.toDateString();
 
       weekEndDate = new Date(weekStartDate);
@@ -95,11 +132,13 @@ function genLifeGrid(dob, lifeExpectancy) {
       // Add event listeners for hovering over the box
       weekBox.addEventListener("mouseover", (e) => {
         e.target.classList.add("life-grid__box--hovered");
-        weekStats.innerHTML = getWeekStats(e.target.dataset);
+        weekStats.update(e.target.dataset);
       });
       weekBox.addEventListener("mouseout", (e) => {
         e.target.classList.remove("life-grid__box--hovered");
-        weekStats.innerHTML = weekStatsDefaultHTML;
+        // weekStats.innerHTML = weekStatsDefaultHTML;
+
+        // TODO: should there be a delay?
       });
 
       lifeGrid.appendChild(weekBox);
@@ -119,6 +158,11 @@ function genLifeGrid(dob, lifeExpectancy) {
 
   // Save total weeks count as lifeGrid data attribute
   lifeGrid.dataset.totalWeeks = totalWeeksOverYears;
+
+  // Also add it to Week Stats card
+  weekStats.totalCount.textContent = totalWeeksOverYears;
+
+  // TODO: default state of week stats card - update with current week?
 }
 
 function getDaysInAgeYear(ageYear, dobStr) {
@@ -138,12 +182,6 @@ function getDaysInAgeYear(ageYear, dobStr) {
   );
 
   return Math.floor((nextBday - curBday) / MS_PER_DAY);
-}
-
-function getWeekStats(weekBoxData) {
-  return `<p> Week no. (How much weeks you have used!): ${weekBoxData.weekNumber}</p>
-  <p>Week Date: ${weekBoxData.weekStartDate} - ${weekBoxData.weekEndDate}</p>
-  <p>Percent of Life spent: ${weekBoxData.lifePercent}%`;
 }
 
 function generateICSText() {
@@ -269,9 +307,4 @@ howToAccordion.addEventListener("click", (e) => {
   } else {
     panel.style.maxHeight = panel.scrollHeight + "px";
   }
-});
-
-const progressArcPath = document.querySelector(".life-progress__arc");
-const progressBar = new window.ProgressBar.Path(progressArcPath, {
-  duration: 300,
 });
