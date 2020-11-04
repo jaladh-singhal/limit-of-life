@@ -42,13 +42,10 @@ const weekStats = new WeekStats();
 
 // Populate the grid
 function genLifeGrid(dob, lifeExpectancy) {
-  // const weekStats = document.querySelector(".js-week-stats");
-  // const weekStatsDefaultHTML = weekStats.innerHTML;
-
   const lifeGrid = document.querySelector(".js-life-grid__inner");
   lifeGrid.innerHTML = ""; // Clear all child nodes
 
-  const numCol = WEEKS_IN_YEAR + 1 + 1; // 53 for week boxes + 1 for age marker
+  const numCol = WEEKS_IN_YEAR + 1 + 1; // + 1 for leap week box, + 1 for age marker
   const numRow = lifeExpectancy + 1; // + 1 for week marker
 
   // Set CSS properties dependent on number of rows and columns in grid
@@ -129,16 +126,16 @@ function genLifeGrid(dob, lifeExpectancy) {
       }
       weekStartDate.setDate(weekStartDate.getDate() + DAYS_IN_WEEK);
 
-      // Add event listeners for hovering over the box
+      // Add event listener for hovering over the box
       weekBox.addEventListener("mouseover", (e) => {
+        // Clear last box that was styled to be hover
+        document
+          .querySelector(".life-grid__box--hovered")
+          .classList.remove("life-grid__box--hovered");
+
         e.target.classList.add("life-grid__box--hovered");
         weekStats.update(e.target.dataset);
-      });
-      weekBox.addEventListener("mouseout", (e) => {
-        e.target.classList.remove("life-grid__box--hovered");
-        // weekStats.innerHTML = weekStatsDefaultHTML;
-
-        // TODO: should there be a delay?
+        // TODO: should there be a transition delay?
       });
 
       lifeGrid.appendChild(weekBox);
@@ -159,10 +156,11 @@ function genLifeGrid(dob, lifeExpectancy) {
   // Save total weeks count as lifeGrid data attribute
   lifeGrid.dataset.totalWeeks = totalWeeksOverYears;
 
-  // Also add it to Week Stats card
+  // Initialize Week Stats card with current week's data
   weekStats.totalCount.textContent = totalWeeksOverYears;
-
-  // TODO: default state of week stats card - update with current week?
+  const currentWeekBox = document.querySelector(".js-life-grid__box--unfilled");
+  currentWeekBox.classList.add("life-grid__box--hovered");
+  weekStats.update(currentWeekBox.dataset);
 }
 
 function getDaysInAgeYear(ageYear, dobStr) {
