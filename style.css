@@ -228,6 +228,21 @@ h2 {
   background-color: hsla(283, 100%, 54%, 0.25);
 }
 
+.life-grid__box--clicked::before {
+  /* This will create an overlay over after element (visual box) i.e. same in
+  size and shape but is of different color & border */
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: 1px;
+  bottom: 1px;
+  left: 0px;
+  z-index: 2; /* to bring it over after element */
+
+  border: 2px solid hsl(283, 100%, 24%);
+  background-color: hsla(283, 100%, 24%, 0.25);
+}
+
 .accordion {
   background-color: #eee;
   color: #444;

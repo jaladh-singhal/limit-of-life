@@ -40,9 +40,10 @@ class WeekStats {
 }
 const weekStats = new WeekStats();
 
+const lifeGrid = document.querySelector(".js-life-grid__inner");
+
 // Populate the grid
 function genLifeGrid(dob, lifeExpectancy) {
-  const lifeGrid = document.querySelector(".js-life-grid__inner");
   lifeGrid.innerHTML = ""; // Clear all child nodes
 
   const numCol = WEEKS_IN_YEAR + 1 + 1; // + 1 for leap week box, + 1 for age marker
@@ -126,18 +127,6 @@ function genLifeGrid(dob, lifeExpectancy) {
       }
       weekStartDate.setDate(weekStartDate.getDate() + DAYS_IN_WEEK);
 
-      // Add event listener for hovering over the box
-      weekBox.addEventListener("mouseover", (e) => {
-        // Clear last box that was styled to be hover
-        document
-          .querySelector(".life-grid__box--hovered")
-          .classList.remove("life-grid__box--hovered");
-
-        e.target.classList.add("life-grid__box--hovered");
-        weekStats.update(e.target.dataset);
-        // TODO: should there be a transition delay?
-      });
-
       lifeGrid.appendChild(weekBox);
     }
 
@@ -158,10 +147,69 @@ function genLifeGrid(dob, lifeExpectancy) {
 
   // Initialize Week Stats card with current week's data
   weekStats.totalCount.textContent = totalWeeksOverYears;
+
+  // Click the current week
   const currentWeekBox = document.querySelector(".js-life-grid__box--unfilled");
-  currentWeekBox.classList.add("life-grid__box--hovered");
+  currentWeekBox.classList.add("life-grid__box--clicked");
   weekStats.update(currentWeekBox.dataset);
 }
+
+lifeGrid.addEventListener("mouseover", (e) => {
+  const target = e.target;
+  // Handle event only when target is a box
+  if (target.classList.contains("life-grid__box")) {
+    // If exists, clear hover style from the box that was previously hovered
+    const lastHoveredBox = document.querySelector(".life-grid__box--hovered");
+    if (lastHoveredBox) {
+      lastHoveredBox.classList.remove("life-grid__box--hovered");
+    }
+
+    // Style target box to be hovered unless it is also clicked
+    if (!target.classList.contains("life-grid__box--clicked")) {
+      target.classList.add("life-grid__box--hovered");
+    }
+
+    weekStats.update(target.dataset);
+    // TODO: should there be a transition delay?
+  }
+});
+
+lifeGrid.addEventListener("click", (e) => {
+  const target = e.target;
+  // Handle event only when target is a box
+  if (target.classList.contains("life-grid__box")) {
+    // If exists, clear click style from the box that was previously clicked
+    const lastClickedBox = document.querySelector(".life-grid__box--clicked");
+    if (lastClickedBox) {
+      lastClickedBox.classList.remove("life-grid__box--clicked");
+    }
+
+    // Before adding click style, remove hover style that was added by mouseover
+    if (target.classList.contains("life-grid__box--hovered")) {
+      target.classList.remove("life-grid__box--hovered");
+    }
+    target.classList.add("life-grid__box--clicked");
+  }
+});
+
+lifeGrid.addEventListener("mouseout", (e) => {
+  const target = e.target;
+  // Handle event only when the mouse left a box, but not for another box
+  if (
+    target.classList.contains("life-grid__box") &&
+    !e.relatedTarget.classList.contains("life-grid__box")
+  ) {
+    // If exists, clear hover style from the box that was previously hovered
+    const lastHoveredBox = document.querySelector(".life-grid__box--hovered");
+    if (lastHoveredBox) {
+      lastHoveredBox.classList.remove("life-grid__box--hovered");
+    }
+
+    // Update week stats data with the currently clicked box
+    const lastClickedBox = document.querySelector(".life-grid__box--clicked");
+    weekStats.update(lastClickedBox.dataset);
+  }
+});
 
 function getDaysInAgeYear(ageYear, dobStr) {
   const MS_PER_DAY = 1000 * 60 * 60 * 24;
