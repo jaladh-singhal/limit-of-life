@@ -6,6 +6,12 @@ const DAYS_IN_WEEK = 7;
 class WeekStats {
   constructor() {
     // Save all nodes where data needs to be updated
+    this.selectedWeekNum = document.querySelector(".js-selected-box__week-num");
+    this.selectedWeekOrdSuffix = document.querySelector(
+      ".js-selected-box__ordinal-suffix"
+    );
+    this.selectedAgeNum = document.querySelector(".js-selected-box__age-num");
+    this.selectedAgeUnit = document.querySelector(".js-selected-box__age-unit");
     this.dateRange = document.querySelector(".js-week-stats__date-range");
     this.weekCount = document.querySelector(".js-week-stats__week-count");
     this.totalCount = document.querySelector(".js-week-stats__total-count");
@@ -25,6 +31,14 @@ class WeekStats {
   }
 
   update(weekBoxData) {
+    this.selectedWeekNum.textContent = weekBoxData.weekInYear;
+    this.selectedWeekOrdSuffix.textContent = ordinalSuffixOf(
+      weekBoxData.weekInYear
+    );
+    this.selectedAgeNum.textContent = weekBoxData.ageYear;
+    this.selectedAgeUnit.textContent =
+      weekBoxData.ageYear <= 1 ? "year" : "years";
+
     this.dateRange.textContent = `${weekBoxData.weekStartDate} — ${weekBoxData.weekEndDate}`;
     this.weekCount.textContent = weekBoxData.weekNumber;
 
@@ -113,7 +127,10 @@ function genLifeGrid(dob, lifeExpectancy) {
         weekBox.classList.add("life-grid__box--row-start");
       }
 
-      // Add weeks stats as data attribute to the box
+      // Add weeks stats as data attribute to the box ---------------------
+      weekBox.dataset.weekInYear = week;
+      weekBox.dataset.ageYear = ageYear;
+
       weekBox.dataset.weekStartDate = weekStartDate.toDateString();
 
       weekEndDate = new Date(weekStartDate);
@@ -139,6 +156,7 @@ function genLifeGrid(dob, lifeExpectancy) {
         weekBox.dataset.extraInfo =
           "One step closer to the ultimate DEADline! ⏳";
       }
+      // ------------------------------------------------------------------
 
       // Fill the boxes based on current date
       if (weekEndDate < Date.now()) {
@@ -234,6 +252,21 @@ lifeGrid.addEventListener("mouseout", (e) => {
     weekStats.update(lastClickedBox.dataset);
   }
 });
+
+function ordinalSuffixOf(num) {
+  const j = num % 10,
+    k = num % 100;
+  if (j == 1 && k != 11) {
+    return "st";
+  }
+  if (j == 2 && k != 12) {
+    return "nd";
+  }
+  if (j == 3 && k != 13) {
+    return "rd";
+  }
+  return "th";
+}
 
 function getDaysInAgeYear(ageYear, dobStr) {
   const MS_PER_DAY = 1000 * 60 * 60 * 24;
