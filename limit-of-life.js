@@ -36,6 +36,8 @@ class WeekStats {
 
     const progress = -parseFloat(weekBoxData.lifePercent) / 100;
     this.lifeProgressBar.animate(progress);
+
+    this.extraInfo.textContent = weekBoxData.extraInfo;
   }
 }
 const weekStats = new WeekStats();
@@ -82,8 +84,10 @@ function genLifeGrid(dob, lifeExpectancy) {
   }
 
   let weekStartDate = new Date(dob);
+  let birthday = new Date(dob);
   let daysInAgeYear,
     weeksInAgeYear,
+    birthdayWeekDay,
     remDaysOverAgeYears = 0,
     totalWeeksOverYears = 0;
 
@@ -119,6 +123,23 @@ function genLifeGrid(dob, lifeExpectancy) {
       weekNumber = totalWeeksOverYears + week;
       weekBox.dataset.weekNumber = weekNumber;
 
+      // Set extra info as data attribute to the box
+      if (week == 1 && ageYear == 0) {
+        // 1st week of life
+        weekBox.dataset.extraInfo = "Welcome to the land of living! 👶";
+      } else if (week == 1) {
+        // birthday week
+        birthdayWeekDay = birthday.toLocaleString("en-us", { weekday: "long" });
+        weekBox.dataset.extraInfo = `Yay! It's your Birthday this week's ${birthdayWeekDay} 🎉`;
+      } else if (week == weeksInAgeYear && ageYear == lifeExpectancy - 1) {
+        // last week of life
+        weekBox.dataset.extraInfo = "Phew! time to take a break from living 👻";
+      } else {
+        // ordinary week
+        weekBox.dataset.extraInfo =
+          "One step closer to the ultimate DEADline! ⏳";
+      }
+
       // Fill the boxes based on current date
       if (weekEndDate < Date.now()) {
         weekBox.classList.add("life-grid__box--filled");
@@ -130,6 +151,10 @@ function genLifeGrid(dob, lifeExpectancy) {
       lifeGrid.appendChild(weekBox);
     }
 
+    // Increment birthday by an year
+    birthday.setFullYear(birthday.getFullYear() + 1);
+
+    // Keep adding weeks in each age year
     totalWeeksOverYears += weeksInAgeYear;
   }
 
@@ -142,14 +167,13 @@ function genLifeGrid(dob, lifeExpectancy) {
     );
   }
 
-  // Save total weeks count as lifeGrid data attribute
-  lifeGrid.dataset.totalWeeks = totalWeeksOverYears;
-
-  // Initialize Week Stats card with current week's data
+  // Set week stats total count
   weekStats.totalCount.textContent = totalWeeksOverYears;
 
-  // Click the current week
   const currentWeekBox = document.querySelector(".js-life-grid__box--unfilled");
+  currentWeekBox.dataset.extraInfo = "Make best use of the PRESENT of Life 🎁";
+
+  // Simulate click on the current week to initialize week stats
   currentWeekBox.classList.add("life-grid__box--clicked");
   weekStats.update(currentWeekBox.dataset);
 }
@@ -231,7 +255,6 @@ function getDaysInAgeYear(ageYear, dobStr) {
 }
 
 function generateICSText() {
-  // <----- iterate over weekboxes starting from the unfilled one, then fetch data from it and create entries
   let calendarText = `BEGIN:VCALENDAR
 PRODID:-//Google Inc//Google Calendar 70.9054//EN
 VERSION:2.0`;
