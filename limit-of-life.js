@@ -367,8 +367,8 @@ function calculate_percent(number, total) {
 }
 
 function showOutput() {
-  const dob = document.querySelector(".js-dob");
-  const lifeExpectancy = document.querySelector(".js-life-expectancy");
+  const dob = document.querySelector(".js-input-form__dob");
+  const lifeExpectancy = document.querySelector(".js-input-form__life-exp");
 
   genLifeGrid(dob.value, lifeExpectancy.valueAsNumber);
   setTimeout(createDownloadBtn, 0, generateICSText(), "limit-of-life.ics");
@@ -391,12 +391,13 @@ function calculateBoxSize(numCol, numRow) {
 }
 
 // Listen on user details form's button
-const showBtn = document.querySelector(".js-btn");
-showBtn.addEventListener("click", showOutput);
+const showBtn = document.querySelector(".js-input-form__btn");
+// showBtn.addEventListener("click", showOutput);
 
 // Prevent form from submitting on enter or button click
 document.querySelector(".js-input-form").addEventListener("submit", (event) => {
   event.preventDefault();
+  showOutput();
 });
 
 const howToAccordion = document.querySelector(".accordion");

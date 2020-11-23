@@ -11,14 +11,19 @@
 
 <body>
   <form class="input-form js-input-form">
-    <label>Let's start from beginning! Your DOB? </label>
-    <input type="date" name="DOB" class="js-dob" />
-    <br />
-    <label>How many years do you think you'll live? </label>
-    <input type="number" name="lifeExpectancy" class="js-life-expectancy"
-      value="80" min="10" max="100" />
-    <br />
-    <button class="js-btn">Show</button>
+    <p class="input-form__item">
+      <label>Let's start from beginning! Your DOB? </label>
+      <input type="date" name="DOB"
+        class="input-form__control input-form__dob js-input-form__dob"
+        required />
+    </p>
+    <p class="input-form__item">
+      <label>How many years do you think you'll live? </label>
+      <input type="number" name="lifeExpectancy"
+        class="input-form__control input-form__life-exp js-input-form__life-exp"
+        value="80" min="10" max="100" />
+    </p>
+    <button class="input-form__btn js-input-form__btn">Show</button>
   </form>
   <div class="page-section">
     <div class="life-grid">
