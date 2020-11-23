@@ -366,11 +366,11 @@ function calculate_percent(number, total) {
   return ((Number(number) * 100) / Number(total)).toFixed(2);
 }
 
-function showOutput() {
-  const dob = document.querySelector(".js-input-form__dob");
-  const lifeExpectancy = document.querySelector(".js-input-form__life-exp");
+const dobInput = document.querySelector(".js-input-form__dob");
+const lifeExpectancyInput = document.querySelector(".js-input-form__life-exp");
 
-  genLifeGrid(dob.value, lifeExpectancy.valueAsNumber);
+function showOutput() {
+  genLifeGrid(dobInput.value, lifeExpectancyInput.valueAsNumber);
   setTimeout(createDownloadBtn, 0, generateICSText(), "limit-of-life.ics");
 }
 
@@ -390,11 +390,70 @@ function calculateBoxSize(numCol, numRow) {
   return boxSize;
 }
 
-// Prevent form from submitting on enter or button click
-document.querySelector(".js-input-form").addEventListener("submit", (event) => {
-  event.preventDefault();
+// Prevent form from submitting on enter or button click and show output
+document.querySelector(".js-input-form").addEventListener("submit", (e) => {
+  e.preventDefault();
   showOutput();
 });
+
+// Custom validation for edge cases in Life Expectancy Input
+lifeExpectancyInput.addEventListener("input", (e) => {
+  if (
+    dobInput.validity.valid && // DOB is necessary for validating life expectancy
+    !lifeExpectancyInput.validity.rangeUnderflow && // to show default message when < 1
+    !lifeExpectancyInput.validity.stepMismatch // to show default message when float value
+  ) {
+    const dob = dobInput.valueAsDate,
+      lifeExpectancy = lifeExpectancyInput.valueAsNumber,
+      age = calculateAge(dob);
+    if (lifeExpectancy <= age) {
+      // life expectancy should be > Age (calculated from DOB)
+      lifeExpectancyInput.setCustomValidity(
+        "Whoa! Are you a Ghost? Life expectancy should be at least 1 year more than your age."
+      );
+    } else if (lifeExpectancy > 100) {
+      // life expectancy should be <= 100 so that week boxes don't look too small
+      lifeExpectancyInput.setCustomValidity(
+        "Let's be honest! Life expectancy can be at most 100 years."
+      );
+    } else {
+      // Clear validation message
+      lifeExpectancyInput.setCustomValidity("");
+    }
+  }
+});
+
+// Custom validation in DOB Input when date is in future
+dobInput.addEventListener("input", (e) => {
+  if (
+    !dobInput.validity.valueMissing && // to show default msg when not entered
+    !dobInput.validity.rangeUnderflow // to show default msg when underflow
+  ) {
+    const dob = dobInput.valueAsDate,
+      dateNow = new Date();
+
+    if (dob > dateNow) {
+      dobInput.setCustomValidity(
+        "Welcome to the past time-traveler! DOB cannot be a date in future."
+      );
+    } else {
+      dobInput.setCustomValidity("");
+    }
+  }
+});
+
+function calculateAge(dob) {
+  const dateNow = new Date();
+
+  const birthdayThisYear = new Date(dob);
+  birthdayThisYear.setFullYear(dateNow.getFullYear());
+
+  if (birthdayThisYear <= dateNow) {
+    return dateNow.getFullYear() - dob.getFullYear();
+  } else {
+    return dateNow.getFullYear() - dob.getFullYear() - 1;
+  }
+}
 
 const howToAccordion = document.querySelector(".accordion");
 const panel = document.querySelector(".panel");

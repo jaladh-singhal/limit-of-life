@@ -15,13 +15,13 @@
       <label>Let's start from beginning! Your DOB? </label>
       <input type="date" name="DOB"
         class="input-form__control input-form__dob js-input-form__dob"
-        required />
+        min="1900-01-01" required />
     </p>
     <p class="input-form__item">
       <label>How many years do you think you'll live? </label>
       <input type="number" name="lifeExpectancy"
         class="input-form__control input-form__life-exp js-input-form__life-exp"
-        value="80" min="10" max="100" />
+        value="80" min="1" required />
     </p>
     <button class="input-form__btn js-input-form__btn">Show</button>
   </form>
