@@ -390,10 +390,6 @@ function calculateBoxSize(numCol, numRow) {
   return boxSize;
 }
 
-// Listen on user details form's button
-const showBtn = document.querySelector(".js-input-form__btn");
-// showBtn.addEventListener("click", showOutput);
-
 // Prevent form from submitting on enter or button click
 document.querySelector(".js-input-form").addEventListener("submit", (event) => {
   event.preventDefault();
