@@ -432,7 +432,8 @@ dobInput.addEventListener("input", (e) => {
     const dob = dobInput.valueAsDate,
       dateNow = new Date();
 
-    if (dob > dateNow) {
+    if (compareDatesOnly(dob, dateNow) == 1) {
+      // dob > dateNow
       dobInput.setCustomValidity(
         "Welcome to the past time-traveler! DOB cannot be a date in future."
       );
@@ -448,10 +449,31 @@ function calculateAge(dob) {
   const birthdayThisYear = new Date(dob);
   birthdayThisYear.setFullYear(dateNow.getFullYear());
 
-  if (birthdayThisYear <= dateNow) {
+  if (compareDatesOnly(birthdayThisYear, dateNow) < 1) {
+    // birthdayThisYear <= dateNow
     return dateNow.getFullYear() - dob.getFullYear();
   } else {
     return dateNow.getFullYear() - dob.getFullYear() - 1;
+  }
+}
+
+function compareDatesOnly(date1, date2) {
+  const utcDate1 = Date.UTC(
+    date1.getFullYear(),
+    date1.getMonth(),
+    date1.getDate()
+  );
+  const utcDate2 = Date.UTC(
+    date2.getFullYear(),
+    date2.getMonth(),
+    date2.getDate()
+  );
+  if (utcDate1 > utcDate2) {
+    return 1;
+  } else if (utcDate1 == utcDate2) {
+    return 0;
+  } else {
+    return -1;
   }
 }
 
