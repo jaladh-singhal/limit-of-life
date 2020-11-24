@@ -104,6 +104,7 @@ function genLifeGrid(dob, lifeExpectancy) {
     birthdayWeekDay,
     remDaysOverAgeYears = 0,
     totalWeeksOverYears = 0;
+  const dateNow = new Date();
 
   for (let ageYear = 0; ageYear < lifeExpectancy; ageYear++) {
     // Find week remainder days in age year
@@ -159,7 +160,8 @@ function genLifeGrid(dob, lifeExpectancy) {
       // ------------------------------------------------------------------
 
       // Fill the boxes based on current date
-      if (weekEndDate < Date.now()) {
+      if (compareDatesOnly(weekEndDate, dateNow) == -1) {
+        // weekEndDate < dateNow
         weekBox.classList.add("life-grid__box--filled");
       } else {
         weekBox.classList.add("js-life-grid__box--unfilled");
@@ -458,6 +460,7 @@ function calculateAge(dob) {
 }
 
 function compareDatesOnly(date1, date2) {
+  // Discard time information when comparing Dates
   const utcDate1 = Date.UTC(
     date1.getFullYear(),
     date1.getMonth(),
