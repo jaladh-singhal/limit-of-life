@@ -40,7 +40,7 @@ class WeekStats {
       weekBoxData.ageYear <= 1 ? "year" : "years";
 
     this.dateRange.textContent = `${weekBoxData.weekStartDate} — ${weekBoxData.weekEndDate}`;
-    this.weekCount.textContent = weekBoxData.weekNumber;
+    this.weekCount.textContent = weekBoxData.weekCount;
 
     const [percentInteger, percentFraction] = weekBoxData.lifePercent.split(
       "."
@@ -119,7 +119,7 @@ function genLifeGrid(dob, lifeExpectancy) {
       weeksInAgeYear = WEEKS_IN_YEAR;
     }
 
-    let weekBox, weekEndDate, weekNumber;
+    let weekBox, weekEndDate, weekCount;
     for (let week = 1; week <= weeksInAgeYear; week++) {
       weekBox = document.createElement("div");
       weekBox.classList.add("life-grid__box");
@@ -138,8 +138,8 @@ function genLifeGrid(dob, lifeExpectancy) {
       weekEndDate.setDate(weekEndDate.getDate() + DAYS_IN_WEEK - 1);
       weekBox.dataset.weekEndDate = weekEndDate.toDateString();
 
-      weekNumber = totalWeeksOverYears + week;
-      weekBox.dataset.weekNumber = weekNumber;
+      weekCount = totalWeeksOverYears + week;
+      weekBox.dataset.weekCount = weekCount;
 
       // Set extra info as data attribute to the box
       if (week == 1 && ageYear == 0) {
@@ -182,13 +182,14 @@ function genLifeGrid(dob, lifeExpectancy) {
   const weekBoxes = document.querySelectorAll(".life-grid__box");
   for (let weekBox of weekBoxes) {
     weekBox.dataset.lifePercent = calculate_percent(
-      weekBox.dataset.weekNumber,
+      weekBox.dataset.weekCount,
       totalWeeksOverYears
     );
   }
 
-  // Set week stats total count
+  // Set total weeks count in weekStats and save it as data attribute of lifeGrid
   weekStats.totalCount.textContent = totalWeeksOverYears;
+  lifeGrid.dataset.totalWeeks = totalWeeksOverYears;
 
   const currentWeekBox = document.querySelector(".js-life-grid__box--unfilled");
   currentWeekBox.dataset.extraInfo = "Make best use of the PRESENT of Life 🎁";
@@ -304,7 +305,8 @@ VERSION:2.0`;
     ".js-life-grid__box--unfilled"
   );
 
-  const appURL = "https://github.com";
+  const appURL = "https://github.com"; //TODO: edit it after deploying!
+  const totalWeeksCount = lifeGrid.dataset.totalWeeks;
 
   let weekStartDate,
     eventStartDate,
@@ -321,14 +323,14 @@ VERSION:2.0`;
     weekStartDate.setDate(weekStartDate.getDate() + 1);
     eventEndDate = getOnlyDateInISO(weekStartDate);
 
-    // not for now, since can generate
-    // eventUID =
+    eventSummary = `Week-${weekBox.dataset.weekInYear} of \
+${weekBox.dataset.ageYear} years Age`;
 
-    eventSummary = `Week-${weekBox.dataset.weekNumber} of your Life!`;
     eventDescription = `By the end of this week, you'll use \
-${weekBox.dataset.lifePercent}% of your Life. Make sure you are not trapped \
-in the illusion of forever and are aware about the <a href="${appURL}">\
-Limit of Your Life</a>.`;
+${weekBox.dataset.lifePercent}% of your Life by spending \
+${weekBox.dataset.weekCount} out of ${totalWeeksCount} weeks. Make this \
+week count by staying aware of the <a href="${appURL}">\
+Limit of your Life</a>!`;
 
     eventEntry = `
 BEGIN:VEVENT
