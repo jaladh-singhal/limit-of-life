@@ -3,6 +3,11 @@
 const WEEKS_IN_YEAR = 52;
 const DAYS_IN_WEEK = 7;
 
+new fullpage("#fullpage", {
+  sectionsColor: ["#fcfcfc", "#fcfcfc", "#fcfcfc", "#fcfcfc", "#fcfcfc"],
+  scrollBar: true,
+});
+
 class WeekStats {
   constructor() {
     // Save all nodes where data needs to be updated

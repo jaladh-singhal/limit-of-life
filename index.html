@@ -7,125 +7,134 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Titillium+Web:wght@600&display=swap">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.css"
+    integrity="sha512-8M8By+q+SldLyFJbybaHoAPD6g07xyOcscIOQEypDzBS+sTde5d6mlK2ANIZPnSyxZUqJfCNuaIvjBUi8/RS0w=="
+    crossorigin="anonymous" />
 </head>
 
 <body>
-  <section>
-    <p>However long our Life seems to be, it has an elusive Limit. For
-      short-term projects, we understand that deadlines are essential to beat
-      procrastination but what about something long-term as our Life? We tend to
-      overlook its ultimate deadline - Death because it's difficult to keep
-      track of such a long period.
-    </p>
-    <p>To see a zoomed-out view of your Life, go ahead and check out if it's
-      really that long when broken down in weeks?
-    </p>
-  </section>
-  <form class="input-form js-input-form">
-    <p class="input-form__item">
-      <label>Let's start from beginning! Your DOB? </label>
-      <input type="date" name="DOB"
-        class="input-form__control input-form__dob js-input-form__dob"
-        min="1900-01-01" required />
-    </p>
-    <p class="input-form__item">
-      <label>How many years do you think you'll live? </label>
-      <input type="number" name="lifeExpectancy"
-        class="input-form__control input-form__life-exp js-input-form__life-exp"
-        value="80" min="1" required />
-    </p>
-    <button class="input-form__btn js-input-form__btn">Show</button>
-  </form>
-  <div class="page-section">
-    <div class="life-grid">
-      <div class="life-grid__week-label">Weeks</div>
-      <div class="life-grid__age-label">Age Years</div>
-      <div class="life-grid__inner js-life-grid__inner"></div>
-    </div>
-    <div class="stats-section">
-      <div class="stats">
-        <p>
-          Yep, that's how short your life really is!
+  <div id="fullpage">
+    <section class="section start">
+      <p>However long our Life seems to be, it has an elusive Limit. For
+        short-term projects, we understand that deadlines are essential to beat
+        procrastination but what about something long-term as our Life?
+      </p>
+      <p>
+        We tend to overlook its ultimate deadline - Death because it's difficult
+        to keep track of such a long period.
+      </p>
+      <p>To see a zoomed-out view of your Life, go ahead and check out if it's
+        really that long when broken down in weeks?
+      </p>
+      <form class="input-form js-input-form">
+        <p class="input-form__item">
+          <label>Let's start from beginning! Your DOB? </label>
+          <input type="date" name="DOB"
+            class="input-form__control input-form__dob js-input-form__dob"
+            min="1900-01-01" required />
         </p>
-        <p>
-          All your dreams & life-goals, need to be accomplished before you run
-          out of the finite unfilled boxes you've left of. Are you making the
-          most of your weeks?
+        <p class="input-form__item">
+          <label>How many years do you think you'll live? </label>
+          <input type="number" name="lifeExpectancy"
+            class="input-form__control input-form__life-exp js-input-form__life-exp"
+            value="80" min="1" required />
         </p>
-        <p>
-          You can further see how fast your life progresses by clicking or
-          hovering over these week boxes.
-        </p>
-      </div>
-
-      <div class="stats week-stats js-week-stats">
-        <!-- <p>Hover over week boxes to get more info!</p> -->
-        <div class="week-stats__selected-box">
-          <span
-            class="js-selected-box__week-num selected-box__number">1</span><sup
-            class="selected-box__ordinal-suffix js-selected-box__ordinal-suffix">st</sup>
-          Week of <span
-            class="js-selected-box__age-num selected-box__number">0</span> <span
-            class="js-selected-box__age-unit">year</span> Age
+        <button class="input-form__btn js-input-form__btn">Show</button>
+      </form>
+    </section>
+    <section class="section">
+      <div class="page-section">
+        <div class="life-grid">
+          <div class="life-grid__week-label">Weeks</div>
+          <div class="life-grid__age-label">Age Years</div>
+          <div class="life-grid__inner js-life-grid__inner"></div>
         </div>
-        <div class="week-stats__inner">
-          <p class="week-stats__date-range js-week-stats__date-range">Mon 01
-            Jan, 2000 — Sun 07 Jan, 2000</p>
-          <div class="week-stats__week-count">
-            <p
-              class="week-stats__number week-count__number js-week-stats__week-count">
-              0000</p>
-            <p class="week-stats__text">out of</p>
-            <p
-              class="week-stats__number week-count__number week-count__number--total js-week-stats__total-count">
-              0000</p>
-            <p class="week-stats__text">weeks used</p>
+        <div class="stats-section">
+          <div class="stats">
+            <p>
+              Yep, that's how short your life really is!
+            </p>
+            <p>
+              All your dreams & life-goals, need to be accomplished before you
+              run
+              out of the finite unfilled boxes you've left of. Are you making
+              the
+              most of your weeks?
+            </p>
+            <p>
+              You can further see how fast your life progresses by clicking or
+              hovering over these week boxes.
+            </p>
           </div>
-          <div class="week-stats__life-progress">
-            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px"
-              y="0px" viewBox="0 0 100 100">
-              <path class="life-progress__arc-trail" fill="none"
-                stroke="#F7F7F7" stroke-width="1.5"
-                d="M 93.10182349610082 68.74120623948657 A 47 47 0 1 0 6.8981765038991725 68.74120623948657">
-              </path>
-              <path class="life-progress__arc" fill="none" stroke="#bd14ff"
-                stroke-width="3.5"
-                d="M 93.10182349610082 68.74120623948657 A 47 47 0 1 0 6.8981765038991725 68.74120623948657">
-              </path>
-            </svg>
-            <div class="life-progress__value">
-              <p class="week-stats__number">
-                <span class="js-life-progress__percent--integer">
-                  00</span><small
-                  class="week-stats__number--small js-life-progress__percent--fraction">.00</small>%
-              </p>
-              <p class="week-stats__text">
-                <strong> Life used </strong>
-                <br>
-                by the end of it
-              </p>
+
+          <div class="stats week-stats js-week-stats">
+            <div class="week-stats__selected-box">
+              <span
+                class="js-selected-box__week-num selected-box__number">1</span><sup
+                class="selected-box__ordinal-suffix js-selected-box__ordinal-suffix">st</sup>
+              Week of <span
+                class="js-selected-box__age-num selected-box__number">0</span>
+              <span class="js-selected-box__age-unit">year</span> Age
             </div>
+            <div class="week-stats__inner">
+              <p class="week-stats__date-range js-week-stats__date-range">Mon 01
+                Jan, 2000 — Sun 07 Jan, 2000</p>
+              <div class="week-stats__week-count">
+                <p
+                  class="week-stats__number week-count__number js-week-stats__week-count">
+                  0000</p>
+                <p class="week-stats__text">out of</p>
+                <p
+                  class="week-stats__number week-count__number week-count__number--total js-week-stats__total-count">
+                  0000</p>
+                <p class="week-stats__text">weeks used</p>
+              </div>
+              <div class="week-stats__life-progress">
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px"
+                  y="0px" viewBox="0 0 100 100">
+                  <path class="life-progress__arc-trail" fill="none"
+                    stroke="#F7F7F7" stroke-width="1.5"
+                    d="M 93.10182349610082 68.74120623948657 A 47 47 0 1 0 6.8981765038991725 68.74120623948657">
+                  </path>
+                  <path class="life-progress__arc" fill="none" stroke="#bd14ff"
+                    stroke-width="3.5"
+                    d="M 93.10182349610082 68.74120623948657 A 47 47 0 1 0 6.8981765038991725 68.74120623948657">
+                  </path>
+                </svg>
+                <div class="life-progress__value">
+                  <p class="week-stats__number">
+                    <span class="js-life-progress__percent--integer">
+                      00</span><small
+                      class="week-stats__number--small js-life-progress__percent--fraction">.00</small>%
+                  </p>
+                  <p class="week-stats__text">
+                    <strong> Life used </strong>
+                    <br>
+                    by the end of it
+                  </p>
+                </div>
+              </div>
+            </div>
+            <p
+              class="week-stats__text week-stats__extra-info js-week-stats__extra-info">
+            </p>
           </div>
-        </div>
-        <p
-          class="week-stats__text week-stats__extra-info js-week-stats__extra-info">
-        </p>
-      </div>
 
-      <div class="stats">
-        <h2>
-          Add it to your Calendar
-        </h2>
-        <p>
-          Eye opening, huh? Deadlines only work as long as they constantly
-          threaten you. So why not remind yourself the limit of your life
-          each week!
-        </p>
-        <a class="js-download-btn">
-          <button>Download Calendar File</button>
-        </a>
-        <span>How to use this file?</span>
-        <!-- <div>
+          <div class="stats">
+            <h2>
+              Add it to your Calendar
+            </h2>
+            <p>
+              Eye opening, huh? Deadlines only work as long as they constantly
+              threaten you. So why not remind yourself the limit of your life
+              each week!
+            </p>
+            <a class="js-download-btn">
+              <button>Download Calendar File</button>
+            </a>
+            <span>How to use this file?</span>
+            <!-- <div>
           <button class="accordion">
             How to add it?
           </button>
@@ -145,206 +154,225 @@
             <p>Why this effort?</p>
           </div>
         </div> -->
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
+    <section class="section">
+      <h1>Inspiration</h1>
+      <p>
+        This web app is based on Tim Urban's blog post "Your Life in Weeks" at
+        WaitButWhy. I first encountered this idea in his outstanding TED talk -
+        "Inside the mind of a master procrastinator" where he explains how a
+        procrastinator's system functions in terms of three comic characters. If
+        you haven't seen it yet, I'd highly recommend you to watch this
+        creatively
+        humorous masterpiece!
+      </p>
+      <!-- <iframe width="560" height="315"
+        src="https://www.youtube.com/embed/arj7oStGLkU" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe> -->
+      <p>
+        At the end of this talk, he highlights how procrastination makes people
+        suffer and left them feeling frustrated in non-deadline situations like
+        Life because there is nothing to create a panic that is necessary to get
+        things done! This is where he introduces this concept of the life
+        calendar
+        to remind us of the limited number of week boxes that we have in our
+        lives. I loved this idea so much that I have to create a web app that
+        can
+        allow me (and of course you) to incorporate this sense of deadline in
+        our
+        lives. 😀
+      </p>
+    </section>
+
+    <section class="section">
+      <h1>FAQs (for the curious!)</h1>
+      <div>
+        <h3>
+          How does this app extend the capabilities of the life calendar at
+          WaitButWhy?
+        </h3>
+        <ul>
+          <li>The life grid (or calendar) here makes your week boxes relatable
+            to
+            the Gregorian calendar by mapping them to the actual date range,
+            while
+            also accounting for the fact that a year does not have exactly 52
+            weeks (more on this in the following question).</li>
+          <li>It additionally allows you to see the percent of life spent and
+            weeks used until now at the end of each week - thanks to the
+            interactivity. </li>
+          <li>You can make the generated life grid actionable by integrating it
+            with the calendar app you use. This will enable you to reflect on
+            what
+            is important to you that you're procrastinating in your life, as Tim
+            Urban suggests.
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3>
+          Why does the life grid in this app has an extra box (53rd week) for
+          some
+          of the years?
+        </h3>
+        <p>
+          A normal year has 52 weeks and 1 day, whereas a leap year has 52 weeks
+          and 2 days. Since weeks don't completely fit in a year, the remaining
+          days accumulate together in 5 or 6 years to form an extra week. This
+          way, app logic makes sure that your birthdays always fall in the 1st
+          week of your age year. Otherwise, they would have shifted to the right
+          end of the grid, breaking the symmetry of week-to-age mapping.
+        </p>
+        <p>
+          If you think about it, this is same as how the concept of leap year
+          works. Since the earth completes a revolution in 365 and 1/4th day, an
+          extra day gets accumulated every 4 years making it a leap year. This
+          way, the new year always begins from 1st January otherwise, it would
+          have shifted to subsequent dates.
+        </p>
+      </div>
+      <div>
+        <h3>
+          Why don't weeks in your generated life grid start on Monday (or
+          Sunday)?
+        </h3>
+        <p>
+          If you were not born on Monday (or Sunday), this might be bothering
+          you.
+          It is because the years here are your age years, not our usual
+          calendar
+          years. So the 1st week of your life starts on the day you were born
+          and
+          the following weeks continue the same 7-day cycle.
+        </p>
+        <p>
+          You might still be unsatisfied because you want the starting date of
+          the
+          week boxes to sync up with that of the weeks in the calendar app where
+          you are adding this. Don't worry, we can achieve this sync by assuming
+          that the first week of your life starts on Monday (or Sunday) even
+          though you were born on a later day in that week. Leave a thumbs up on
+          this open issue to let me know that I should implement this
+          functionality in the next version of this app.
+        </p>
+      </div>
+      <div>
+        <h3>What is the calendar file above and how to use it after downloading?
+        </h3>
+        <p>
+          This file is an iCalendar file (.ics) that is a standard calendar
+          format
+          used to transfer calendar data on the internet. Thus it can be
+          imported
+          easily in any calendar app you use. It consists of all-day events for
+          the starting date of each week box, along with corresponding stats in
+          the event description to remind you of the limit of your life.
+        </p>
+        <figure>
+          <img src="images/gcal-lol.png">
+          <figcaption>Here's how it looks in my Google Calendar
+          </figcaption>
+        </figure>
+        <p>
+          Following are the instructions to import it in Google Calendar. For
+          other calendar apps, the steps would still be the same except for the
+          specifics which you can easily find on the internet.
+        </p>
+        <ol>
+          <li>
+            <h4>
+              Create a new Calendar
+            </h4>
+            <p>
+              Go to <em>Settings</em> > <em>Add calendar</em> > <em>Create new
+                calendar</em>. Give it a suitable name like "Limit of Life", and
+              click on <em>Create calendar</em> button.
+            </p>
+            <p>
+              Importing events from this file in a "new" calendar is highly
+              recommended because it will allow you to control notifications
+              settings of all events together and will prevent the risk of
+              messing up your default calendar.
+            </p>
+          </li>
+          <li>
+            <h4>
+              Configure notification settings
+            </h4>
+            <p>
+              Under <em>Settings for my calendars</em> section, select the
+              calendar we just created - "Limit of Life". Scroll down to
+              <em>All-day event notifications</em> and add notifications for the
+              time of day when you can sit for a while to reflect on how you've
+              used your past week and how you want to use the upcoming one.
+              Besides, you can also check stats like how much life you have
+              spent within the event description.
+            </p>
+            <p>
+              For me, these notifs look like this (emails are hard to miss 😅):
+            </p>
+            <img src="images/gcal-notif-settings.png">
+          </li>
+          <li>
+            <h4>
+              Import events from the file
+            </h4>
+            <p>
+              Within settings, go to <em>Import & export</em> > <em>Import</em>.
+              Upload the iCal file you've downloaded, and make sure to select
+              the new calendar we created (named "Limit of Life") in <em>Add to
+                Calendar</em> dropdown. Click on <em>Import</em> button and wait
+              for at least 1 min - events spanned throughout your remaining
+              lifetime are being added!
+            </p>
+            <p>
+              You may see "Oops! we couldn't import this file, try again in a
+              few minutes". Don't worry, this a potential bug I observed in
+              Google Calendar when importing large files. Go back to your
+              calendar, you should be able to see the events, if the "Limit of
+              Life" calendar is checked in the sidebar.
+            </p>
+          </li>
+          <li>
+            <h4>
+              [Optional] Verify the completion of import
+            </h4>
+            <p>
+              Observe the starting date of the last week of your life in the
+              grid and open it in your calendar. You can do this quickly by
+              appending <em>/&lt;year&gt;/&lt;month&gt;/&lt;date&gt;</em> for
+              that date, to the URL in the address bar. In the open week or
+              month, you should see a "Limit of Life" event scheduled.
+            </p>
+          </li>
+        </ol>
+        <h4>
+          Why this hassle?
+        </h4>
+        <p>
+          You might be wondering why isn't there any automatic way to import
+          these events. There is one but for that, you'd need to authenticate
+          this app to access your calendar. So respecting your privacy concerns
+          & trust issues, I didn't build that feature. But if you still want it,
+          give a thumbs up on this open issue, or if you know a better way for
+          adding bulk events, let me know by putting a comment there.
+        </p>
+        <p>
+          Until then, you have to do the importing manually - don't
+          procrastinate, it only takes < 5 min! 😜 </p>
+      </div>
+    </section>
+    <!-- <footer class="section">
+    </footer> -->
   </div>
-
-  <section>
-    <h1>Inspiration</h1>
-    <p>
-      This web app is based on Tim Urban's blog post "Your Life in Weeks" at
-      WaitButWhy. I first encountered this idea in his outstanding TED talk -
-      "Inside the mind of a master procrastinator" where he explains how a
-      procrastinator's system functions in terms of three comic characters. If
-      you haven't seen it yet, I'd highly recommend you to watch this creatively
-      humorous masterpiece!
-    </p>
-    <iframe width="560" height="315"
-      src="https://www.youtube.com/embed/arj7oStGLkU" frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen></iframe>
-    <p>
-      At the end of this talk, he highlights how procrastination makes people
-      suffer and left them feeling frustrated in non-deadline situations like
-      Life because there is nothing to create a panic that is necessary to get
-      things done! This is where he introduces this concept of the life calendar
-      to remind us of the limited number of week boxes that we have in our
-      lives. I loved this idea so much that I have to create a web app that can
-      allow me (and of course you) to incorporate this sense of deadline in our
-      lives. 😀
-    </p>
-  </section>
-
-  <section>
-    <h1>FAQs (for the curious!)</h1>
-    <div>
-      <h3>
-        How does this app extend the capabilities of the life calendar at
-        WaitButWhy?
-      </h3>
-      <ul>
-        <li>The life grid (or calendar) here makes your week boxes relatable to
-          the Gregorian calendar by mapping them to the actual date range, while
-          also accounting for the fact that a year does not have exactly 52
-          weeks (more on this in the following question).</li>
-        <li>It additionally allows you to see the percent of life spent and
-          weeks used until now at the end of each week - thanks to the
-          interactivity. </li>
-        <li>You can make the generated life grid actionable by integrating it
-          with the calendar app you use. This will enable you to reflect on what
-          is important to you that you're procrastinating in your life, as Tim
-          Urban suggests.
-        </li>
-      </ul>
-    </div>
-    <div>
-      <h3>
-        Why does the life grid in this app has an extra box (53rd week) for some
-        of the years?
-      </h3>
-      <p>
-        A normal year has 52 weeks and 1 day, whereas a leap year has 52 weeks
-        and 2 days. Since weeks don't completely fit in a year, the remaining
-        days accumulate together in 5 or 6 years to form an extra week. This
-        way, app logic makes sure that your birthdays always fall in the 1st
-        week of your age year. Otherwise, they would have shifted to the right
-        end of the grid, breaking the symmetry of week-to-age mapping.
-      </p>
-      <p>
-        If you think about it, this is same as how the concept of leap year
-        works. Since the earth completes a revolution in 365 and 1/4th day, an
-        extra day gets accumulated every 4 years making it a leap year. This
-        way, the new year always begins from 1st January otherwise, it would
-        have shifted to subsequent dates.
-      </p>
-    </div>
-    <div>
-      <h3>
-        Why don't weeks in your generated life grid start on Monday (or Sunday)?
-      </h3>
-      <p>
-        If you were not born on Monday (or Sunday), this might be bothering you.
-        It is because the years here are your age years, not our usual calendar
-        years. So the 1st week of your life starts on the day you were born and
-        the following weeks continue the same 7-day cycle.
-      </p>
-      <p>
-        You might still be unsatisfied because you want the starting date of the
-        week boxes to sync up with that of the weeks in the calendar app where
-        you are adding this. Don't worry, we can achieve this sync by assuming
-        that the first week of your life starts on Monday (or Sunday) even
-        though you were born on a later day in that week. Leave a thumbs up on
-        this open issue to let me know that I should implement this
-        functionality in the next version of this app.
-      </p>
-    </div>
-    <div>
-      <h3>What is the calendar file above and how to use it after downloading?
-      </h3>
-      <p>
-        This file is an iCalendar file (.ics) that is a standard calendar format
-        used to transfer calendar data on the internet. Thus it can be imported
-        easily in any calendar app you use. It consists of all-day events for
-        the starting date of each week box, along with corresponding stats in
-        the event description to remind you of the limit of your life.
-      </p>
-      <figure>
-        <img src="images/gcal-lol.png">
-        <figcaption>Here's how it looks in my Google Calendar
-        </figcaption>
-      </figure>
-      <p>
-        Following are the instructions to import it in Google Calendar. For
-        other calendar apps, the steps would still be the same except for the
-        specifics which you can easily find on the internet.
-      </p>
-      <ol>
-        <li>
-          <h4>
-            Create a new Calendar
-          </h4>
-          <p>
-            Go to <em>Settings</em> > <em>Add calendar</em> > <em>Create new
-              calendar</em>. Give it a suitable name like "Limit of Life", and
-            click on <em>Create calendar</em> button.
-          </p>
-          <p>
-            Importing events from this file in a "new" calendar is highly
-            recommended because it will allow you to control notifications
-            settings of all events together and will prevent the risk of
-            messing up your default calendar.
-          </p>
-        </li>
-        <li>
-          <h4>
-            Configure notification settings
-          </h4>
-          <p>
-            Under <em>Settings for my calendars</em> section, select the
-            calendar we just created - "Limit of Life". Scroll down to
-            <em>All-day event notifications</em> and add notifications for the
-            time of day when you can sit for a while to reflect on how you've
-            used your past week and how you want to use the upcoming one.
-            Besides, you can also check stats like how much life you have
-            spent within the event description.
-          </p>
-          <p>
-            For me, these notifs look like this (emails are hard to miss 😅):
-          </p>
-          <img src="images/gcal-notif-settings.png">
-        </li>
-        <li>
-          <h4>
-            Import events from the file
-          </h4>
-          <p>
-            Within settings, go to <em>Import & export</em> > <em>Import</em>.
-            Upload the iCal file you've downloaded, and make sure to select
-            the new calendar we created (named "Limit of Life") in <em>Add to
-              Calendar</em> dropdown. Click on <em>Import</em> button and wait
-            for at least 1 min - events spanned throughout your remaining
-            lifetime are being added!
-          </p>
-          <p>
-            You may see "Oops! we couldn't import this file, try again in a
-            few minutes". Don't worry, this a potential bug I observed in
-            Google Calendar when importing large files. Go back to your
-            calendar, you should be able to see the events, if the "Limit of
-            Life" calendar is checked in the sidebar.
-          </p>
-        </li>
-        <li>
-          <h4>
-            [Optional] Verify the completion of import
-          </h4>
-          <p>
-            Observe the starting date of the last week of your life in the
-            grid and open it in your calendar. You can do this quickly by
-            appending <em>/&lt;year&gt;/&lt;month&gt;/&lt;date&gt;</em> for
-            that date, to the URL in the address bar. In the open week or
-            month, you should see a "Limit of Life" event scheduled.
-          </p>
-        </li>
-      </ol>
-      <h4>
-        Why this hassle?
-      </h4>
-      <p>
-        You might be wondering why isn't there any automatic way to import
-        these events. There is one but for that, you'd need to authenticate
-        this app to access your calendar. So respecting your privacy concerns
-        & trust issues, I didn't build that feature. But if you still want it,
-        give a thumbs up on this open issue, or if you know a better way for
-        adding bulk events, let me know by putting a comment there.
-      </p>
-      <p>
-        Until then, you have to do the importing manually - don't
-        procrastinate, it only takes < 5 min! 😜 </p>
-    </div>
-  </section>
-  <footer>
-  </footer>
-
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.js"
+    integrity="sha512-Gx/C4x1qubng2MWpJIxTPuWch9O88dhFFfpIl3WlqH0jPHtCiNdYsmJBFX0q5gIzFHmwkPzzYTlZC/Q7zgbwCw=="
+    crossorigin="anonymous"></script>
   <script
     src="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/1.1.0/progressbar.min.js">
     </script>

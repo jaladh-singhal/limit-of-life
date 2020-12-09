@@ -6,7 +6,7 @@
 } */
 
 body {
-  background-color: hsl(191, 54%, 92%);
+  /* background-color: hsl(191, 54%, 92%); */
   font-family: "Open Sans", sans-serif;
   letter-spacing: 0.04rem;
 }
@@ -14,6 +14,16 @@ body {
 h1,
 h2 {
   text-align: center;
+}
+
+img {
+  max-width: 100%;
+}
+
+.start {
+  background-image: url("images/hourglass-banner.png");
+  background-size: cover;
+  background-position: bottom;
 }
 
 .input-form__control {
@@ -29,7 +39,7 @@ h2 {
   align-items: flex-start;
 
   /* Test: Fixed main block width to support all screens */
-  /* width: 1280px;
+  /* width: 1140px;
   border: 1px solid green; */
 }
 
@@ -265,7 +275,7 @@ h2 {
   border: 2px solid hsl(283, 100%, 24%);
   background-color: hsla(283, 100%, 24%, 0.25);
 }
-
+/* 
 .accordion {
   background-color: #eee;
   color: #444;
@@ -294,12 +304,12 @@ h2 {
 
 .accordion:after {
   content: "\02795"; /* Unicode character for "plus" sign (+) */
-  font-size: 13px;
+/* font-size: 13px;
   color: #777;
   float: right;
   margin-left: 5px;
 }
 
-.active:after {
-  content: "\2796"; /* Unicode character for "minus" sign (-) */
-}
+.active:after { */
+/* content: "\2796"; /* Unicode character for "minus" sign (-) */
+/* }  */
