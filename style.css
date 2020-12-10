@@ -1,14 +1,17 @@
 * {
   box-sizing: border-box;
+  /* border: 1px solid green !important; */
 }
 
-/* :root {
-} */
+:root {
+  --color-text-black: #303030;
+}
 
 body {
   /* background-color: hsl(191, 54%, 92%); */
   font-family: "Open Sans", sans-serif;
-  letter-spacing: 0.04rem;
+  letter-spacing: 0.03rem;
+  color: var(--color-text-black);
 }
 
 h1,
@@ -20,17 +23,88 @@ img {
   max-width: 100%;
 }
 
-.start {
+p,
+ul {
+  max-width: 620px; /* A rough estimate to keep 16px Open Sans text < 80 char*/
+}
+
+.start-section {
+  height: 100%;
   background-image: url("images/hourglass-banner.png");
   background-size: cover;
   background-position: bottom;
+
+  display: grid;
+  grid-template-columns: 2fr 5fr 5fr;
+}
+
+.start-section__inner {
+  grid-column: 2/3;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.start-section__title {
+  position: relative;
+  margin-left: 3.5rem; /* = left offset of logo so that logo & text together look centered */
+}
+
+.title__logo {
+  height: 8.2rem; /* rem since we need to scale it as per font size of title */
+  position: absolute;
+  left: -3.5rem;
+  top: -1rem;
+}
+
+.title__text {
+  font-size: 4.6rem;
+  font-weight: 600 !important;
+  font-family: "Titillium Web", sans-serif;
+  white-space: nowrap; /* prevent text from wrapping */
+  margin: 0; /* remove margin of h1 tag */
+}
+
+.start-section__content {
+  margin-top: 8vh;
+  margin-bottom: 10vh;
+}
+
+.input-form {
+  display: grid;
+  grid-template-columns: max-content 145px;
+  grid-template-rows: repeat(3, max-content);
+  gap: 15px 20px;
+  align-items: center;
 }
 
 .input-form__control {
   /* min-width: 150px; */
-  height: 20px;
+  height: 1.8rem;
   font: inherit;
   font-size: 0.85rem;
+  color: var(--color-text-black);
+  padding: 0px 4px;
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+}
+
+.input-form__btn {
+  background-color: #5d5e60;
+  border: none;
+  border-radius: 4px;
+  color: #fcfcfc;
+  padding: 8px 12px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 600;
+
+  grid-column: 1/3;
+  justify-self: center;
+  margin-top: 20px;
 }
 
 .page-section {
@@ -39,7 +113,7 @@ img {
   align-items: flex-start;
 
   /* Test: Fixed main block width to support all screens */
-  /* width: 1140px;
+  /* width: 1280px;
   border: 1px solid green; */
 }
 

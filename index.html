@@ -3,46 +3,73 @@
 
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Limit of the Life</title>
-  <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Titillium+Web:wght@600&display=swap">
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.css"
     integrity="sha512-8M8By+q+SldLyFJbybaHoAPD6g07xyOcscIOQEypDzBS+sTde5d6mlK2ANIZPnSyxZUqJfCNuaIvjBUi8/RS0w=="
     crossorigin="anonymous" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/fontawesome.min.css"
+    integrity="sha512-kJ30H6g4NGhWopgdseRb8wTsyllFUYIx3hiUwmGAkgA9B/JbzUBDQVr2VVlWGde6sdBVOG7oU8AL35ORDuMm8g=="
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
   <div id="fullpage">
-    <section class="section start">
-      <p>However long our Life seems to be, it has an elusive Limit. For
-        short-term projects, we understand that deadlines are essential to beat
-        procrastination but what about something long-term as our Life?
-      </p>
-      <p>
-        We tend to overlook its ultimate deadline - Death because it's difficult
-        to keep track of such a long period.
-      </p>
-      <p>To see a zoomed-out view of your Life, go ahead and check out if it's
-        really that long when broken down in weeks?
-      </p>
-      <form class="input-form js-input-form">
-        <p class="input-form__item">
-          <label>Let's start from beginning! Your DOB? </label>
-          <input type="date" name="DOB"
-            class="input-form__control input-form__dob js-input-form__dob"
-            min="1900-01-01" required />
-        </p>
-        <p class="input-form__item">
-          <label>How many years do you think you'll live? </label>
-          <input type="number" name="lifeExpectancy"
-            class="input-form__control input-form__life-exp js-input-form__life-exp"
-            value="80" min="1" required />
-        </p>
-        <button class="input-form__btn js-input-form__btn">Show</button>
-      </form>
-    </section>
+    <div class="section">
+      <section class="start-section">
+        <div class="start-section__inner">
+          <!-- <div class="title__wrapper"> -->
+          <div class="start-section__title">
+            <img class="title__logo" src="images/logo-for-title.svg"
+              alt="Limit of the Life Logo">
+            <h1 class="title__text">Limit of the Life</h1>
+          </div>
+          <!-- </div> -->
+          <div class="start-section__content">
+            <p>
+              However long our Life seems to be, it has an elusive Limit. For
+              short-term projects, we understand that deadlines are essential to
+              beat procrastination but what about something long-term as our
+              Life?
+            </p>
+            <p>
+              We tend to overlook its ultimate deadline - Death because it's
+              difficult to keep track of such a long period.
+            </p>
+            <p>
+              To see a zoomed-out view of your Life, go ahead and check out if
+              it's really that long when broken down in a grid of weeks?
+            </p>
+          </div>
+          <form class="input-form js-input-form">
+            <!-- <p class="input-form__item"> -->
+            <label for="dob-input">
+              Let's start from the beginning! Your DOB?
+            </label>
+            <input type="date" name="DOB" id="dob-input"
+              class="input-form__control input-form__dob js-input-form__dob"
+              min="1900-01-01" required />
+            <!-- </p>
+            <p class="input-form__item"> -->
+            <label for="life-exp-input">
+              How many years do you think you'll live?
+            </label>
+            <input type="number" name="lifeExpectancy" id="life-exp-input"
+              class="input-form__control input-form__life-exp js-input-form__life-exp"
+              value="80" min="1" required />
+            <!-- </p> -->
+            <button class="input-form__btn js-input-form__btn">
+              Show Life Grid <i class="fas fa-angle-down"></i>
+            </button>
+          </form>
+        </div>
+      </section>
+    </div>
     <section class="section">
       <div class="page-section">
         <div class="life-grid">
@@ -159,7 +186,7 @@
       </div>
     </section>
     <section class="section">
-      <h1>Inspiration</h1>
+      <h2>Inspiration</h2>
       <p>
         This web app is based on Tim Urban's blog post "Your Life in Weeks" at
         WaitButWhy. I first encountered this idea in his outstanding TED talk -
@@ -189,7 +216,7 @@
     </section>
 
     <section class="section">
-      <h1>FAQs (for the curious!)</h1>
+      <h2>FAQs (for the curious!)</h2>
       <div>
         <h3>
           How does this app extend the capabilities of the life calendar at
