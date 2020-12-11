@@ -4,14 +4,14 @@
 }
 
 :root {
-  --color-text-black: #303030;
+  --color-lighter-black: #303030;
 }
 
 body {
   /* background-color: hsl(191, 54%, 92%); */
   font-family: "Open Sans", sans-serif;
   letter-spacing: 0.03rem;
-  color: var(--color-text-black);
+  color: var(--color-lighter-black);
 }
 
 h1,
@@ -48,6 +48,114 @@ ul {
 .sidebar-icon:hover .sidebar-icon__circle {
   opacity: 1;
 }
+
+.sidebar {
+  width: 12vw;
+  height: 100vh;
+  background-color: var(--color-lighter-black);
+  color: #fcfcfc;
+
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  position: fixed;
+  z-index: 2;
+}
+
+.sidebar__close-btn {
+  position: absolute;
+  top: 5px;
+  right: 3px;
+}
+
+.close-btn__circle {
+  color: #5d5e60;
+  opacity: 0;
+}
+
+.sidebar__close-btn:hover .close-btn__circle {
+  opacity: 1;
+}
+
+.sidebar__header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 50px;
+  min-height: 16vh;
+}
+
+.sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2em;
+  min-height: 20vh;
+}
+
+.sidebar__social {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  grid-row: repeat(2, max-content);
+  gap: 15px 10px;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.sidebar__logo {
+  height: 25px;
+  margin-bottom: 15px;
+}
+
+.sidebar__equation {
+  max-width: 85%;
+  min-width: 120px;
+}
+
+.sidebar__hr {
+  border-color: #fcfcfcbb;
+  width: 75%;
+}
+
+.sidebar__link {
+  display: block;
+  text-decoration: none;
+  color: #fcfcfc;
+}
+
+.sidebar__link:hover {
+  color: #d4d4d4;
+}
+
+.nav__link {
+  position: relative;
+}
+
+.nav__link:after {
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: ".";
+  color: transparent;
+  background: #fcfcfc;
+  height: 1px;
+  transition: all 0.25s;
+}
+
+.nav__link:hover:after {
+  width: 100%;
+}
+
+/* .social__link:hover {
+  text-decoration: underline;
+} */
 
 .start-section {
   height: 100%;
@@ -106,7 +214,7 @@ ul {
   height: 1.8rem;
   font: inherit;
   font-size: 0.85rem;
-  color: var(--color-text-black);
+  color: var(--color-lighter-black);
   padding: 0px 4px;
   border: 1px solid #d4d4d4;
   border-radius: 4px;

@@ -487,6 +487,24 @@ function compareDatesOnly(date1, date2) {
   }
 }
 
+const sidebar = document.querySelector(".sidebar");
+
+document.querySelector(".sidebar-icon").addEventListener("click", (e) => {
+  sidebar.style.display = "flex";
+});
+
+document.querySelector(".sidebar__close-btn").addEventListener("click", (e) => {
+  sidebar.style.display = "none";
+});
+
+// document.addEventListener("click", (e) => {
+//   if (
+//     getComputedStyle(sidebar).display === "flex" &&
+//     !sidebar.contains(e.target)
+//   )
+//     sidebar.style.display = "none";
+// });
+
 const howToAccordion = document.querySelector(".accordion");
 const panel = document.querySelector(".panel");
 
