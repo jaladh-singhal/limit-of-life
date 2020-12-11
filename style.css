@@ -26,6 +26,27 @@ img {
 p,
 ul {
   max-width: 620px; /* A rough estimate to keep 16px Open Sans text < 80 char*/
+  line-height: 1.45em;
+}
+
+.sidebar-icon {
+  position: fixed;
+  top: 5px;
+  left: 3px;
+  z-index: 1;
+}
+
+.sidebar-icon__bars {
+  color: #5d5e60;
+}
+
+.sidebar-icon__circle {
+  color: #ebebeb;
+  opacity: 0;
+}
+
+.sidebar-icon:hover .sidebar-icon__circle {
+  opacity: 1;
 }
 
 .start-section {
@@ -96,15 +117,23 @@ ul {
   border: none;
   border-radius: 4px;
   color: #fcfcfc;
-  padding: 8px 12px;
   text-align: center;
   text-decoration: none;
   font-size: 1.05rem;
   font-weight: 600;
+  padding: 12px 16px;
 
   grid-column: 1/3;
   justify-self: center;
   margin-top: 20px;
+}
+
+.input-form__btn:hover {
+  opacity: 0.8;
+}
+
+.btn__icon {
+  margin-left: 4px;
 }
 
 .page-section {

@@ -12,24 +12,26 @@
     integrity="sha512-8M8By+q+SldLyFJbybaHoAPD6g07xyOcscIOQEypDzBS+sTde5d6mlK2ANIZPnSyxZUqJfCNuaIvjBUi8/RS0w=="
     crossorigin="anonymous" />
   <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/fontawesome.min.css"
-    integrity="sha512-kJ30H6g4NGhWopgdseRb8wTsyllFUYIx3hiUwmGAkgA9B/JbzUBDQVr2VVlWGde6sdBVOG7oU8AL35ORDuMm8g=="
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
     crossorigin="anonymous" />
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+  <span class="fa-stack sidebar-icon">
+    <i class="fas fa-circle fa-stack-2x sidebar-icon__circle"></i>
+    <i class="fas fa-bars fa-stack-1x fa-inverse sidebar-icon__bars"></i>
+  </span>
   <div id="fullpage">
     <div class="section">
       <section class="start-section">
         <div class="start-section__inner">
-          <!-- <div class="title__wrapper"> -->
           <div class="start-section__title">
             <img class="title__logo" src="images/logo-for-title.svg"
               alt="Limit of the Life Logo">
             <h1 class="title__text">Limit of the Life</h1>
           </div>
-          <!-- </div> -->
           <div class="start-section__content">
             <p>
               However long our Life seems to be, it has an elusive Limit. For
@@ -47,24 +49,20 @@
             </p>
           </div>
           <form class="input-form js-input-form">
-            <!-- <p class="input-form__item"> -->
             <label for="dob-input">
               Let's start from the beginning! Your DOB?
             </label>
             <input type="date" name="DOB" id="dob-input"
               class="input-form__control input-form__dob js-input-form__dob"
               min="1900-01-01" required />
-            <!-- </p>
-            <p class="input-form__item"> -->
             <label for="life-exp-input">
               How many years do you think you'll live?
             </label>
             <input type="number" name="lifeExpectancy" id="life-exp-input"
               class="input-form__control input-form__life-exp js-input-form__life-exp"
               value="80" min="1" required />
-            <!-- </p> -->
             <button class="input-form__btn js-input-form__btn">
-              Show Life Grid <i class="fas fa-angle-down"></i>
+              Show Life Grid <i class="fas fa-angle-double-down btn__icon"></i>
             </button>
           </form>
         </div>
