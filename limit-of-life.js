@@ -487,24 +487,39 @@ function compareDatesOnly(date1, date2) {
   }
 }
 
-const sidebar = document.querySelector(".sidebar");
+// Sidebar Control -----------------------------------------------------------
+const sidebar = document.querySelector(".js-sidebar");
+sidebar.dataset.openBtnClicked = "false"; // to track if sidebar btn was clicked
 
-document.querySelector(".sidebar-icon").addEventListener("click", (e) => {
-  sidebar.style.display = "flex";
+document
+  .querySelector(".js-sidebar-open-btn")
+  .addEventListener("click", (e) => {
+    sidebar.style.display = "flex"; // open sidebar
+    sidebar.dataset.openBtnClicked = "true";
+  });
+
+document
+  .querySelector(".js-sidebar__close-btn")
+  .addEventListener("click", (e) => {
+    sidebar.style.display = "none"; // close sidebar
+  });
+
+document.addEventListener("click", (e) => {
+  if (sidebar.dataset.openBtnClicked === "true") {
+    // Prevent executing this listener just after clicking sidebar btn
+    // because event will bubble upto here
+    sidebar.dataset.openBtnClicked = "false";
+    return;
+  }
+
+  if (
+    getComputedStyle(sidebar).display === "flex" && // sidebar is open
+    !sidebar.contains(e.target) // click was not within sidebar
+  )
+    sidebar.style.display = "none"; // close sidebar
 });
 
-document.querySelector(".sidebar__close-btn").addEventListener("click", (e) => {
-  sidebar.style.display = "none";
-});
-
-// document.addEventListener("click", (e) => {
-//   if (
-//     getComputedStyle(sidebar).display === "flex" &&
-//     !sidebar.contains(e.target)
-//   )
-//     sidebar.style.display = "none";
-// });
-
+// Accordion control ------------------------------------------------
 const howToAccordion = document.querySelector(".accordion");
 const panel = document.querySelector(".panel");
 

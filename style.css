@@ -29,23 +29,23 @@ ul {
   line-height: 1.45em;
 }
 
-.sidebar-icon {
+.sidebar-btn {
   position: fixed;
   top: 5px;
   left: 3px;
   z-index: 1;
 }
 
-.sidebar-icon__bars {
+.sidebar-btn__bars {
   color: #5d5e60;
 }
 
-.sidebar-icon__circle {
+.sidebar-btn__circle {
   color: #ebebeb;
   opacity: 0;
 }
 
-.sidebar-icon:hover .sidebar-icon__circle {
+.sidebar-btn:hover .sidebar-btn__circle {
   opacity: 1;
 }
 
