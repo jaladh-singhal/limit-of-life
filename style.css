@@ -5,6 +5,7 @@
 
 :root {
   --color-lighter-black: #303030;
+  --content-width: 620px; /* A rough estimate to keep 16px Open Sans text < 80 char*/
 }
 
 body {
@@ -25,7 +26,7 @@ img {
 
 p,
 ul {
-  max-width: 620px; /* A rough estimate to keep 16px Open Sans text < 80 char*/
+  max-width: var(--content-width);
   line-height: 1.45em;
 }
 
@@ -487,6 +488,36 @@ ul {
   border: 2px solid hsl(283, 100%, 24%);
   background-color: hsla(283, 100%, 24%, 0.25);
 }
+
+.pg-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.pg-section__heading {
+  font-family: "Titillium Web", sans-serif;
+  font-size: 2.4rem;
+  font-weight: 600;
+  width: max-content;
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+}
+
+.inspiration {
+  width: var(--content-width);
+  max-height: 100vh;
+}
+
+.inspiration__yt-embed {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  height: calc((9 / 16) * var(--content-width));
+}
+
 /* 
 .accordion {
   background-color: #eee;
