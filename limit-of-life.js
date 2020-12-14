@@ -4,8 +4,12 @@ const WEEKS_IN_YEAR = 52;
 const DAYS_IN_WEEK = 7;
 
 new fullpage("#fullpage", {
+  anchors: ["start", "life-grid", "inspiration", "faq"],
   sectionsColor: ["#fcfcfc", "#fcfcfc", "#fcfcfc", "#fcfcfc", "#fcfcfc"],
   scrollBar: true,
+  recordHistory: false,
+  // autoScrolling: false
+  // fitToSection: false,
 });
 
 class WeekStats {

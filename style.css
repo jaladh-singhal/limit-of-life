@@ -125,6 +125,7 @@ ul {
   display: block;
   text-decoration: none;
   color: #fcfcfc;
+  cursor: pointer;
 }
 
 .sidebar__link:hover {
