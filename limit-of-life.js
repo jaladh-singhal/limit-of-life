@@ -523,15 +523,51 @@ document.addEventListener("click", (e) => {
     sidebar.style.display = "none"; // close sidebar
 });
 
-// Accordion control ------------------------------------------------
-const howToAccordion = document.querySelector(".accordion");
-const panel = document.querySelector(".panel");
+// FAQ Accordions control ------------------------------------------------
+document.querySelector(".js-faq").addEventListener("click", (e) => {
+  const accordionToggle = e.target.closest(".js-accordion__toggle");
 
-howToAccordion.addEventListener("click", (e) => {
-  e.target.classList.toggle("active");
-  if (panel.style.maxHeight) {
-    panel.style.maxHeight = null;
+  // Click was not inside an accordion toggle btn
+  if (!accordionToggle) return;
+
+  if (accordionToggle.classList.contains("accordion__toggle--expanded")) {
+    // Clicked accordion was already expanded, so collapse it
+    collapseAccordion(accordionToggle);
   } else {
-    panel.style.maxHeight = panel.scrollHeight + "px";
+    // Find the current expanded accordion
+    const activeAccordionToggle = e.currentTarget.querySelector(
+      ".accordion__toggle--expanded"
+    );
+    // If exists, collapse it
+    if (activeAccordionToggle) collapseAccordion(activeAccordionToggle);
+
+    // Expand the clicked accordion
+    expandAccordion(accordionToggle);
   }
 });
+
+function expandAccordion(accordionToggle) {
+  accordionToggle.classList.add("accordion__toggle--expanded");
+
+  const accordionStateIcon = accordionToggle.querySelector(
+    ".js-accordion__state-icon"
+  );
+  accordionStateIcon.classList.remove("fa-plus");
+  accordionStateIcon.classList.add("fa-minus");
+
+  const accordionPanel = accordionToggle.nextElementSibling;
+  accordionPanel.style.maxHeight = accordionPanel.scrollHeight + "px";
+}
+
+function collapseAccordion(accordionToggle) {
+  accordionToggle.classList.remove("accordion__toggle--expanded");
+
+  const accordionStateIcon = accordionToggle.querySelector(
+    ".js-accordion__state-icon"
+  );
+  accordionStateIcon.classList.remove("fa-minus");
+  accordionStateIcon.classList.add("fa-plus");
+
+  const accordionPanel = accordionToggle.nextElementSibling;
+  accordionPanel.style.maxHeight = null;
+}

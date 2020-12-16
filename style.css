@@ -8,7 +8,9 @@
   --content-width: 620px; /* A rough estimate to keep 16px Open Sans text < 80 char*/
 }
 
-body {
+body,
+button,
+input {
   /* background-color: hsl(191, 54%, 92%); */
   font-family: "Open Sans", sans-serif;
   letter-spacing: 0.03rem;
@@ -214,9 +216,7 @@ ul {
 .input-form__control {
   /* min-width: 150px; */
   height: 1.8rem;
-  font: inherit;
   font-size: 0.85rem;
-  color: var(--color-lighter-black);
   padding: 0px 4px;
   border: 1px solid #d4d4d4;
   border-radius: 4px;
@@ -229,7 +229,7 @@ ul {
   color: #fcfcfc;
   text-align: center;
   text-decoration: none;
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 600;
   padding: 12px 16px;
 
@@ -259,6 +259,7 @@ ul {
 .stats-section {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
   /* height: 450px;
   justify-content: space-between; */
 }
@@ -267,7 +268,7 @@ ul {
   background-color: hsl(0, 0%, 100%);
   padding: 20px;
   margin-bottom: 50px;
-  width: 450px;
+  /* width: 450px; */
   min-height: 200px;
   /* transition: content 1s linear 5s; */
 }
@@ -518,41 +519,86 @@ ul {
   height: calc((9 / 16) * var(--content-width));
 }
 
-/* 
+.faq__accordions-list {
+  margin: 25px 0;
+}
+
 .accordion {
-  background-color: #eee;
-  color: #444;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
+  width: 750px;
+}
+
+.accordion__toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 20px;
+
+  background-color: hsl(220, 2%, 37%);
   border: none;
-  text-align: left;
   outline: none;
-  font-size: 15px;
+  width: 100%;
+
+  color: #fcfcfc;
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-align: left;
+
   transition: 0.4s;
+  cursor: pointer;
 }
 
-.active,
-.accordion:hover {
-  background-color: #ccc;
+.accordion__toggle--expanded,
+.accordion__toggle:hover {
+  background-color: hsl(220, 2%, 27%);
 }
 
-.panel {
-  padding: 0 18px;
+.accordion__toggle--first {
+  border-radius: 8px 8px 0 0;
+}
+
+.accordion__toggle--last:not(.accordion__toggle--expanded) {
+  /* Don't round corners of last accordion if expanded */
+  border-radius: 0 0 8px 8px;
+}
+
+.accordion__panel {
+  padding: 0 calc((100% - var(--content-width)) / 2);
   background-color: white;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
 }
 
-.accordion:after {
-  content: "\02795"; /* Unicode character for "plus" sign (+) */
-/* font-size: 13px;
-  color: #777;
-  float: right;
-  margin-left: 5px;
+.faq__img {
+  border: 1px solid #ebebeb;
 }
 
-.active:after { */
-/* content: "\2796"; /* Unicode character for "minus" sign (-) */
-/* }  */
+.gcal-fig {
+  margin: 30px 0;
+}
+
+.gcal-fig__img-placeholder {
+  /* same as gcal-fig__img height to maintain vertical space occupied by image
+  when it is absolute positioned on hover */
+  height: 380px;
+}
+
+.gcal-fig__img {
+  display: block;
+  margin: 0 auto;
+  cursor: zoom-in;
+  height: 380px;
+}
+
+.gcal-fig__img:hover {
+  /* Zoom in image on hover */
+  position: absolute;
+  z-index: 3;
+  transform: scale(1.75);
+}
+
+.gcal-fig__caption {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #5d5e60;
+}
