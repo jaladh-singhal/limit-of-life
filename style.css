@@ -32,6 +32,8 @@ ul {
   line-height: 1.45em;
 }
 
+/* || SIDEBAR */
+
 .sidebar-btn {
   position: fixed;
   top: 5px;
@@ -161,6 +163,8 @@ ul {
   text-decoration: underline;
 } */
 
+/* || START SECTION */
+
 .start-section {
   height: 100%;
   background-image: url("images/hourglass-banner.png");
@@ -246,7 +250,9 @@ ul {
   margin-left: 4px;
 }
 
-.page-section {
+/* || LIFE GRID SECTION */
+
+.life-grid-section {
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -256,28 +262,28 @@ ul {
   border: 1px solid green; */
 }
 
+/* == Stats Cards */
+
 .stats-section {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  /* height: 450px;
-  justify-content: space-between; */
+  /* max-height: 100vh; */
+  /* height: 450px;*/
+  justify-content: space-between;
 }
 
 .stats {
   background-color: hsl(0, 0%, 100%);
-  padding: 20px;
-  margin-bottom: 50px;
-  /* width: 450px; */
-  min-height: 200px;
+  padding: 0 1rem;
+  margin-bottom: 3rem;
+  width: 500px;
   /* transition: content 1s linear 5s; */
 }
 
 .week-stats__selected-box {
   text-align: center;
   font-size: 1.4rem;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 1.25rem 0;
 }
 
 .selected-box__number {
@@ -290,28 +296,23 @@ ul {
 }
 
 .week-stats__inner {
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; */
+  width: 400px;
+  margin: 0 auto;
 
   display: grid;
-  grid-template-columns: repeat(5, 80px);
-  grid-template-rows: 60px 140px;
-
-  width: min-content;
-  margin: 0 auto;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 2fr 4fr;
 }
 
 .week-stats__text {
   text-align: center;
-  font-size: 15px;
+  font-size: 0.93rem;
   margin: 0;
 }
 
 .week-stats__number {
   font-family: "Titillium Web", sans-serif;
-  font-size: 52px;
+  font-size: 3rem;
   line-height: 1.1;
   text-align: center;
   margin: 0;
@@ -333,7 +334,7 @@ ul {
 }
 
 .week-count__number {
-  font-size: 40px;
+  font-size: 2.4rem;
 }
 
 .week-count__number--total {
@@ -341,12 +342,17 @@ ul {
 }
 
 .week-stats__life-progress {
-  width: 200px;
-  height: 200px;
+  width: 80%;
+  justify-self: center;
   position: relative;
 
   grid-column: 3/6;
-  justify-self: center;
+  justify-items: center;
+  align-items: center;
+}
+
+.life-progress__bar {
+  position: absolute;
 }
 
 .life-progress__value {
@@ -355,13 +361,12 @@ ul {
   justify-content: center;
   align-items: center;
 
-  /* Position it in horizontal centre, and quite above the vertical centre
-  of the progress arc's circle */
+  /* Position it in horizontal centre, and quite above the vertical centre of
+  the progress arc's circle by sticking it to bottom week-stats__life-progress*/
   position: absolute;
-  top: 0px;
-  bottom: 10%;
-  left: 0px;
-  right: 0px;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .week-stats__number--small {
@@ -369,15 +374,18 @@ ul {
 }
 
 .week-stats__extra-info {
-  font-size: 13px;
+  font-size: 0.81rem;
   text-align: right;
-  margin-top: 60px;
+  margin-top: 3.75rem;
+  margin-bottom: 1rem;
 }
+
+/* == Life Grid */
 
 .life-grid {
   background-color: hsl(0, 0%, 100%);
   padding: 20px;
-  margin-right: 50px;
+  margin-right: 3rem;
 
   display: grid;
   /* Prevent overflow of life-grid__inner by giving it intrinsic dimension*/
@@ -490,6 +498,8 @@ ul {
   background-color: hsla(283, 100%, 24%, 0.25);
 }
 
+/* || OTHER SECTIONS */
+
 .pg-section {
   display: flex;
   flex-direction: column;
@@ -507,6 +517,8 @@ ul {
   margin-bottom: 0.6rem;
 }
 
+/* || INSPIRATION SECTION */
+
 .inspiration {
   width: var(--content-width);
   max-height: 100vh;
@@ -518,6 +530,8 @@ ul {
   width: 100%;
   height: calc((9 / 16) * var(--content-width));
 }
+
+/* || FAQ SECTION */
 
 .faq__accordions-list {
   margin: 25px 0;
