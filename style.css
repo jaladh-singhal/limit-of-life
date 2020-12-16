@@ -532,11 +532,12 @@ ul {
   justify-content: space-between;
   align-items: baseline;
   padding: 20px;
+  width: 100%;
 
   background-color: hsl(220, 2%, 37%);
   border: none;
   outline: none;
-  width: 100%;
+  border-top: 1px solid hsl(220, 2%, 50%);
 
   color: #fcfcfc;
   font-size: 1.05rem;
@@ -554,6 +555,7 @@ ul {
 
 .accordion__toggle--first {
   border-radius: 8px 8px 0 0;
+  border-top: none;
 }
 
 .accordion__toggle--last:not(.accordion__toggle--expanded) {
