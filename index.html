@@ -97,14 +97,14 @@
       </section>
     </div>
     <div class="section">
-      <div class="life-grid-section">
+      <section class="life-grid-section">
         <div class="life-grid">
           <div class="life-grid__week-label">Weeks</div>
           <div class="life-grid__age-label">Age Years</div>
           <div class="life-grid__inner js-life-grid__inner"></div>
         </div>
-        <div class="stats-section">
-          <div class="stats">
+        <div class="info-cards-column">
+          <div class="info-card">
             <p>
               Yep, that's how short your life really is!
             </p>
@@ -115,13 +115,13 @@
               the
               most of your weeks?
             </p>
-            <p>
-              You can further see how fast your life progresses by clicking or
-              hovering over these week boxes.
-            </p>
           </div>
 
-          <div class="stats week-stats js-week-stats">
+          <div class="info-card week-stats js-week-stats">
+            <div class="week-stats__info-tooltip"
+              title="Click or hover over the boxes in the life grid&#013;to see how fast your life progresses!">
+              <i class="fas fa-info-circle"></i>
+            </div>
             <div class="week-stats__selected-box">
               <span
                 class="js-selected-box__week-num selected-box__number">1</span><sup
@@ -174,22 +174,28 @@
             </p>
           </div>
 
-          <div class="stats">
-            <h2>
-              Add it to your Calendar
-            </h2>
+          <div class="info-card calendar">
             <p>
               Eye opening, huh? Deadlines only work as long as they constantly
-              threaten you. So why not remind yourself the limit of your life
-              each week!
+              threaten you. So why not remind yourself of this limit of your
+              life by <strong>adding it to your calendar</strong>.
+              <i class="far fa-question-circle calendar__help-btn js-cal-help-btn"
+                title="Click to know how this works"></i>
             </p>
-            <a class="js-download-btn">
-              <button>Download Calendar File</button>
-            </a>
-            <span>How to use this file?</span>
+            <div class="calendar__download">
+              <a href="#" class="calendar__download-btn js-download-btn">
+                Download Calendar File
+                <i class="fas fa-download download-btn__icon"></i>
+              </a>
+            </div>
+            <p class="calendar__extra-info">
+              Besides, you can use <a href="#">this link</a> to directly
+              open your life-grid. Set it as your browser homepage or bookmark
+              it!
+            </p>
           </div>
         </div>
-      </div>
+      </section>
     </div>
     <div class="section">
       <section class="pg-section inspiration">

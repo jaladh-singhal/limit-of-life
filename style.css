@@ -264,7 +264,7 @@ ul {
 
 /* == Stats Cards */
 
-.stats-section {
+.info-cards-column {
   display: flex;
   flex-direction: column;
   /* max-height: 100vh; */
@@ -272,12 +272,28 @@ ul {
   justify-content: space-between;
 }
 
-.stats {
+.info-card {
   background-color: hsl(0, 0%, 100%);
   padding: 0 1rem;
   margin-bottom: 3rem;
   width: 500px;
   /* transition: content 1s linear 5s; */
+}
+
+.week-stats {
+  position: relative;
+}
+
+.week-stats__info-tooltip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 40px;
+  height: 40px;
 }
 
 .week-stats__selected-box {
@@ -376,8 +392,44 @@ ul {
 .week-stats__extra-info {
   font-size: 0.81rem;
   text-align: right;
-  margin-top: 3.75rem;
+  margin-top: 3.5rem;
   margin-bottom: 1rem;
+}
+
+.calendar__help-btn {
+  margin-left: 3px;
+  cursor: pointer;
+}
+
+.calendar__download {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calendar__download-btn {
+  background-color: #5d5e60;
+  border: none;
+  border-radius: 4px;
+  color: #fcfcfc;
+  text-align: center;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.5rem 0.75rem;
+}
+
+.calendar__download-btn:hover {
+  opacity: 0.8;
+}
+
+.download-btn__icon {
+  margin-left: 4px;
+}
+
+.calendar__extra-info {
+  font-size: 0.8rem;
+  color: hsl(0, 0%, 29%);
 }
 
 /* == Life Grid */
