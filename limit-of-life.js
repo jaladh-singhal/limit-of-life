@@ -5,7 +5,7 @@ const DAYS_IN_WEEK = 7;
 
 new fullpage("#fullpage", {
   anchors: ["start", "life-grid", "inspiration", "faq"],
-  sectionsColor: ["#f8f8f8", "#f8f8f8", "#f8f8f8", "#f8f8f8"],
+  sectionsColor: ["#f8f8f8", "#f0f0f0", "#fcfcfc", "#f8f8f8"],
   scrollBar: true,
   recordHistory: false,
   // autoScrolling: false

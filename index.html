@@ -104,12 +104,12 @@
           <div class="life-grid__inner js-life-grid__inner"></div>
         </div>
         <div class="info-cards-column">
-          <div class="info-card">
-            <p>
+          <div class="info-card perspective">
+            <p class="info-card__p info-card__p--larger info-card__p--margined">
               Yep, that's how short your life really is!
             </p>
-            <p>
-              All your dreams & life-goals, need to be accomplished before you
+            <p class="info-card__p">
+              All your dreams and life-goals, need to be accomplished before you
               run
               out of the finite unfilled boxes you've left of. Are you making
               the
@@ -118,9 +118,12 @@
           </div>
 
           <div class="info-card week-stats js-week-stats">
-            <div class="week-stats__info-tooltip"
-              title="Click or hover over the boxes in the life grid&#013;to see how fast your life progresses!">
-              <i class="fas fa-info-circle"></i>
+            <div class="info-card__more-context"
+              title="Hover or click on the boxes in the life grid&#013;to see how fast your life progresses!">
+              <span class="fa-stack more-info-icon">
+                <i class="far fa-circle fa-stack-2x"></i>
+                <i class="fas fa-info fa-stack-1x"></i>
+              </span>
             </div>
             <div class="week-stats__selected-box">
               <span
@@ -171,26 +174,33 @@
             </div>
             <p
               class="week-stats__text week-stats__extra-info js-week-stats__extra-info">
+              Info
             </p>
           </div>
 
           <div class="info-card calendar">
-            <p>
+            <div class="info-card__more-context">
+              <i class="far fa-question-circle calendar__help-btn js-cal-help-btn"
+                title="Click to know how to use this file"></i>
+            </div>
+            <p class="info-card__p">
               Eye opening, huh? Deadlines only work as long as they constantly
               threaten you. So why not remind yourself of this limit of your
               life by <strong>adding it to your calendar</strong>.
-              <i class="far fa-question-circle calendar__help-btn js-cal-help-btn"
-                title="Click to know how this works"></i>
             </p>
             <div class="calendar__download">
+              <span class="info-card__p--larger">
+                Your Life Grid as Calendar File:
+              </span>
               <a href="#" class="calendar__download-btn js-download-btn">
-                Download Calendar File
-                <i class="fas fa-download download-btn__icon"></i>
+                Download
+                <i class="fas fa-arrow-down download-btn__icon"></i>
               </a>
             </div>
-            <p class="calendar__extra-info">
+            <hr class="calendar__hr">
+            <p class="info-card__p calendar__extra-info">
               Besides, you can use <a href="#">this link</a> to directly
-              open your life-grid. Set it as your browser homepage or bookmark
+              open your life grid. Set it as your browser homepage or bookmark
               it!
             </p>
           </div>

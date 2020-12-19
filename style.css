@@ -122,7 +122,8 @@ ul {
 }
 
 .sidebar__hr {
-  border-color: #fcfcfcbb;
+  border: 0;
+  border-top: 1px solid #d4d4d4;
   width: 75%;
 }
 
@@ -262,29 +263,27 @@ ul {
   border: 1px solid green; */
 }
 
-/* == Stats Cards */
+/* == Info Cards */
 
 .info-cards-column {
   display: flex;
   flex-direction: column;
-  /* max-height: 100vh; */
-  /* height: 450px;*/
+  /* max-height: 96vh; */
   justify-content: space-between;
 }
 
 .info-card {
-  background-color: hsl(0, 0%, 100%);
-  padding: 0 1rem;
-  margin-bottom: 3rem;
-  width: 500px;
+  background-color: #fcfcfc;
+  padding: 2rem;
+  margin-bottom: 3vh; /*3rem*/
+  width: 520px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 hsla(0, 0%, 0%, 0.2);
+  position: relative;
   /* transition: content 1s linear 5s; */
 }
 
-.week-stats {
-  position: relative;
-}
-
-.week-stats__info-tooltip {
+.info-card__more-context {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -292,14 +291,36 @@ ul {
   position: absolute;
   top: 0px;
   right: 0px;
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.info-card__p {
+  margin: 0;
+}
+
+.info-card__p--margined {
+  margin-bottom: 1em;
+}
+
+.info-card__p--larger {
+  text-align: center;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.week-stats {
+  padding-bottom: 0;
+}
+
+.more-info-icon {
+  transform: scale(0.5);
 }
 
 .week-stats__selected-box {
   text-align: center;
   font-size: 1.4rem;
-  margin: 1.25rem 0;
+  margin-bottom: 1.25rem;
 }
 
 .selected-box__number {
@@ -393,30 +414,42 @@ ul {
   font-size: 0.81rem;
   text-align: right;
   margin-top: 3.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.calendar {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  position: relative;
 }
 
 .calendar__help-btn {
-  margin-left: 3px;
   cursor: pointer;
+}
+
+.calendar__help-btn:hover {
+  color: #5d5e60;
 }
 
 .calendar__download {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem; /* Same as padding of info__card */
 }
 
 .calendar__download-btn {
-  background-color: #5d5e60;
+  background-color: hsl(219, 100%, 64%); /*#5d5e60*/
   border: none;
   border-radius: 4px;
   color: #fcfcfc;
   text-align: center;
   text-decoration: none;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 600;
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem 0.8rem;
+  margin-left: 0.5rem;
 }
 
 .calendar__download-btn:hover {
@@ -424,12 +457,20 @@ ul {
 }
 
 .download-btn__icon {
-  margin-left: 4px;
+  margin-left: 2px;
 }
 
 .calendar__extra-info {
   font-size: 0.8rem;
   color: hsl(0, 0%, 29%);
+  /* width: 400px; */
+  margin: 0.75rem auto;
+}
+
+.calendar__hr {
+  border: 0;
+  border-top: 1px solid hsl(0, 0%, 82%);
+  margin: 0 auto;
 }
 
 /* == Life Grid */
