@@ -67,7 +67,31 @@ const weekStats = new WeekStats();
 
 const lifeGrid = document.querySelector(".js-life-grid__inner");
 
-// Populate the grid
+// Calculate the maximum dimensions of lifeGrid & save them as data attributes
+const lifeGridCardStyle = getComputedStyle(
+  document.querySelector(".js-life-grid-card")
+);
+const weekLabelStyle = getComputedStyle(
+  document.querySelector(".life-grid__week-label")
+);
+const ageLabelStyle = getComputedStyle(
+  document.querySelector(".life-grid__age-label")
+);
+
+const usedHeight =
+  parseFloat(lifeGridCardStyle.paddingTop) +
+  parseFloat(lifeGridCardStyle.paddingBottom) +
+  parseFloat(weekLabelStyle.height);
+lifeGrid.dataset.maxHeight =
+  parseFloat(lifeGridCardStyle.maxHeight) - usedHeight;
+
+const usedWidth =
+  parseFloat(lifeGridCardStyle.paddingLeft) +
+  parseFloat(lifeGridCardStyle.paddingRight) +
+  parseFloat(ageLabelStyle.width);
+lifeGrid.dataset.maxWidth = parseFloat(lifeGridCardStyle.maxWidth) - usedWidth;
+
+// Populate the grid ----------------------------------------------------------
 function genLifeGrid(dob, lifeExpectancy) {
   lifeGrid.innerHTML = ""; // Clear all child nodes
 
@@ -388,16 +412,17 @@ function showOutput() {
 }
 
 function calculateBoxSize(numCol, numRow) {
-  // Calculate the size of box such that entire grid can fit in viewport height
-  // while making sure that it never occupies more than 40% of viewport width
+  // Calculate the ideal box height & width based on max height & width available
   const idealBoxHeight = Math.floor(
-    (document.documentElement.clientHeight * 0.94) / numRow
-  ); // 0.94 to accommodate week and age labels + grid padding
-  const idealBoxWidth = Math.floor(
-    (document.documentElement.clientWidth * 0.4) / numCol
+    parseFloat(lifeGrid.dataset.maxHeight) / numRow
   );
-
+  const idealBoxWidth = Math.floor(
+    parseFloat(lifeGrid.dataset.maxWidth) / numCol
+  );
   console.log("h: " + idealBoxHeight + ", w: " + idealBoxWidth);
+
+  // Choose minimum of them so that total height and total width of all boxes
+  // remains at most lifeGrid's height and width, respectively
   const boxSize =
     idealBoxHeight <= idealBoxWidth ? idealBoxHeight : idealBoxWidth;
   return boxSize;
