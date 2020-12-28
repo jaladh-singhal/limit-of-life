@@ -261,7 +261,7 @@ ul {
 
 .card {
   background-color: #fcfcfc;
-  padding: 2rem;
+  padding: 2em;
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 hsla(0, 0%, 0%, 0.2);
 }
@@ -272,12 +272,17 @@ ul {
   display: flex;
   flex-direction: column;
   /* justify-content: space-between; */
+
+  /* 16px font size makes info cards lay out well on 950px viewport height, 
+  so scale font-size by it, but restrict it within 12px and 18px.
+  Why: to make info cards responsively fit vertically within viewport height */
+  font-size: clamp(12px, 16 / 950 * 100vh, 18px);
 }
 
 .info-card {
-  margin-left: 3rem;
-  margin-bottom: 3rem;
-  width: 32rem;
+  margin-left: 3em;
+  margin-bottom: 3em;
+  width: 34em; /* in em so that width scale uniformly with height as viewport height changes */
   position: relative;
   /* transition: content 1s linear 5s; */
 }
@@ -290,8 +295,8 @@ ul {
   position: absolute;
   top: 0px;
   right: 0px;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.5em;
+  height: 2.5em;
 }
 
 .info-card__p {
@@ -304,7 +309,7 @@ ul {
 
 .info-card__p--larger {
   text-align: center;
-  font-size: 1.05rem;
+  font-size: 1.1em;
   font-weight: 500;
 }
 
@@ -318,21 +323,21 @@ ul {
 
 .week-stats__selected-box {
   text-align: center;
-  font-size: 1.4rem;
-  margin-bottom: 1.25rem;
+  font-size: 1.35em;
+  margin-bottom: 0.9em;
 }
 
 .selected-box__number {
-  font-size: 1.6rem;
+  font-size: 1.15em;
   font-family: "Titillium Web", sans-serif;
 }
 
 .selected-box__ordinal-suffix {
-  font-size: 0.9rem;
+  font-size: 0.65em;
 }
 
 .week-stats__inner {
-  width: 25rem;
+  width: 24em;
   margin: 0 auto;
 
   display: grid;
@@ -342,13 +347,13 @@ ul {
 
 .week-stats__text {
   text-align: center;
-  font-size: 0.93rem;
+  font-size: 0.91em;
   margin: 0;
 }
 
 .week-stats__number {
   font-family: "Titillium Web", sans-serif;
-  font-size: 3rem;
+  font-size: 2.8em;
   line-height: 1.1;
   text-align: center;
   margin: 0;
@@ -356,7 +361,7 @@ ul {
 
 .week-stats__date-range {
   grid-column: 1/6;
-  font-size: 1.2rem;
+  font-size: 1.2em;
   margin: auto;
 }
 
@@ -370,7 +375,7 @@ ul {
 }
 
 .week-count__number {
-  font-size: 2.4rem;
+  font-size: 2.35em;
 }
 
 .week-count__number--total {
@@ -434,8 +439,8 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 1.5rem;
-  margin-bottom: 2rem; /* Same as padding of info__card */
+  margin-top: 1.45em;
+  margin-bottom: 2em; /* Same as padding of info__card */
 }
 
 .calendar__download-btn {
@@ -445,10 +450,10 @@ ul {
   color: #fcfcfc;
   text-align: center;
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 0.9em;
   font-weight: 600;
-  padding: 0.5rem 0.8rem;
-  margin-left: 0.5rem;
+  padding: 0.55em 0.85em;
+  margin-left: 0.6em;
 }
 
 .calendar__download-btn:hover {
@@ -460,10 +465,10 @@ ul {
 }
 
 .calendar__extra-info {
-  font-size: 0.8rem;
+  font-size: 0.8em;
   color: hsl(0, 0%, 29%);
   /* width: 400px; */
-  margin: 0.75rem auto;
+  margin: 1em auto;
 }
 
 .calendar__hr {
