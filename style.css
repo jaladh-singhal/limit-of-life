@@ -273,16 +273,17 @@ ul {
   flex-direction: column;
   /* justify-content: space-between; */
 
-  /* 16px font size makes info cards lay out well on 950px viewport height, 
-  so scale font-size by it, but restrict it within 12px and 18px.
-  Why: to make info cards responsively fit vertically within viewport height */
+  /* To make info cards responsively fit vertically within viewport height (vh),
+  use a vh aware font-size here and then use em in child components. 
+  16px font size makes info cards lay out nicely on 950px viewport height, so
+  scale font-size by 16/950 of total vh, but restrict it within 12px and 18px */
   font-size: clamp(12px, 16 / 950 * 100vh, 18px);
 }
 
 .info-card {
   margin-left: 3em;
   margin-bottom: 3em;
-  width: 34em; /* in em so that width scale uniformly with height as viewport height changes */
+  width: 33em; /* in em so that width scale uniformly with height as vh changes */
   position: relative;
   /* transition: content 1s linear 5s; */
 }
@@ -480,6 +481,7 @@ ul {
 /* == Life Grid */
 
 .life-grid {
+  padding: 3.4vh;
   display: grid;
   /* Prevent overflow of life-grid__inner by giving it intrinsic dimension*/
   grid-template-columns: 2rem min-content;
@@ -487,20 +489,23 @@ ul {
   grid-template-areas:
     ". week-label"
     "age-label main-grid";
-  max-width: 700px;
-  max-height: 98vh;
+
+  max-width: 720px; /* fixed to prevent consuming whole width on larger screens*/
+  max-height: 99vh;
+}
+
+.life-grid__label {
+  text-align: center;
+  font-size: 1rem;
 }
 
 .life-grid__week-label {
   grid-area: week-label;
-
-  text-align: center;
 }
 
 .life-grid__age-label {
   grid-area: age-label;
 
-  text-align: center;
   /* Vertically orient the label */
   writing-mode: vertical-rl;
   transform: rotate(-180deg);
@@ -519,7 +524,7 @@ ul {
   justify-content: flex-end;
   align-items: center;
 
-  font-size: 0.65rem;
+  font-size: clamp(8px, 1.2 * var(--box-size), 12px);
 }
 
 .life-grid__marker--week {
