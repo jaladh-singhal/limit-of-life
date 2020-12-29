@@ -503,6 +503,9 @@ ul {
 .life-grid__age-label {
   grid-area: age-label;
   margin-right: 0.8em;
+
+  /* TO FIX: for unknown reason, width is 0 instead of child width in firefox*/
+  width: 1.4em; /* workaround: approx width of child vertical-text */
 }
 
 .vertical-text {
