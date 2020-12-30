@@ -8,8 +8,24 @@ new fullpage("#fullpage", {
   sectionsColor: ["#f8f8f8", "#f0f0f0", "#fcfcfc", "#f8f8f8"],
   scrollBar: true,
   recordHistory: false,
-  // autoScrolling: false
-  // fitToSection: false,
+  autoScrolling: true,
+  fitToSection: true,
+
+  onLeave: function (origin, destination, direction) {
+    // index=2 denotes inspiration section
+    if (origin.index <= 2 && destination.index > 2) {
+      // When moving from inspiration section or before to a section after it,
+      // disable autoScrolling so that long content can scroll normally
+      fullpage_api.setAutoScrolling(false);
+      // also disable fitToSection otherwise it won't allow to move down
+      fullpage_api.setFitToSection(false);
+    } else if (origin.index > 2 && destination.index <= 2) {
+      // When moving from a section after inspiration section to it or before,
+      // re-enable autoScrolling and fitToSection like it was before
+      fullpage_api.setAutoScrolling(true);
+      fullpage_api.setFitToSection(true);
+    }
+  },
 });
 
 class WeekStats {
