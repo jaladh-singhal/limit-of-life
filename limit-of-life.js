@@ -545,6 +545,27 @@ function compareDatesOnly(date1, date2) {
   }
 }
 
+// Use parameters in url (if valid) to auto-submit form to directly open life-grid
+document.addEventListener("DOMContentLoaded", (e) => {
+  const url = new URL(window.location);
+  const dobValue = url.searchParams.get("DOB");
+  const lifeExpectancyValue = url.searchParams.get("lifeExpectancy");
+
+  // If both values are not null (since both are required)
+  if (dobValue && lifeExpectancyValue) {
+    window.location.hash = ""; // to stay on starting section if invalid values
+
+    // input them in corresponding form controls
+    dobInput.value = dobValue;
+    dobInput.dispatchEvent(new Event("input")); // to trigger validation
+    lifeExpectancyInput.value = lifeExpectancyValue;
+    lifeExpectancyInput.dispatchEvent(new Event("input")); // to trigger validation
+
+    // Click btn to validate form final time before triggering submit event on it
+    document.querySelector(".js-input-form__btn").click();
+  }
+});
+
 // Sidebar Control -----------------------------------------------------------
 const sidebar = document.querySelector(".js-sidebar");
 sidebar.dataset.openBtnClicked = "false"; // to track if sidebar btn was clicked
