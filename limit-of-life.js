@@ -444,9 +444,22 @@ function calculateBoxSize(numCol, numRow) {
   return boxSize;
 }
 
-// Prevent form from submitting on enter or button click and show output
+// Handle form submission on client-side only
 document.querySelector(".js-input-form").addEventListener("submit", (e) => {
+  // Prevent form from submitting on enter or button click and show output
   e.preventDefault();
+
+  // Scroll-down to life-grid section
+  fullpage_api.moveTo("life-grid");
+
+  // Add parameters to current url's query string without reloading page
+  const url = new URL(window.location);
+  url.searchParams.set(dobInput.name, dobInput.value);
+  url.searchParams.set(lifeExpectancyInput.name, lifeExpectancyInput.value);
+  window.history.pushState({}, "", url);
+  document.querySelector(".js-life-grid-link").href = url.href;
+
+  // Update life grid, week stats and calendar cards (core app logic)
   showOutput();
 });
 

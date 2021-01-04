@@ -89,7 +89,7 @@
             <input type="number" name="lifeExpectancy" id="life-exp-input"
               class="input-form__control input-form__life-exp js-input-form__life-exp"
               value="80" min="1" required />
-            <button class="input-form__btn js-input-form__btn">
+            <button type="submit" class="input-form__btn js-input-form__btn">
               Show Life Grid <i class="fas fa-angle-double-down btn__icon"></i>
             </button>
           </form>
@@ -207,7 +207,8 @@
             </div>
             <hr class="calendar__hr">
             <p class="info-card__p calendar__extra-info">
-              Besides, you can use <a href="#">this link</a> to directly
+              Besides, you can use <a class="js-life-grid-link"
+                href="#life-grid">this link</a> to directly
               open your life grid. Set it as your browser homepage or bookmark
               it!
             </p>
