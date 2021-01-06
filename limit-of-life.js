@@ -449,6 +449,10 @@ document.querySelector(".js-input-form").addEventListener("submit", (e) => {
   // Prevent form from submitting on enter or button click and show output
   e.preventDefault();
 
+  // Hide life-grid empty prompt and show the main life-grid section
+  document.querySelector(".js-life-grid-empty").style.display = "none";
+  document.querySelector(".js-life-grid-section").style.display = "flex";
+
   // Scroll-down to life-grid section
   fullpage_api.moveTo("life-grid");
 
