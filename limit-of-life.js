@@ -452,12 +452,12 @@ document.querySelector(".js-input-form").addEventListener("submit", (e) => {
   // Scroll-down to life-grid section
   fullpage_api.moveTo("life-grid");
 
-  // Add parameters to current url's query string without reloading page
+  // Add parameters to current url as query string without reloading page
+  // This will update all href to include user-specific parameters
   const url = new URL(window.location);
   url.searchParams.set(dobInput.name, dobInput.value);
   url.searchParams.set(lifeExpectancyInput.name, lifeExpectancyInput.value);
   window.history.pushState({}, "", url);
-  document.querySelector(".js-life-grid-link").href = url.href;
 
   // Update life grid, week stats and calendar cards (core app logic)
   showOutput();
