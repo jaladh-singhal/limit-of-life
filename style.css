@@ -5,6 +5,9 @@
 
 :root {
   --color-lighter-black: #303030;
+  --color-primary: 219, 90%, 81%;
+  --color-secondary: 283, 100%, 54%;
+  --color-tertiary: 283, 100%, 24%;
   --content-width: 620px; /* A rough estimate to keep 16px Open Sans text < 80 char*/
 }
 
@@ -503,7 +506,7 @@ ul {
 }
 
 .calendar__download-btn {
-  background-color: hsl(219, 100%, 64%); /*#5d5e60*/
+  background-color: hsl(var(--color-tertiary)); /*#5d5e60*/
   border: none;
   border-radius: 4px;
   color: #fcfcfc;
@@ -524,7 +527,7 @@ ul {
 }
 
 .calendar__extra-info {
-  font-size: 0.8em;
+  font-size: 0.85em;
   color: hsl(0, 0%, 29%);
   /* width: 400px; */
   margin: 1em auto;
@@ -534,6 +537,16 @@ ul {
   border: 0;
   border-top: 1px solid hsl(0, 0%, 82%);
   margin: 0 auto;
+}
+
+.calendar__link {
+  color: hsl(var(--color-tertiary));
+  text-decoration: none;
+  border-bottom: 1px solid hsla(var(--color-tertiary), 0.3);
+}
+
+.calendar__link:hover {
+  border-bottom: 1px solid hsla(var(--color-tertiary), 0.8);
 }
 
 /* == Life Grid */
@@ -617,11 +630,11 @@ ul {
   left: 0px;
   z-index: 1;
 
-  border: 1px solid hsla(219, 90%, 81%, 0.5);
+  border: 1px solid hsla(var(--color-primary), 0.6);
 }
 
 .life-grid__box--filled::after {
-  background-color: hsla(219, 90%, 81%, 0.9);
+  background-color: hsl(var(--color-primary));
 }
 
 .life-grid__box--row-start {
@@ -641,8 +654,8 @@ ul {
   left: 0px;
   z-index: 2; /* to bring it over after element */
 
-  border: 2px solid hsl(283, 100%, 54%);
-  background-color: hsla(283, 100%, 54%, 0.25);
+  border: 2px solid hsl(var(--color-secondary));
+  background-color: hsla(var(--color-secondary), 0.25);
 }
 
 .life-grid__box--clicked::before {
@@ -656,8 +669,8 @@ ul {
   left: 0px;
   z-index: 2; /* to bring it over after element */
 
-  border: 2px solid hsl(283, 100%, 24%);
-  background-color: hsla(283, 100%, 24%, 0.25);
+  border: 2px solid hsl(var(--color-tertiary));
+  background-color: hsla(var(--color-tertiary), 0.25);
 }
 
 /* || OTHER SECTIONS */
