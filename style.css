@@ -637,6 +637,8 @@ ul {
 
 .faq__accordions-list {
   margin: 25px 0;
+  box-shadow: 0 4px 8px 0 hsla(0, 0%, 0%, 0.2);
+  border-radius: 8px;
 }
 
 .accordion {
@@ -681,10 +683,14 @@ ul {
 
 .accordion__panel {
   padding: 0 calc((100% - var(--content-width)) / 2);
-  background-color: white;
+  background-color: #fcfcfc;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
+}
+
+.accordion__panel--last {
+  border-radius: 0 0 8px 8px;
 }
 
 .faq__img {
