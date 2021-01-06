@@ -4,8 +4,8 @@ const WEEKS_IN_YEAR = 52;
 const DAYS_IN_WEEK = 7;
 
 new fullpage("#fullpage", {
-  anchors: ["start", "life-grid", "inspiration", "faq"],
-  sectionsColor: ["#f8f8f8", "#f0f0f0", "#fcfcfc", "#f8f8f8"],
+  anchors: ["start", "life-grid", "inspiration", "faq", "footer"],
+  sectionsColor: ["#f8f8f8", "#f0f0f0", "#fcfcfc", "#f8f8f8", "#303030"],
   scrollBar: true,
   recordHistory: false,
   autoScrolling: true,
