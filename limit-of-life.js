@@ -451,7 +451,7 @@ document.querySelector(".js-input-form").addEventListener("submit", (e) => {
 
   // Hide life-grid empty prompt and show the main life-grid section
   document.querySelector(".js-life-grid-empty").style.display = "none";
-  document.querySelector(".js-life-grid-section").style.display = "flex";
+  document.querySelector(".js-life-grid-section").style.visibility = "visible";
 
   // Scroll-down to life-grid section
   fullpage_api.moveTo("life-grid");

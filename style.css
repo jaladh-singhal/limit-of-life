@@ -251,12 +251,18 @@ ul {
   margin-left: 4px;
 }
 
-/* || LIFE GRID EMPTY */
+/* || LIFE GRID EMPTY PROMPT (Temporary Section) */
 
 .life-grid-empty {
   display: flex;
   justify-content: center;
-  position: relative;
+  align-items: center;
+
+  position: absolute; /* so that it don't affect layout of main life-grid section */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .life-grid-empty__img {
@@ -304,12 +310,13 @@ ul {
   background-color: hsl(220, 2%, 37%);
 }
 
-/* || LIFE GRID SECTION */
+/* || LIFE GRID SECTION (Main) */
 
 .life-grid-section {
-  display: none; /* Hide it unless input form is submitted */
+  display: flex;
   justify-content: center;
   align-items: flex-start;
+  visibility: hidden; /* so that it can still be used in JS layout computations */
 }
 
 .card {
