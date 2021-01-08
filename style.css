@@ -697,6 +697,15 @@ ul {
   margin-bottom: 0.6rem;
 }
 
+.link {
+  text-decoration: none;
+  color: hsl(var(--color-tertiary));
+}
+
+.link:hover {
+  border-bottom: 1px solid;
+}
+
 /* || INSPIRATION SECTION */
 
 .inspiration {
@@ -805,6 +814,14 @@ ul {
   color: #5d5e60;
 }
 
+em {
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1.05em;
+}
+
 /* || FOOTER */
 
 .footer {
@@ -827,8 +844,7 @@ ul {
 }
 
 .footer__link {
-  color: #00d4fa;
-  text-decoration: none;
+  color: hsl(var(--color-secondary));
 }
 
 .footer__p {
@@ -844,7 +860,7 @@ ul {
 }
 
 .footer__icon-btn:hover {
-  color: #00d4fa;
+  color: hsl(var(--color-secondary));
   transform: translateY(2px);
 }
 
