@@ -549,6 +549,16 @@ function compareDatesOnly(date1, date2) {
   }
 }
 
+// Open how to use calendar FAQ when clicking help btn on calendar card
+document.querySelector(".js-cal-help-btn").addEventListener("click", (e) => {
+  fullpage_api.moveTo("faq");
+
+  const accordionToggle = document.querySelector(".js-cal-file-accordion");
+  if (!accordionToggle.classList.contains("accordion__toggle--expanded")) {
+    accordionToggle.click();
+  }
+});
+
 // Use parameters in url (if valid) to auto-submit form to directly open life-grid
 document.addEventListener("DOMContentLoaded", (e) => {
   const url = new URL(window.location);
