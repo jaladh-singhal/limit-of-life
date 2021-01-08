@@ -458,6 +458,10 @@ ul {
   position: absolute;
 }
 
+.life-progress__arc {
+  stroke: hsl(var(--color-secondary));
+}
+
 .life-progress__value {
   display: flex;
   flex-direction: column;
@@ -546,7 +550,7 @@ ul {
 }
 
 .calendar__link:hover {
-  border-bottom: 1px solid hsla(var(--color-tertiary), 0.8);
+  border-bottom-color: hsla(var(--color-tertiary), 0.8);
 }
 
 /* == Life Grid */
