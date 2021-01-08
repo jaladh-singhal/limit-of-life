@@ -59,9 +59,11 @@ ul {
 
 .sidebar {
   width: 12vw;
+  min-width: 150px;
   height: 100vh;
   background-color: var(--color-lighter-black);
   color: #fcfcfc;
+  box-shadow: 4px 0 10px 0 hsla(0, 0%, 0%, 0.4);
 
   display: none;
   flex-direction: column;
