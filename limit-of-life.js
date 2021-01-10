@@ -354,7 +354,7 @@ VERSION:2.0`;
     ".js-life-grid__box--unfilled"
   );
 
-  const appURL = "https://github.com"; //TODO: edit it after deploying!
+  const appURL = window.location.href;
   const totalWeeksCount = lifeGrid.dataset.totalWeeks;
 
   let weekStartDate,
