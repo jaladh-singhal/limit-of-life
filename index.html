@@ -1,626 +1,703 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Limit of the Life — Put your life in perspective</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Limit of the Life — Put your life in perspective</title>
+    <!-- Primary Meta Tags -->
+    <meta
+      name="title"
+      content="Limit of the Life — Put your life in perspective"
+    />
+    <meta
+      name="description"
+      content="Check out how long your life really is when visualized as a grid of weeks?"
+    />
 
-  <!-- Primary Meta Tags -->
-  <meta name="title" content="Limit of the Life — Put your life in perspective">
-  <meta name="description"
-    content="Check out how long your life really is when visualized as a grid of weeks?">
+    <!-- Social media Preview -->
+    <meta
+      property="og:title"
+      content="Limit of the Life — Put your life in perspective"
+    />
+    <meta
+      property="og:description"
+      content="Check out how long your life really is when visualized as a grid of weeks?"
+    />
+    <meta
+      property="og:image"
+      content="https://limit-of-life.netlify.app/images/hourglass-banner-centered.jpg"
+    />
+    <meta property="og:url" content="https://limit-of-life.netlify.app/" />
+    <meta property="twitter:card" content="summary_large_image" />
 
-  <!-- Social media Preview -->
-  <meta property="og:title"
-    content="Limit of the Life — Put your life in perspective">
-  <meta property="og:description"
-    content="Check out how long your life really is when visualized as a grid of weeks?">
-  <meta property="og:image"
-    content="https://limit-of-life.netlify.app/images/hourglass-banner-centered.jpg">
-  <meta property="og:url" content="https://limit-of-life.netlify.app/">
-  <meta property="twitter:card" content="summary_large_image">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Titillium+Web:wght@600&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.css"
+      integrity="sha512-8M8By+q+SldLyFJbybaHoAPD6g07xyOcscIOQEypDzBS+sTde5d6mlK2ANIZPnSyxZUqJfCNuaIvjBUi8/RS0w=="
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+  </head>
 
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Titillium+Web:wght@600&display=swap">
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.css"
-    integrity="sha512-8M8By+q+SldLyFJbybaHoAPD6g07xyOcscIOQEypDzBS+sTde5d6mlK2ANIZPnSyxZUqJfCNuaIvjBUi8/RS0w=="
-    crossorigin="anonymous" />
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
-    crossorigin="anonymous" />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" type="image/png" href="images/favicon.png" />
-</head>
-
-<body>
-  <span class="fa-stack sidebar-btn js-sidebar-open-btn">
-    <i class="fas fa-circle fa-stack-2x sidebar-btn__circle"></i>
-    <i class="fas fa-bars fa-stack-1x fa-inverse sidebar-btn__bars"></i>
-  </span>
-
-  <nav class="sidebar js-sidebar">
-    <span class="fa-stack sidebar__close-btn js-sidebar__close-btn">
-      <i class="fas fa-circle fa-stack-2x close-btn__circle"></i>
-      <i class="fas fa-times fa-stack-1x fa-inverse"></i>
+  <body>
+    <span class="fa-stack sidebar-btn js-sidebar-open-btn">
+      <i class="fas fa-circle fa-stack-2x sidebar-btn__circle"></i>
+      <i class="fas fa-bars fa-stack-1x fa-inverse sidebar-btn__bars"></i>
     </span>
-    <div class="sidebar__header">
-      <img class="sidebar__logo" src="images/logo-for-sidebar.svg"
-        alt="Limit of the Life Logo">
-      <hr class="sidebar__hr">
-      <img class="sidebar__equation" src="images/limit-equation.svg"
-        alt="Limit of function 'Life of age' as age approaches expectancy is Death">
-      <hr class="sidebar__hr">
-    </div>
-    <div class="sidebar__nav">
-      <a href="#start" class="sidebar__link nav__link">Start</a>
-      <a href="#life-grid" class="sidebar__link nav__link">Life Grid</a>
-      <a href="#inspiration" class="sidebar__link nav__link">Inspiration</a>
-      <a href="#faq" class="sidebar__link nav__link">FAQs</a>
-    </div>
-    <div class="sidebar__social">
-      <i class="fab fa-twitter"></i>
-      <a class="sidebar__link social__link"
-        href="https://twitter.com/curiousPolygon" target="_blank"
-        rel="noopener noreferrer">Shout out!</a>
-      <i class="fab fa-github"></i>
-      <a class="sidebar__link social__link"
-        href="https://github.com/jaladh-singhal/limit-of-life" target="_blank"
-        rel="noopener noreferrer">Contribute</a>
-    </div>
-  </nav>
 
-  <div id="fullpage">
-    <div class="section">
-      <section class="start-section">
-        <div class="start-section__inner">
-          <div class="start-section__title">
-            <img class="title__logo" src="images/logo-for-title.svg"
-              alt="Limit of the Life Logo">
-            <h1 class="title__text">Limit of the Life</h1>
-          </div>
-          <div class="start-section__content">
-            <p>
-              However long our Life seems to be, it has an elusive Limit. For
-              short-term projects, we understand that deadlines are essential to
-              beat procrastination but what about something long-term as our
-              Life?
-            </p>
-            <p>
-              We tend to overlook its ultimate deadline - Death because it's
-              difficult to keep track of such a long period.
-            </p>
-            <p>
-              To see a zoomed-out view of your Life, go ahead and check out if
-              it's really that long when visualized as a grid of weeks?
-            </p>
-          </div>
-          <form class="input-form js-input-form">
-            <label for="dob-input">
-              Let's start from the beginning! Your DOB?
-            </label>
-            <input type="date" name="DOB" id="dob-input"
-              class="input-form__control input-form__dob js-input-form__dob"
-              min="1900-01-01" required />
-            <label for="life-exp-input">
-              How many years do you think you'll live?
-            </label>
-            <input type="number" name="lifeExpectancy" id="life-exp-input"
-              class="input-form__control input-form__life-exp js-input-form__life-exp"
-              value="80" min="1" required />
-            <button type="submit" class="input-form__btn js-input-form__btn">
-              Show Life Grid <i class="fas fa-angle-double-down btn__icon"></i>
-            </button>
-          </form>
-        </div>
-      </section>
-    </div>
-    <div class="section">
-      <section class="life-grid-empty js-life-grid-empty">
-        <img class="life-grid-empty__img" src="images/hourglass-empty-form.jpg">
-        <div class="life-grid-empty__content">
-          <p class="life-grid-empty__p">
-            First enter your details above to see your Life Grid here!
-          </p>
-          <a class="life-grid-empty__btn" href="#start">Scroll Up <i
-              class="fas fa-angle-double-up btn__icon"></i>
-          </a>
-        </div>
-      </section>
+    <nav class="sidebar js-sidebar">
+      <span class="fa-stack sidebar__close-btn js-sidebar__close-btn">
+        <i class="fas fa-circle fa-stack-2x close-btn__circle"></i>
+        <i class="fas fa-times fa-stack-1x fa-inverse"></i>
+      </span>
+      <div class="sidebar__header">
+        <img
+          class="sidebar__logo"
+          src="images/logo-for-sidebar.svg"
+          alt="Limit of the Life Logo"
+        />
+        <hr class="sidebar__hr" />
+        <img
+          class="sidebar__equation"
+          src="images/limit-equation.svg"
+          alt="Limit of function 'Life of age' as age approaches expectancy is Death"
+        />
+        <hr class="sidebar__hr" />
+      </div>
+      <div class="sidebar__nav">
+        <a href="#start" class="sidebar__link nav__link">Start</a>
+        <a href="#life-grid" class="sidebar__link nav__link">Life Grid</a>
+        <a href="#inspiration" class="sidebar__link nav__link">Inspiration</a>
+        <a href="#faq" class="sidebar__link nav__link">FAQs</a>
+      </div>
+      <div class="sidebar__social">
+        <i class="fab fa-twitter"></i>
+        <a
+          class="sidebar__link social__link"
+          href="https://twitter.com/curiousPolygon"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Shout out!
+        </a>
+        <i class="fab fa-github"></i>
+        <a
+          class="sidebar__link social__link"
+          href="https://github.com/jaladh-singhal/limit-of-life"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Contribute
+        </a>
+      </div>
+    </nav>
 
-      <section class="life-grid-section js-life-grid-section">
-        <div class="card life-grid js-life-grid-card">
-          <div
-            class="life-grid__label life-grid__week-label js-life-grid__week-label">
-            Weeks
-          </div>
-          <div
-            class="life-grid__label life-grid__age-label js-life-grid__age-label">
-            <span class="vertical-text">
-              Age Years
-            </span>
-          </div>
-          <div class="life-grid__inner js-life-grid__inner"></div>
-        </div>
-        <div class="info-cards-column">
-          <div class="card info-card perspective">
-            <p class="info-card__p info-card__p--larger info-card__p--margined">
-              Yep, that's how short your life really is!
-            </p>
-            <p class="info-card__p">
-              All your dreams and life-goals, need to be accomplished before you
-              run
-              out of the <strong>finite unfilled boxes</strong> you've left of.
-              Are you making
-              the
-              most of your weeks?
-            </p>
-          </div>
-
-          <div class="card info-card week-stats js-week-stats">
-            <div class="info-card__more-context"
-              title="Hover or click on the boxes in the life grid&#013;to see how fast your life progresses!">
-              <span class="fa-stack more-context__icon week-stats__info">
-                <i class="far fa-circle fa-stack-2x"></i>
-                <i class="fas fa-info fa-stack-1x"></i>
-              </span>
+    <div id="fullpage">
+      <div class="section">
+        <section class="start-section">
+          <div class="start-section__inner">
+            <div class="start-section__title">
+              <img
+                class="title__logo"
+                src="images/logo-for-title.svg"
+                alt="Limit of the Life Logo"
+              />
+              <h1 class="title__text">Limit of the Life</h1>
             </div>
-            <div class="week-stats__selected-box">
-              <span
-                class="js-selected-box__week-num selected-box__number">1</span><sup
-                class="selected-box__ordinal-suffix js-selected-box__ordinal-suffix">st</sup>
-              Week of <span
-                class="js-selected-box__age-num selected-box__number">0</span>
-              <span class="js-selected-box__age-unit">year</span> Age
+            <div class="start-section__content">
+              <p>
+                However long our Life seems to be, it has an elusive Limit. For
+                short-term projects, we understand that deadlines are essential
+                to beat procrastination but what about something long-term as
+                our Life?
+              </p>
+              <p>
+                We tend to overlook its ultimate deadline - Death because it's
+                difficult to keep track of such a long period.
+              </p>
+              <p>
+                To see a zoomed-out view of your Life, go ahead and check out if
+                it's really that long when visualized as a grid of weeks?
+              </p>
             </div>
-            <div class="week-stats__inner">
-              <p class="week-stats__date-range js-week-stats__date-range">Mon 01
-                Jan, 2000 — Sun 07 Jan, 2000</p>
-              <div class="week-stats__week-count">
-                <p
-                  class="week-stats__number week-count__number js-week-stats__week-count">
-                  0000</p>
-                <p class="week-stats__text">out of</p>
-                <p
-                  class="week-stats__number week-count__number week-count__number--total js-week-stats__total-count">
-                  0000</p>
-                <p class="week-stats__text">weeks used</p>
+            <form class="input-form js-input-form">
+              <label for="dob-input">
+                Let's start from the beginning! Your DOB?
+              </label>
+              <input
+                type="date"
+                name="DOB"
+                id="dob-input"
+                class="input-form__control input-form__dob js-input-form__dob"
+                min="1900-01-01"
+                required
+              />
+              <label for="life-exp-input">
+                How many years do you think you'll live?
+              </label>
+              <input
+                type="number"
+                name="lifeExpectancy"
+                id="life-exp-input"
+                class="input-form__control input-form__life-exp js-input-form__life-exp"
+                value="80"
+                min="1"
+                required
+              />
+              <button type="submit" class="input-form__btn js-input-form__btn">
+                Show Life Grid
+                <i class="fas fa-angle-double-down btn__icon"></i>
+              </button>
+            </form>
+          </div>
+        </section>
+      </div>
+      <div class="section">
+        <section class="life-grid-empty js-life-grid-empty">
+          <img
+            class="life-grid-empty__img"
+            src="images/hourglass-empty-form.jpg"
+          />
+          <div class="life-grid-empty__content">
+            <p class="life-grid-empty__p">
+              First enter your details above to see your Life Grid here!
+            </p>
+            <a class="life-grid-empty__btn" href="#start">
+              Scroll Up
+              <i class="fas fa-angle-double-up btn__icon"></i>
+            </a>
+          </div>
+        </section>
+
+        <section class="life-grid-section js-life-grid-section">
+          <div class="card life-grid js-life-grid-card">
+            <div
+              class="life-grid__label life-grid__week-label js-life-grid__week-label"
+            >
+              Weeks
+            </div>
+            <div
+              class="life-grid__label life-grid__age-label js-life-grid__age-label"
+            >
+              <span class="vertical-text">Age Years</span>
+            </div>
+            <div class="life-grid__inner js-life-grid__inner"></div>
+          </div>
+          <div class="info-cards-column">
+            <div class="card info-card perspective">
+              <p
+                class="info-card__p info-card__p--larger info-card__p--margined"
+              >
+                Yep, that's how short your life really is!
+              </p>
+              <p class="info-card__p">
+                All your dreams and life-goals, need to be accomplished before
+                you run out of the
+                <strong>finite unfilled boxes</strong>
+                you've left of. Are you making the most of your weeks?
+              </p>
+            </div>
+
+            <div class="card info-card week-stats js-week-stats">
+              <div
+                class="info-card__more-context"
+                title="Hover or click on the boxes in the life grid&#013;to see how fast your life progresses!"
+              >
+                <span class="fa-stack more-context__icon week-stats__info">
+                  <i class="far fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-info fa-stack-1x"></i>
+                </span>
               </div>
-              <div class="week-stats__life-progress">
-                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px"
-                  y="0px" viewBox="0 0 100 100" class="life-progress__bar">
-                  <path class="life-progress__arc-trail" fill="none"
-                    stroke="#F7F7F7" stroke-width="1.5"
-                    d="M 93.10182349610082 68.74120623948657 A 47 47 0 1 0 6.8981765038991725 68.74120623948657">
-                  </path>
-                  <path class="life-progress__arc" fill="none" stroke="#bd14ff"
-                    stroke-width="3.5"
-                    d="M 93.10182349610082 68.74120623948657 A 47 47 0 1 0 6.8981765038991725 68.74120623948657">
-                  </path>
-                </svg>
-                <div class="life-progress__value">
-                  <p class="week-stats__number">
-                    <span class="js-life-progress__percent--integer">
-                      00</span><small
-                      class="week-stats__number--small js-life-progress__percent--fraction">.00</small>%
+              <div class="week-stats__selected-box">
+                <span class="js-selected-box__week-num selected-box__number">
+                  1
+                </span>
+                <sup
+                  class="selected-box__ordinal-suffix js-selected-box__ordinal-suffix"
+                >
+                  st
+                </sup>
+                Week of
+                <span class="js-selected-box__age-num selected-box__number">
+                  0
+                </span>
+                <span class="js-selected-box__age-unit">year</span>
+                Age
+              </div>
+              <div class="week-stats__inner">
+                <p class="week-stats__date-range js-week-stats__date-range">
+                  Mon 01 Jan, 2000 — Sun 07 Jan, 2000
+                </p>
+                <div class="week-stats__week-count">
+                  <p
+                    class="week-stats__number week-count__number js-week-stats__week-count"
+                  >
+                    0000
                   </p>
-                  <p class="week-stats__text">
-                    <strong> Life used </strong>
-                    <br>
-                    by the end of it
+                  <p class="week-stats__text">out of</p>
+                  <p
+                    class="week-stats__number week-count__number week-count__number--total js-week-stats__total-count"
+                  >
+                    0000
                   </p>
+                  <p class="week-stats__text">weeks used</p>
+                </div>
+                <div class="week-stats__life-progress">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    version="1.1"
+                    x="0px"
+                    y="0px"
+                    viewBox="0 0 100 100"
+                    class="life-progress__bar"
+                  >
+                    <path
+                      class="life-progress__arc-trail"
+                      fill="none"
+                      stroke="#F7F7F7"
+                      stroke-width="1.5"
+                      d="M 93.10182349610082 68.74120623948657 A 47 47 0 1 0 6.8981765038991725 68.74120623948657"
+                    ></path>
+                    <path
+                      class="life-progress__arc"
+                      fill="none"
+                      stroke="#bd14ff"
+                      stroke-width="3.5"
+                      d="M 93.10182349610082 68.74120623948657 A 47 47 0 1 0 6.8981765038991725 68.74120623948657"
+                    ></path>
+                  </svg>
+                  <div class="life-progress__value">
+                    <p class="week-stats__number">
+                      <span class="js-life-progress__percent--integer">00</span>
+                      <small
+                        class="week-stats__number--small js-life-progress__percent--fraction"
+                      >
+                        .00
+                      </small>
+                      %
+                    </p>
+                    <p class="week-stats__text">
+                      <strong>Life used</strong>
+                      <br />
+                      by the end of it
+                    </p>
+                  </div>
                 </div>
               </div>
+              <p
+                class="week-stats__text week-stats__extra-info js-week-stats__extra-info"
+              >
+                Info
+              </p>
             </div>
-            <p
-              class="week-stats__text week-stats__extra-info js-week-stats__extra-info">
-              Info
-            </p>
-          </div>
 
-          <div class="card info-card calendar">
-            <div class="info-card__more-context">
-              <i class="far fa-question-circle more-context__icon calendar__help-btn js-cal-help-btn"
-                title="Click to know how to use this file"></i>
+            <div class="card info-card calendar">
+              <div class="info-card__more-context">
+                <i
+                  class="far fa-question-circle more-context__icon calendar__help-btn js-cal-help-btn"
+                  title="Click to know how to use this file"
+                ></i>
+              </div>
+              <p class="info-card__p">
+                Eye opening, huh? Deadlines only work as long as they constantly
+                threaten you. So why not remind yourself of this limit of your
+                life by
+                <strong>adding it to your calendar</strong>
+                .
+              </p>
+              <div class="calendar__download">
+                <span class="info-card__p--larger">
+                  Your Life Grid as Calendar File:
+                </span>
+                <a href="#" class="calendar__download-btn js-download-btn">
+                  Download
+                  <i class="fas fa-arrow-down download-btn__icon"></i>
+                </a>
+              </div>
+              <hr class="calendar__hr" />
+              <p class="info-card__p calendar__extra-info">
+                Besides, you can use
+                <a class="calendar__link js-life-grid-link" href="#life-grid">
+                  this link
+                </a>
+                to directly open your life grid. Set it as your browser homepage
+                or bookmark it!
+              </p>
             </div>
-            <p class="info-card__p">
-              Eye opening, huh? Deadlines only work as long as they constantly
-              threaten you. So why not remind yourself of this limit of your
-              life by <strong>adding it to your calendar</strong>.
-            </p>
-            <div class="calendar__download">
-              <span class="info-card__p--larger">
-                Your Life Grid as Calendar File:
-              </span>
-              <a href="#" class="calendar__download-btn js-download-btn">
-                Download
-                <i class="fas fa-arrow-down download-btn__icon"></i>
+          </div>
+        </section>
+      </div>
+      <div class="section">
+        <section class="pg-section inspiration">
+          <h2 class="pg-section__heading">Inspiration</h2>
+          <p>
+            This web app is based on Tim Urban's blog post "
+            <a
+              class="link"
+              href="https://waitbutwhy.com/2014/05/life-weeks.html"
+            >
+              Your Life in Weeks
+            </a>
+            " at WaitButWhy. I first encountered this idea in his outstanding
+            TED talk - "
+            <a href="https://www.youtube.com/watch?v=arj7oStGLkU" class="link">
+              Inside the mind of a master procrastinator
+            </a>
+            " where he explains how a procrastinator's system functions in terms
+            of three comic characters. If you haven't seen it yet, I'd highly
+            recommend you to watch this creatively humorous masterpiece!
+          </p>
+          <iframe
+            class="inspiration__yt-embed"
+            src="https://www.youtube.com/embed/arj7oStGLkU"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+          <p>
+            At the end of this talk, he highlights how procrastination makes
+            people suffer and left them feeling frustrated in non-deadline
+            situations like Life because there is nothing to create a panic that
+            is necessary to get things done! This is where he introduces this
+            concept of the life calendar to remind us of the limited number of
+            week boxes that we have in our lives. I loved this idea so much that
+            I have to create a web app that can allow me (and of course you) to
+            incorporate this sense of deadline in our lives. 😀
+          </p>
+        </section>
+      </div>
+
+      <div class="section">
+        <section class="pg-section faq js-faq">
+          <h2 class="pg-section__heading">Frequently Asked Questions</h2>
+          <div class="faq__accordions-list">
+            <div class="accordion">
+              <button
+                class="accordion__toggle accordion__toggle--first js-accordion__toggle"
+              >
+                How does this app extend the capabilities of the life calendar
+                at WaitButWhy?
+                <i class="fas fa-plus js-accordion__state-icon"></i>
+              </button>
+              <div class="accordion__panel">
+                <ul>
+                  <li>
+                    The life grid (or calendar) here makes your week boxes
+                    relatable to the
+                    <a
+                      class="link"
+                      href="https://www.timeanddate.com/calendar/gregorian-calendar.html"
+                    >
+                      Gregorian calendar
+                    </a>
+                    by mapping them to the actual date range, while also
+                    accounting for the fact that a year does not have exactly 52
+                    weeks (more on this in the following question).
+                  </li>
+                  <li>
+                    It additionally allows you to see the percent of life spent
+                    and weeks used until now at the end of each week - thanks to
+                    the interactivity.
+                  </li>
+                  <li>
+                    You can make the generated life grid actionable by
+                    integrating it with the calendar app you use. This will
+                    enable you to reflect on what is important to you that
+                    you're procrastinating in your life, as Tim Urban suggests.
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="accordion">
+              <button class="accordion__toggle js-accordion__toggle">
+                Why does the life grid shown above has 53 weeks for some of the
+                years?
+                <i class="fas fa-plus js-accordion__state-icon"></i>
+              </button>
+              <div class="accordion__panel">
+                <p>
+                  A normal year has 52 weeks and 1 day, whereas a leap year has
+                  52 weeks and 2 days. Since weeks don't completely fit in a
+                  year, the remaining days accumulate together in 5 or 6 years
+                  to form an extra week. This way, app logic makes sure that
+                  your birthdays always fall in the 1st week of your age year.
+                  Otherwise, they would have shifted to the right end of the
+                  grid, breaking the symmetry of week-to-age mapping.
+                </p>
+                <p>
+                  If you think about it, this is same as how the concept of leap
+                  year works. Since the earth completes a revolution in 365 and
+                  1/4th days, an extra day gets accumulated every 4 years making
+                  it a leap year. This way, the new year always begins from 1st
+                  January otherwise, it would have shifted to subsequent dates.
+                </p>
+              </div>
+            </div>
+            <div class="accordion">
+              <button class="accordion__toggle js-accordion__toggle">
+                Why don't weeks in my generated life grid start on Monday (or
+                Sunday)?
+                <i class="fas fa-plus js-accordion__state-icon"></i>
+              </button>
+              <div class="accordion__panel">
+                <p>
+                  If you were not born on Monday (or Sunday), this might be
+                  bothering you. It is because the years here are your age
+                  years, not our usual calendar years. So the 1st week of your
+                  life starts on the day you were born and the following weeks
+                  continue the same 7-day cycle.
+                </p>
+                <p>
+                  You might still be unsatisfied because you want the starting
+                  date of the week boxes to sync up with that of the weeks in
+                  the calendar app where you are adding this. Don't worry, we
+                  can achieve this sync by assuming that the first week of your
+                  life starts on Monday (or Sunday) even though you were born on
+                  a later day in that week. Leave a thumbs up on
+                  <a
+                    href="https://github.com/jaladh-singhal/limit-of-life/issues/1"
+                    class="link"
+                  >
+                    this open issue
+                  </a>
+                  to let me know that I should implement this functionality in
+                  the next version of this app.
+                </p>
+              </div>
+            </div>
+            <div class="accordion">
+              <button
+                class="accordion__toggle accordion__toggle--last js-accordion__toggle js-cal-file-accordion"
+              >
+                What is the calendar file generated above and how to use it
+                after downloading?
+                <i class="fas fa-plus js-accordion__state-icon"></i>
+              </button>
+              <div class="accordion__panel accordion__panel--last">
+                <p>
+                  This file is an
+                  <a
+                    href="https://en.wikipedia.org/wiki/ICalendar"
+                    class="link"
+                  >
+                    iCalendar
+                  </a>
+                  file (.ics) that is a standard calendar format used to
+                  transfer calendar data on the internet. Thus it can be
+                  imported easily in any calendar app you use. It consists of
+                  all-day events for the starting date of each week box, along
+                  with corresponding stats in the event description to remind
+                  you of the limit of your life.
+                </p>
+                <figure class="gcal-fig">
+                  <div class="gcal-fig__img-placeholder">
+                    <img
+                      class="faq__img gcal-fig__img"
+                      src="images/gcal-lol.png"
+                    />
+                  </div>
+                  <figcaption class="gcal-fig__caption">
+                    Here's how it looks in my Google Calendar
+                  </figcaption>
+                </figure>
+                <p>
+                  Following are the instructions to import it in
+                  <a href="https://calendar.google.com" class="link">
+                    Google Calendar
+                  </a>
+                  . For other calendar apps, the steps would still be the same
+                  except for the details which you can easily find on the
+                  internet.
+                </p>
+                <ol>
+                  <li>
+                    <h4>Create a new Calendar</h4>
+                    <p>
+                      Go to
+                      <em>Settings</em>
+                      >
+                      <em>Add calendar</em>
+                      >
+                      <em>Create new calendar</em>
+                      . Give it a suitable name like "Limit of Life", and click
+                      on
+                      <em>Create calendar</em>
+                      button.
+                    </p>
+                    <p>
+                      Importing events from this file in a "new" calendar is
+                      highly recommended because it will allow you to control
+                      notifications settings of all events together and will
+                      prevent the risk of messing up your default calendar.
+                    </p>
+                  </li>
+                  <li>
+                    <h4>Configure notification settings</h4>
+                    <p>
+                      Under
+                      <em>Settings for my calendars</em>
+                      section, select the calendar we just created - "Limit of
+                      Life". Scroll down to
+                      <em>All-day event notifications</em>
+                      and add notifications for the time of day when you can sit
+                      for a while to reflect on how you've used your past week
+                      and how you want to use the upcoming one. Besides, you can
+                      also check stats like how much life you have spent within
+                      the event description.
+                    </p>
+                    <p>
+                      For me, these notifs look like this (emails are hard to
+                      miss 😅):
+                    </p>
+                    <img
+                      class="faq__img"
+                      src="images/gcal-notif-settings.png"
+                    />
+                  </li>
+                  <li>
+                    <h4>Import events from the file</h4>
+                    <p>
+                      Within settings, go to
+                      <em>Import & export</em>
+                      >
+                      <em>Import</em>
+                      . Upload the iCal file you've downloaded, and make sure to
+                      select the new calendar we created (named "Limit of Life")
+                      in
+                      <em>Add to Calendar</em>
+                      dropdown. Click on
+                      <em>Import</em>
+                      button and wait for at least 1 min - events spanned
+                      throughout your remaining lifetime are being added!
+                    </p>
+                    <p>
+                      You may see "Oops! we couldn't import this file, try again
+                      in a few minutes". Don't worry, this a potential bug I
+                      observed in Google Calendar when importing large files. Go
+                      back to your calendar, you should be able to see the
+                      events, if the "Limit of Life" calendar is checked in the
+                      sidebar.
+                    </p>
+                  </li>
+                  <li>
+                    <h4>[Optional] Verify the completion of import</h4>
+                    <p>
+                      Observe the starting date of the last week of your life in
+                      the grid and open it in your calendar. You can do this
+                      quickly by appending
+                      <em>/&lt;year&gt;/&lt;month&gt;/&lt;date&gt;</em>
+                      for that date, to the URL in the address bar. In the open
+                      week or month, you should see a "Limit of Life" event
+                      scheduled.
+                    </p>
+                  </li>
+                </ol>
+                <h4>Why this hassle?</h4>
+                <p>
+                  You might be wondering why isn't there any automatic way to
+                  import these events. There is one but for that, you'd need to
+                  authenticate this app to access your calendar. So respecting
+                  your privacy concerns & trust issues, I didn't build that
+                  feature. But if you still want it, give a thumbs up on
+                  <a
+                    href="https://github.com/jaladh-singhal/limit-of-life/issues/2"
+                    class="link"
+                  >
+                    this open issue
+                  </a>
+                  , or if you know a better way for adding bulk events, let me
+                  know by putting a comment there.
+                </p>
+                <p>
+                  Until then, you have to do the importing manually - don't
+                  procrastinate, it only takes < 5 min! 😜
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="section fp-auto-height">
+        <footer class="footer">
+          <div class="footer__inner">
+            <a
+              class="footer__icon-btn"
+              href="https://limit-of-life.netlify.app"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fas fa-share-alt"></i>
+            </a>
+            <a
+              class="footer__icon-btn"
+              href="https://github.com/jaladh-singhal/limit-of-life/issues/new"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fas fa-comment"></i>
+            </a>
+            <a
+              class="footer__icon-btn"
+              href="https://github.com/jaladh-singhal/limit-of-life"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fas fa-code-branch"></i>
+            </a>
+            <p class="footer__p">
+              Share
+              <a class="link footer__link js-life-grid-link" href="#life-grid">
+                your life grid
               </a>
-            </div>
-            <hr class="calendar__hr">
-            <p class="info-card__p calendar__extra-info">
-              Besides, you can use <a class="calendar__link js-life-grid-link"
-                href="#life-grid">this link</a> to directly
-              open your life grid. Set it as your browser homepage or bookmark
-              it!
+              and ask your loved ones to share theirs, to see how your lifetimes
+              compare!
+            </p>
+            <p class="footer__p">
+              Found a bug or have a suggestion? Don't hesitate to open an issue
+              on GitHub so that I can know.
+            </p>
+            <p class="footer__p">
+              It's Open Source! Submit pull requests to help me improve it.
+              Leave a star if you like :)
             </p>
           </div>
-        </div>
-      </section>
-    </div>
-    <div class="section">
-      <section class="pg-section inspiration">
-        <h2 class="pg-section__heading">Inspiration</h2>
-        <p>
-          This web app is based on Tim Urban's blog post "<a class="link"
-            href="https://waitbutwhy.com/2014/05/life-weeks.html">Your Life in
-            Weeks</a>" at
-          WaitButWhy. I first encountered this idea in his outstanding TED talk
-          - "<a href="https://www.youtube.com/watch?v=arj7oStGLkU"
-            class="link">Inside the mind of a master procrastinator</a>" where
-          he explains how a
-          procrastinator's system functions in terms of three comic characters.
-          If
-          you haven't seen it yet, I'd highly recommend you to watch this
-          creatively
-          humorous masterpiece!
-        </p>
-        <iframe class="inspiration__yt-embed"
-          src="https://www.youtube.com/embed/arj7oStGLkU" frameborder="0"
-          allowfullscreen></iframe>
-        <p>
-          At the end of this talk, he highlights how procrastination makes
-          people
-          suffer and left them feeling frustrated in non-deadline situations
-          like
-          Life because there is nothing to create a panic that is necessary to
-          get
-          things done! This is where he introduces this concept of the life
-          calendar
-          to remind us of the limited number of week boxes that we have in our
-          lives. I loved this idea so much that I have to create a web app that
-          can
-          allow me (and of course you) to incorporate this sense of deadline in
-          our
-          lives. 😀
-        </p>
-      </section>
-    </div>
-
-    <div class="section">
-      <section class="pg-section faq js-faq">
-        <h2 class="pg-section__heading">Frequently Asked Questions</h2>
-        <div class="faq__accordions-list">
-          <div class="accordion">
-            <button
-              class="accordion__toggle accordion__toggle--first js-accordion__toggle">
-              How does this app extend the capabilities of the life calendar at
-              WaitButWhy?
-              <i class="fas fa-plus js-accordion__state-icon"></i>
-            </button>
-            <div class="accordion__panel">
-              <ul>
-                <li>The life grid (or calendar) here makes your week boxes
-                  relatable
-                  to
-                  the <a class="link"
-                    href="https://www.timeanddate.com/calendar/gregorian-calendar.html">Gregorian
-                    calendar</a> by mapping them to the actual date
-                  range,
-                  while
-                  also accounting for the fact that a year does not have exactly
-                  52
-                  weeks (more on this in the following question).</li>
-                <li>It additionally allows you to see the percent of life spent
-                  and
-                  weeks used until now at the end of each week - thanks to the
-                  interactivity. </li>
-                <li>You can make the generated life grid actionable by
-                  integrating
-                  it
-                  with the calendar app you use. This will enable you to reflect
-                  on
-                  what
-                  is important to you that you're procrastinating in your life,
-                  as
-                  Tim
-                  Urban suggests.
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="accordion">
-            <button class="accordion__toggle js-accordion__toggle">
-              Why does the life grid shown above has 53 weeks for
-              some
-              of the years?
-              <i class="fas fa-plus js-accordion__state-icon"></i>
-            </button>
-            <div class="accordion__panel">
-              <p>
-                A normal year has 52 weeks and 1 day, whereas a leap year has 52
-                weeks
-                and 2 days. Since weeks don't completely fit in a year, the
-                remaining
-                days accumulate together in 5 or 6 years to form an extra week.
-                This
-                way, app logic makes sure that your birthdays always fall in the
-                1st
-                week of your age year. Otherwise, they would have shifted to the
-                right
-                end of the grid, breaking the symmetry of week-to-age mapping.
-              </p>
-              <p>
-                If you think about it, this is same as how the concept of leap
-                year
-                works. Since the earth completes a revolution in 365 and 1/4th
-                days,
-                an
-                extra day gets accumulated every 4 years making it a leap year.
-                This
-                way, the new year always begins from 1st January otherwise, it
-                would
-                have shifted to subsequent dates.
-              </p>
-            </div>
-          </div>
-          <div class="accordion">
-            <button class="accordion__toggle js-accordion__toggle">
-              Why don't weeks in my generated life grid start on Monday (or
-              Sunday)?
-              <i class="fas fa-plus js-accordion__state-icon"></i>
-            </button>
-            <div class="accordion__panel">
-              <p>
-                If you were not born on Monday (or Sunday), this might be
-                bothering
-                you.
-                It is because the years here are your age years, not our usual
-                calendar
-                years. So the 1st week of your life starts on the day you were
-                born
-                and
-                the following weeks continue the same 7-day cycle.
-              </p>
-              <p>
-                You might still be unsatisfied because you want the starting
-                date
-                of
-                the
-                week boxes to sync up with that of the weeks in the calendar app
-                where
-                you are adding this. Don't worry, we can achieve this sync by
-                assuming
-                that the first week of your life starts on Monday (or Sunday)
-                even
-                though you were born on a later day in that week. Leave a thumbs
-                up
-                on
-                <a href="https://github.com/jaladh-singhal/limit-of-life/issues/1"
-                  class="link">this open issue</a> to let me know that I should
-                implement this
-                functionality in the next version of this app.
-              </p>
-            </div>
-          </div>
-          <div class="accordion">
-            <button
-              class="accordion__toggle accordion__toggle--last js-accordion__toggle js-cal-file-accordion">
-              What is the calendar file generated above and how to use it after
-              downloading?
-              <i class="fas fa-plus js-accordion__state-icon"></i>
-            </button>
-            <div class="accordion__panel accordion__panel--last">
-              <p>
-                This file is an <a
-                  href="https://en.wikipedia.org/wiki/ICalendar"
-                  class="link">iCalendar</a> file (.ics) that is a standard
-                calendar
-                format
-                used to transfer calendar data on the internet. Thus it can be
-                imported
-                easily in any calendar app you use. It consists of all-day
-                events
-                for
-                the starting date of each week box, along with corresponding
-                stats
-                in
-                the event description to remind you of the limit of your life.
-              </p>
-              <figure class="gcal-fig">
-                <div class="gcal-fig__img-placeholder">
-                  <img class="faq__img gcal-fig__img" src="images/gcal-lol.png">
-                </div>
-                <figcaption class="gcal-fig__caption">
-                  Here's how it looks in my Google Calendar
-                </figcaption>
-              </figure>
-              <p>
-                Following are the instructions to import it in <a
-                  href="https://calendar.google.com" class="link">Google
-                  Calendar</a>.
-                For
-                other calendar apps, the steps would still be the same except
-                for
-                the
-                details which you can easily find on the internet.
-              </p>
-              <ol>
-                <li>
-                  <h4>
-                    Create a new Calendar
-                  </h4>
-                  <p>
-                    Go to <em>Settings</em> > <em>Add calendar</em> > <em>Create
-                      new
-                      calendar</em>. Give it a suitable name like "Limit of
-                    Life",
-                    and
-                    click on <em>Create calendar</em> button.
-                  </p>
-                  <p>
-                    Importing events from this file in a "new" calendar is
-                    highly
-                    recommended because it will allow you to control
-                    notifications
-                    settings of all events together and will prevent the risk of
-                    messing up your default calendar.
-                  </p>
-                </li>
-                <li>
-                  <h4>
-                    Configure notification settings
-                  </h4>
-                  <p>
-                    Under <em>Settings for my calendars</em> section, select the
-                    calendar we just created - "Limit of Life". Scroll down to
-                    <em>All-day event notifications</em> and add notifications
-                    for
-                    the
-                    time of day when you can sit for a while to reflect on how
-                    you've
-                    used your past week and how you want to use the upcoming
-                    one.
-                    Besides, you can also check stats like how much life you
-                    have
-                    spent within the event description.
-                  </p>
-                  <p>
-                    For me, these notifs look like this (emails are hard to miss
-                    😅):
-                  </p>
-                  <img class="faq__img" src="images/gcal-notif-settings.png">
-                </li>
-                <li>
-                  <h4>
-                    Import events from the file
-                  </h4>
-                  <p>
-                    Within settings, go to <em>Import & export</em> >
-                    <em>Import</em>.
-                    Upload the iCal file you've downloaded, and make sure to
-                    select
-                    the new calendar we created (named "Limit of Life") in
-                    <em>Add
-                      to
-                      Calendar</em> dropdown. Click on <em>Import</em> button
-                    and
-                    wait
-                    for at least 1 min - events spanned throughout your
-                    remaining
-                    lifetime are being added!
-                  </p>
-                  <p>
-                    You may see "Oops! we couldn't import this file, try again
-                    in
-                    a
-                    few minutes". Don't worry, this a potential bug I observed
-                    in
-                    Google Calendar when importing large files. Go back to your
-                    calendar, you should be able to see the events, if the
-                    "Limit
-                    of
-                    Life" calendar is checked in the sidebar.
-                  </p>
-                </li>
-                <li>
-                  <h4>
-                    [Optional] Verify the completion of import
-                  </h4>
-                  <p>
-                    Observe the starting date of the last week of your life in
-                    the
-                    grid and open it in your calendar. You can do this quickly
-                    by
-                    appending <em>/&lt;year&gt;/&lt;month&gt;/&lt;date&gt;</em>
-                    for
-                    that date, to the URL in the address bar. In the open week
-                    or
-                    month, you should see a "Limit of Life" event scheduled.
-                  </p>
-                </li>
-              </ol>
-              <h4>
-                Why this hassle?
-              </h4>
-              <p>
-                You might be wondering why isn't there any automatic way to
-                import
-                these events. There is one but for that, you'd need to
-                authenticate
-                this app to access your calendar. So respecting your privacy
-                concerns
-                & trust issues, I didn't build that feature. But if you still
-                want
-                it,
-                give a thumbs up on <a
-                  href="https://github.com/jaladh-singhal/limit-of-life/issues/2"
-                  class="link">this open issue</a>, or if you know a better way
-                for
-                adding bulk events, let me know by putting a comment there.
-              </p>
-              <p>
-                Until then, you have to do the importing manually - don't
-                procrastinate, it only takes < 5 min! 😜 </p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-    <div class="section fp-auto-height">
-      <footer class="footer">
-        <div class="footer__inner">
-          <a class="footer__icon-btn" href="https://limit-of-life.netlify.app"
-            target="_blank" rel="noopener noreferrer">
-            <i class="fas fa-share-alt"></i>
-          </a>
-          <a class="footer__icon-btn"
-            href="https://github.com/jaladh-singhal/limit-of-life/issues/new"
-            target="_blank" rel="noopener noreferrer">
-            <i class="fas fa-comment"></i>
-          </a>
-          <a class="footer__icon-btn"
-            href="https://github.com/jaladh-singhal/limit-of-life"
-            target="_blank" rel="noopener noreferrer">
-            <i class="fas fa-code-branch"></i>
-          </a>
-          <p class="footer__p">
-            Share <a class="link footer__link js-life-grid-link"
-              href="#life-grid">your life grid</a> and
-            ask your loved ones to share theirs, to see how your lifetimes
-            compare!
+          <p class="footer__developer-info">
+            Developed with ❤️ by
+            <a
+              class="link footer__link"
+              href="https://github.com/jaladh-singhal"
+            >
+              jaladh-singhal
+            </a>
+            <a
+              class="footer__icon-btn footer_icon-developer"
+              href="https://twitter.com/curiousPolygon"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fab fa-twitter"></i>
+            </a>
           </p>
-          <p class="footer__p">
-            Found a bug or have a suggestion? Don't hesitate to open an issue on
-            GitHub so that I can know.
-          </p>
-          <p class="footer__p">
-            It's Open Source! Submit pull requests to help me improve it.
-            Leave a star if you like :)
-          </p>
-        </div>
-        <p class="footer__developer-info">
-          Developed with ❤️ by <a class="link footer__link"
-            href="https://github.com/jaladh-singhal">jaladh-singhal</a>
-          <a class="footer__icon-btn footer_icon-developer"
-            href="https://twitter.com/curiousPolygon" target="_blank"
-            rel="noopener noreferrer">
-            <i class="fab fa-twitter"></i>
-          </a>
-        </p>
-      </footer>
+        </footer>
+      </div>
     </div>
-  </div>
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.js"
-    integrity="sha512-Gx/C4x1qubng2MWpJIxTPuWch9O88dhFFfpIl3WlqH0jPHtCiNdYsmJBFX0q5gIzFHmwkPzzYTlZC/Q7zgbwCw=="
-    crossorigin="anonymous"></script>
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/1.1.0/progressbar.min.js">
-    </script>
-  <script src="limit-of-life.js"></script>
-</body>
-
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.js"
+      integrity="sha512-Gx/C4x1qubng2MWpJIxTPuWch9O88dhFFfpIl3WlqH0jPHtCiNdYsmJBFX0q5gIzFHmwkPzzYTlZC/Q7zgbwCw=="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/1.1.0/progressbar.min.js"></script>
+    <script src="limit-of-life.js"></script>
+  </body>
 </html>
