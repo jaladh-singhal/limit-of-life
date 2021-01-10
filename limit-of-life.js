@@ -559,6 +559,14 @@ document.querySelector(".js-cal-help-btn").addEventListener("click", (e) => {
   }
 });
 
+// Alert user to use computer if using smaller device (<=1000px)
+document.addEventListener("DOMContentLoaded", (e) => {
+  if (window.matchMedia("only screen and (max-width: 1000px)").matches) {
+    alert(`Sorry, this web application is not yet designed for smaller devices.\n
+Please open this on your computer for best experience!`);
+  }
+});
+
 // Use parameters in url (if valid) to auto-submit form to directly open life-grid
 document.addEventListener("DOMContentLoaded", (e) => {
   const url = new URL(window.location);
