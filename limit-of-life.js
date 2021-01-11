@@ -153,7 +153,13 @@ function genLifeGrid(dob, lifeExpectancy) {
     birthdayWeekDay,
     remDaysOverAgeYears = 0,
     totalWeeksOverYears = 0;
-  const dateNow = new Date();
+  const dateNow = new Date(),
+    dateFormatOptions = {
+      weekday: "short",
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    };
 
   for (let ageYear = 0; ageYear < lifeExpectancy; ageYear++) {
     // Find week remainder days in age year
@@ -181,11 +187,17 @@ function genLifeGrid(dob, lifeExpectancy) {
       weekBox.dataset.weekInYear = week;
       weekBox.dataset.ageYear = ageYear;
 
-      weekBox.dataset.weekStartDate = weekStartDate.toDateString();
+      weekBox.dataset.weekStartDate = weekStartDate.toLocaleDateString(
+        "en-US",
+        dateFormatOptions
+      );
 
       weekEndDate = new Date(weekStartDate);
       weekEndDate.setDate(weekEndDate.getDate() + DAYS_IN_WEEK - 1);
-      weekBox.dataset.weekEndDate = weekEndDate.toDateString();
+      weekBox.dataset.weekEndDate = weekEndDate.toLocaleDateString(
+        "en-US",
+        dateFormatOptions
+      );
 
       weekCount = totalWeeksOverYears + week;
       weekBox.dataset.weekCount = weekCount;
