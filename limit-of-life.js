@@ -64,7 +64,15 @@ class WeekStats {
     this.selectedAgeUnit.textContent =
       weekBoxData.ageYear <= 1 ? "year" : "years";
 
-    this.dateRange.textContent = `${weekBoxData.weekStartDate} — ${weekBoxData.weekEndDate}`;
+    const formattedWeekStartDate = weekBoxData.weekStartDate.replace(
+        /(\w+)\s(\w+)\s(\d+)\s(\w+)/g,
+        "$1, $2 $3, $4"
+      ),
+      formattedWeekEndDate = weekBoxData.weekEndDate.replace(
+        /(\w+)\s(\w+)\s(\d+)\s(\w+)/g,
+        "$1, $2 $3, $4"
+      );
+    this.dateRange.textContent = `${formattedWeekStartDate} — ${formattedWeekEndDate}`;
     this.weekCount.textContent = weekBoxData.weekCount;
 
     const [percentInteger, percentFraction] = weekBoxData.lifePercent.split(
@@ -153,13 +161,7 @@ function genLifeGrid(dob, lifeExpectancy) {
     birthdayWeekDay,
     remDaysOverAgeYears = 0,
     totalWeeksOverYears = 0;
-  const dateNow = new Date(),
-    dateFormatOptions = {
-      weekday: "short",
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    };
+  const dateNow = new Date();
 
   for (let ageYear = 0; ageYear < lifeExpectancy; ageYear++) {
     // Find week remainder days in age year
@@ -187,17 +189,11 @@ function genLifeGrid(dob, lifeExpectancy) {
       weekBox.dataset.weekInYear = week;
       weekBox.dataset.ageYear = ageYear;
 
-      weekBox.dataset.weekStartDate = weekStartDate.toLocaleDateString(
-        "en-US",
-        dateFormatOptions
-      );
+      weekBox.dataset.weekStartDate = weekStartDate.toDateString();
 
       weekEndDate = new Date(weekStartDate);
       weekEndDate.setDate(weekEndDate.getDate() + DAYS_IN_WEEK - 1);
-      weekBox.dataset.weekEndDate = weekEndDate.toLocaleDateString(
-        "en-US",
-        dateFormatOptions
-      );
+      weekBox.dataset.weekEndDate = weekEndDate.toDateString();
 
       weekCount = totalWeeksOverYears + week;
       weekBox.dataset.weekCount = weekCount;
